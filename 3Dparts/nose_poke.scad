@@ -69,7 +69,7 @@ cylinder(d=screwD,h=10);
 
 
 module backWall(){
-    $fn=14;
+    $fn=10;
     
     
     difference(){
