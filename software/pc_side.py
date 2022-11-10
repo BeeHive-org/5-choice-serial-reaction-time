@@ -6,7 +6,8 @@ print(b.serial_ports())
 
 b.connect('/dev/ttyUSB0')
 b.runFile("food_magazine.py")
-b.record(till=True)
-data = b.readData(channels=[])
+b.record(till=True,gather=10)
+data,speed = b.readData(channels=[])
+
 print(data)
 #print(data1)

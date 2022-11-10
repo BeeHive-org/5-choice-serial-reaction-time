@@ -81,13 +81,15 @@ def food_training():
         led.value(0)
         mouse_to_food = timer_food - timer_start
         
-        addToData(M=x, datainput="Trial "+str(x))
-        addToData(M=x, datainput="ITI "+str(times_num))
-        addToData(M=x, datainput="M2F "+str(mouse_to_food))
+        addToData(datainput="Trial "+str(x))
+        addToData(datainput="ITI "+str(times_num))
+        addToData(datainput="M2F "+str(mouse_to_food))
         #print ("M2F "+str(mouse_to_food),'utf-8')
         #print("M2F ", mouse_to_food, "ms")
-    #addToData(M=0, datainput="END")
-    isEnded()
+    print("END")
+    addToData(M=0, datainput="END")
+
+    
 
 
 
