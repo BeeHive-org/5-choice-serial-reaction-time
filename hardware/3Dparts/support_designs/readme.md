@@ -1,0 +1,1 @@
+the servo design used to model the holder is taken from here: https://grabcad.com/library/sg90-servo-motor-4
