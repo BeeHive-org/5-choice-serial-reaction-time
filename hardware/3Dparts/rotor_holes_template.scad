@@ -13,7 +13,7 @@ cylinder(d=5+2*tol,h=10);
 for(angle = [0 : 45 : 365-45]){
 rotate([0,0,angle]){
 translate([18.5,0,0]){
-cylinder(d=3.6+2*tol,h=5);
+cylinder(d=3.8+2*tol,h=5);
 }//end
 }//end
 }//end for 
