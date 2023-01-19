@@ -48,6 +48,37 @@ tol = 0.1;
 
 $fn=30;
 
+%cylinder(d1=headporty/2,d2=headporty/2+5,h=10);
+translate([0,0,1]){
+cylinder(d1=headporty/2-1,d2=headporty/2+5-1,h=10);
+}
+
+//backpanel
+//difference(){
+//cube([backpanelx,backpanely,backpanelz]);
+//translate([45,(backpanely-headporty)/2,]){
+
+
+
+cube([headportx,headporty,headportz]);
+translate([0,0,-(headporty-10)/2]){
+%cylinder(d1=headporty/2,d2=headporty/2+5,h=10);
+}//end translate
+translate([-irledh,(headporty+irledd)/4,(headportz+irledd)/4]){
+rotate([0,90,0]){
+cylinder(d=irledd+headportwall*2,h=headporty+irledh*2);
+}//end rotate
+}//end translate
+//}//end translate
+
+
+
+
+//}//end differnece
+//headentry
+
+
+
 //supporting modules
 module irholes(){
     rotate([90,0,0]){
@@ -92,7 +123,7 @@ translate([-1,14,15]){
     }//end translate
 
 // pellet dispenser entry
-translate([3,14,-8]){
+translate([9,14,-6]){
    rotate([0,40,0])
    cylinder(h = 15, d = pelletD);
 } //end translate 
@@ -107,7 +138,8 @@ translate([headportx/5+5,headportwall+2,4*headportz/5]){
 ///////////////////////
 
 union(){
-      translate([0,0,0]){
+      //translate([4,0,10]){  
+      translate([2.3,0,10]){
       pellet_dispenser();
   }// end translate     
 }// end union
@@ -124,7 +156,7 @@ union(){
 }//end magazine_entry
 
 module pellet_dispenser() {
-  translate([-2,0,10]){  
+
    difference(){
    translate([5,14,-19]){
    rotate([0,38,0])
@@ -136,10 +168,10 @@ module pellet_dispenser() {
      }//end translate 
    translate([7,7,-9.5]){
    rotate([0,0,0])
-   cube(12, 12, 12); 
+   cube([12, 12, 12]); 
      }//end translate
 }// end difference
-}// end translate
+//}// end translate
 }//end pellet_dispenser
 
 module LED_support() {
@@ -171,8 +203,9 @@ cube([headportx,headporty,headportz]);
 }//end backpanel
 
 ///////////////////////////
-magazine_entry();
-backpanel();
+//magazine_entry();
+//translate([44.5,16,-27.5])
+//backpanel();
 //pellet_dispenser();
 //LED_support();
 ///////////////////////////
