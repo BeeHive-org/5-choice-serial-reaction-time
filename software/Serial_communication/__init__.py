@@ -115,6 +115,8 @@ class Board:
                     log.append(dic)
                 seq=self.COM.exec('isEnded()').decode("utf-8").replace("\r\n","")
         print(log)
+    def runFood(self):
+        self.COM.exec_raw_no_follow('food_training1()')
 
 
 """
