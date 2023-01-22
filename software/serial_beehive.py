@@ -33,14 +33,14 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         button_food=machine.Pin(22,Pin.IN) # Seonsr LED fro teh food magazine
         button_dispenser = machine.Pin(35, machine.Pin.IN) # Sensor LEDs for the food dispenser to detect when food pellets come down
 
-        #All the pins for teh nose pokes
+        #All the pins for teh yellow LEDs nose pokes
         NP_1=machine.Pin(17,machine.Pin.OUT) 
         NP_2=machine.Pin(16,machine.Pin.OUT)
         NP_3=machine.Pin(19,machine.Pin.OUT)
         NP_4=machine.Pin(21, machine.Pin.OUT)
         NP_5=machine.Pin(2,machine.Pin.OUT)
 
-        #All the sensor for the different Nose pokes
+        #All the IR. sensors for the different Nose pokes
         button_1 = machine.Pin(23,Pin.IN)
         button_2 = machine.Pin(5,Pin.IN) 
         button_3 = machine.Pin(18,Pin.IN)
@@ -69,10 +69,12 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 #direction=0
                 sequence= [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
                 while pellet==1:
+                    print (button_dispenser.value())
+                    
                     
                     #[0,0,0,1],[1,0,0,0],[0,1,0,0],[0,0,1,0]]
                         
-                    for i in range(50):
+                    for i in range(80):
                         for step in sequence:
                             for j in range(len(pins)):  #j is a variable defined to range in the length of the pins
                                 pins[j].value(step[j]) 
@@ -81,11 +83,11 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                                     pellet = button_dispenser.value()
                                 #if pellet == 0: #if the pellet equals to 0 then a pellet has dropped, the while loop stops and the code can continue
                                 #    print('')
-                    
+                    utime.sleep(1)
                     #sleep(0.01)
                     sequence.reverse() 
 
-                    for i in range(20):
+                    for i in range(25):
                         for step in sequence:
                             for j in range(len(pins)):  #j is a variable defined to range in the length of the pins
                                 pins[j].value(step[j]) 
@@ -93,39 +95,6 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                                 if pellet == 1: #if pellet is equal to one then the button.dispenser is 1 therefore the pellet hasn't dropped yet
                                     pellet = button_dispenser.value()
                                 #if pellet == 0: #if the pellet equals to 0 then a pellet has dropped, the while loop stops and the code can continue
-
-        
-        def reward1(direction=1):
-                pellet = 1 #Pellet is one which allows for the food dispensing to start through the while loop underneath
-                #sequence = [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]] #This is the order of each pin which leads to it's sequence to turn
-                #maxseq=10 
-                #direction=0
-                while pellet==1:
-                    if direction==0:
-                        sequence= [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1],]
-                                   #[0,0,0,1],[0,0,1,0],[0,1,0,0]]
-                                   #[1,0,0,0],[0,0,0,1],[0,0,1,0],[0,1,0,0]]
-                        
-                    else:
-                        #sequence= [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
-                        sequence= [[0,0,0,1],[0,0,1,0],[0,1,0,0],[1,0,0,0]]#,#[0,0,0,1],[0,0,1,0],
-                                   #[0,0,0,1],[1,0,0,0],[0,1,0,0],[0,0,1,0]]
-                        
-                    for step in sequence:
-                        for j in range(len(pins)):  #j is a variable defined to range in the length of the pins
-                            pins[j].value(step[j]) 
-                            sleep(0.001) #this is to avoid overloading, give a small break 
-                            if pellet == 1: #if pellet is equal to one then the button.dispenser is 1 therefore the pellet hasn't dropped yet
-                                pellet = button_dispenser.value()
-                            if pellet == 0: #if the pellet equals to 0 then a pellet has dropped, the while loop stops and the code can continue
-                                print('')
-                        sleep(0.01)
-                if direction==1:
-                    direction=0
-                else:
-                    direction=1
-                return direction        
-
 
         
         
@@ -207,7 +176,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     NP_5.value(0)
                     
                     #Reard is sent
-
+                    led.value(1)
                     reward()
                    
                     food_time = utime.ticks_ms()
@@ -224,7 +193,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 
                     #ITIs before the next trial
                     #times=[4,8,16,32]
-                    button_pressed = True #when the button pressed is true then the while loop can stop and the tria can go again
+                    button_pressed = True #when the button pressed is true then the while loop can stop and the trial can go again
                     timer_end=utime.ticks_ms()
                     trial_end = timer_end-timer_start
                     
@@ -260,7 +229,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             
             led.value(0)  #Once pressed Foog magazine yellow LED turns off 
             #utime.sleep(5)
-            utime.sleep(1) #time out of 5 seconds
+            utime.sleep(1) #ITI of 5 seconds
             
             #matching accumulating all the NP and button into lists
             nose_pokes = [NP_1,NP_2,NP_3,NP_4, NP_5]
@@ -303,7 +272,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             timer_end = utime.ticks_ms()
             task_end = timer_end-timer_starts
             
-            utime.sleep(1)
+            utime.sleep(1) #consumption interval 20 seconds
             
             yield([trial+1, "5", choice, mouse_to_food, task_end])
             
@@ -314,33 +283,37 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
     @Device.task
     def stage_5csrtt_task():
         """5 choice serial task"""
-        correct_responses = 0 #counter for when the mouse has pressed the right button
-        accuracy = 0 #we only count correct_responses, so if no correct_responses then accuracy is 0
+        
+        #Need to set the counter to 0 for all the variables that are going to be "calculated"
+        correct_responce = 0 #counter for when the mouse has pressed the right button
         omissions = 0 #counter of when no button is pressed
         premature_responce=0 
         incorrect_responce=0
+        accuracy_percentage = 0 
+        omission_percentage=0
         index_current_SD = 0 #the index of which SD is on within the possible SDs
-        
-        
+        omission_counter =0
+
+
         num_trials = 15 #another way to set up and change the trials
-        
-        
-        
+
+
+
         #Start of task
         for trial in range(num_trials):
-        
-        #variables
+
+        #variables are placed inside the for loop because they're value needs to reset every trial to not add up
              
             wrong_button_name= None # no wrong buttons pressed at teh moment
-            premature_timer=0 
-            
+            premature_timer=0  
+            omissions=0
             
             #ITI/SD AND LH:
             extra = 4000
             ITI= 5000
             
             #possible_SDs = [16000,8000,4000,2000,1500,1000]
-            possible_SDs = [1600,800,400,200,1500,1000]  #all teh SDs as the phase progresses
+            possible_SDs = [1600,800,400,200,1500]  #all teh SDs as the phase progresses
             current_SD= possible_SDs[index_current_SD] #The current SD is teh SD that is being executed if teh criteria has been met
             
             nose_pokes = [NP_1,NP_2, NP_3, NP_4, NP_5]
@@ -362,7 +335,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             time_out = False
             button_pressed = True
 
-  
+
             
             # randomly choosing index for nose pokes to turn on
             choice = random.randint(0,4)
@@ -371,7 +344,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             np_buttons_wrong = [] 
             for f in range(len(np_buttons)):
                 if f != choice:
-                    np_buttons_wrong.append(np_buttons[j]) #it creates a list of all the NPs apart from NP choice which will be the correct one
+                    np_buttons_wrong.append(np_buttons[f]) #it creates a list of all the NPs apart from NP choice which will be the correct one
             
 
             
@@ -379,7 +352,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             
             while ITI_break == True: #while the ITI is under 5000ms
                 
-    
+
                 premature_responce_timer = utime.ticks_ms()
                 premature_timer= premature_responce_timer - timer_premature
                 #print(premature_timer)
@@ -394,7 +367,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
 
                         nose_pokes[choice].value(0) #the correct NP is turned off
                         
-        
+
                         premature_responce +=1 #premature responce is added to criteria calculator
                         #utime.sleep(5)
                         ITI_break=False #the ITI_break loop ends
@@ -417,8 +390,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         
             
             timer_duration = utime.ticks_ms()
-        
-        
+
+
             #Start of SD
             
             while button_pressed == False: #While no nosepoke has been pressed the task keeps going:
@@ -468,9 +441,9 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         
                         mouse_to_food = time_food - timer_fooder #mouse to food timer
                         
-                        correct_responses += 1 #since the mouse has succeeded, we add 1 to our counter of correct_responses
-                        accuracy = correct_responses / (trial+1) * 100 #timed by 100 so this is accuracy percentage 
-                        utime.sleep(3) #should be 20
+                        correct_responce += 1 #since the mouse has succeeded, we add 1 to our counter of correct_responce
+                       
+                        utime.sleep(1) #should be 20
                         
                         premature_timer=0
                         task_duration=0
@@ -497,6 +470,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                             led.value(0) #food magazine yellow lED is off
                             nose_pokes[choice].value(0) #Correct NP light turns off
                             
+                            incorrect_responce +=1
+                            
                             
                             mouse_to_food = 0
                             correct_time= 0
@@ -521,6 +496,12 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     correct_time= 0
                     premature_timer = 0
                     
+                    omission_counter +=1
+                    
+                    #In this case there are two omission counters butthis can be edited based on how the person want sto output their data.
+                    #Here one of the omissions is used to output "1" every time there is an omission and the other is a counter to measure the omission percentage.
+                    
+                    
                    
                 
                     
@@ -533,7 +514,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 mouse_to_food = 0
                 correct_time=0
                 
-                utime.sleep(5) #whole system is off for 5 seconds
+                utime.sleep(1) #whole system is off for 5 seconds
                 
                 
             task_end_time= utime.ticks_ms() 
@@ -541,19 +522,36 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             print(task_end)
             print('') #linebreak
             
+            #Calculating the accuracy percentage and the omissions percentage for the criteria
             
+            accuracy_percentage = 100 # Here in order to not divide 1 correct response by 0 in case there is no incorrect response we just say that correct response is 100%
+
+            if incorrect_responce > 0: #unless incorrect response is higher than 0, which then the accuracy percentage can be calculated
+                accuracy_percentage = (correct_responce/(correct_responce+incorrect_responce))*100
             
+            print(accuracy_percentage, "within loop")
+                
+         
+            #Same logic here. If omission counter is 0 then the the percentage is 0 unless omission counter is bigger than 0.
+            if omission_counter == 0:
+                omissing_percentage = 0
+            elif omission_counter > 0:
+                omission_percentage= (omission_counter/ (correct_responce+incorrect_responce+omission_counter))*100
+            print(omission_percentage,"omission")
+                
+            
+           
             #SD will decrease if these conditions are met
             if index_current_SD+1 != len(possible_SDs): #checking that we are not at the end of the list
-                if trial >= 2:
-                    #print('first condition met')
-                    if accuracy >= 60 and omissions < 30:
+                if trial >= 6: #If in x trial
+                    
+                    if accuracy_percentage >= 60 and omission_percentage < 30: #the accuracy is 60 percent or more and omission percentage is less than 30 percent then
                         print('second condition met')
-                        index_current_SD += 1
-                    elif accuracy >= 60 and correct_responses == 5:
+                        index_current_SD += 1 #condition is met then the Stimulus duration decreases according to the list from the begining.
+                    elif accuracy_percentage >= 60 and correct_responce == 5:
                         print('third condition met')
                         index_current_SD += 1
-                
+                        
 
        
             yield([trial+1,ITI, current_SD, choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end])
