@@ -4,7 +4,7 @@ tol=0.1;
 
 difference(){
     union(){
-        cylinder(d=50,h=2.25);
+        cylinder(d=50,h=1.5);//original value was 2.25
         cylinder(d=10,h=5);
     }//end union
     translate([0,0,-1]){
