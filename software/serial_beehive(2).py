@@ -5,6 +5,7 @@ import time
 
 
 
+
 class SerialBeeHive(Device): #This is the class that contains all the phases 
     
     @Device.setup # Device setup is where the yellow LEDs and sensor LEDs are defined, also imports.
@@ -14,6 +15,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         import machine
         import utime 
         import random
+        
 
         #This is for the stepper motor that turns the food dispenser allowing
         from machine import Pin  
@@ -69,7 +71,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 #direction=0
                 sequence= [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
                 while pellet==1:
-                    print (button_dispenser.value())
+                    #print (button_dispenser.value())
                     
                     
                     #[0,0,0,1],[1,0,0,0],[0,1,0,0],[0,0,1,0]]
@@ -101,8 +103,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
     @Device.task 
     def food_training(): #this is the function for the food training
         """Food magazine training"""
-            
-        num_trial =500
+        total=utime.ticks_ms()
+        num_trial =50
         for trial in range (num_trial): #trials meaning trials that can be changed in the brackets
             timer_start= utime.ticks_ms() #this is a timer of the start of the trial    
             led.value(0) #the food magazine LED value starts at 0
@@ -133,17 +135,15 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 led.value(1) # while it's 1 the food magazine led remains on
            
             led.value(0)# once the mouse went for the food, the while loop stops and the food magaine yellow LED turns off
-            
-            
             timer_food2=utime.ticks_ms()
             
             mouse_to_food = timer_food2-timer_food #mouse to food is the amount of time the mouse took to get teh food
             timer_end = utime.ticks_ms()
             
             task_end = timer_end-timer_start #end of the whole task
-
+            total_time=timer_end-total
         
-            yield([trial+1, times_num, mouse_to_food, task_end])  #variables that are going to be yielded into the CSV file
+            yield([trial+1, times_num, mouse_to_food, task_end,total_time])  #variables that are going to be yielded into the CSV file
 
 
 
@@ -151,13 +151,13 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
     def phase1():
         
         """Phase 1"""
+        total=utime.ticks_ms()
         
-        for trial in range (49):
+        for trial in range (50):
             
             timer_start=utime.ticks_ms()
             button_pressed = False
             utime.sleep(5)
-            
             while button_pressed== False: #this a while loop that allows for the conditions 
     
                 #if any of the buttons are interrupted the sensor will go from 1 to 0 showing an interruption
@@ -192,7 +192,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     button_pressed = True #when the button pressed is true then the while loop can stop and the trial can go again
                     timer_end=utime.ticks_ms()
                     trial_end = timer_end-timer_start
-                    
+                    total_time=timer_end-total
                            
                 #If no NPs are pressed then nothing happens
                 elif button_1.value() == 1 or button_2.value() == 1 or button_3.value() == 1 or button_4.value() == 1 or button_5.value() == 1:#0 meaning the NPs haven't been touched     
@@ -204,15 +204,15 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         led.value(0)
                     
                 
-            yield([trial+1, "5", mouse_to_food, trial_end])
+            yield([trial+1, "5", mouse_to_food, trial_end,total_time])
 
 
 
     @Device.task
     def phase2():
         """Phase 2"""
-        
-        for trial in range(99):
+        total=utime.ticks_ms()
+        for trial in range(100):
                         
             timer_starts=utime.ticks_ms()
             
@@ -248,13 +248,12 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             T2_timer= utime.ticks_ms() #timer for mouser to food
             
             nose_pokes[choice].value(0) #chosen NP LED is turned off
-            
+            led.value(1)
             #Food dispenser is on
             reward()
               
               
-            led.value(1) #Food LED is turned on
-            
+             #Food LED is turned on
             
             while button_food.value() == 1: #waits for IR beam to broken which means food is eaten
                 utime.sleep(0.1)
@@ -269,8 +268,9 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             task_end = timer_end-timer_starts
             
             utime.sleep(20) #consumption interval 20 seconds
+            total_time=timer_end-total
             
-            yield([trial+1, "5", choice, mouse_to_food, task_end])
+            yield([trial+1, "5", choice, mouse_to_food, task_end,total_time])
             
             
             
@@ -290,7 +290,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         index_current_SD = 0 #the index of which SD is on within the possible SDs
         omission_counter =0
 
-
+        total=utime.ticks_ms()
         #Start of task
         for trial in range(200000): #providing an unlimitted amount of trials
 
@@ -304,8 +304,11 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             extra = 4000
             ITI= 5000
             
-            possible_SDs = [16000,8000,4000,2000,1500,1000]
-            #possible_SDs = [1600,800,400,200,1500,1000]  #all teh SDs as the phase progresses
+            possible_SDs = [1500,1000]
+            #possible_SDs = [2000,1500,1000]
+            #possible_SDs = [4000,2000,1500,1000]
+            #possible_SDs = [8000,4000,2000,1500,1000]
+            #possible_SDs = [16000,8000,4000,2000,1500,1000]  #all teh SDs as the phase progresses
             current_SD= possible_SDs[index_current_SD] #The current SD is teh SD that is being executed if teh criteria has been met
             
             if current_SD==1000: #once it reaches sd of 1 second the whole loop stops and it moves on to the next phase
@@ -376,7 +379,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         task_duration=0
                         omissions = 0
                 
-                elif premature_timer > ITI: #If no buton has been pressed
+                elif premature_timer > ITI: #If no button has been pressed
                    
                 
                     if np_buttons_wrong[0].value() == 1 or np_buttons_wrong[1].value() == 1 or np_buttons_wrong[2].value() == 1 or np_buttons_wrong[3].value()==1 or np_buttons[choice].value() == 1:
@@ -404,22 +407,20 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                           
                           
 
-                    if np_buttons[choice].value() == 0:   #this means the crrect button has been pressed  
+                    if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
                         
                         correct_time = task_time-timer_duration  #timer for when the mouse got the correct responce                     
                         button_pressed = True #A NP has been poked
                         
-                        #food dispenser is on
-                        reward()
-                    
-                                    
                         led.value(1) #food agazine LED turns on
                         NP_1.value(0)
                         NP_2.value(0)
                         NP_3.value(0)
                         NP_4.value(0)
                         NP_5.value(0)
-                        
+                        #food dispenser is on
+                        reward()
+                            
                         timer_fooder= utime.ticks_ms() #timer mouse to food
 
                         button_food.value() == 1 #task stops until the mouse goes towards the food
@@ -493,7 +494,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     
                     omission_counter +=1
                     
-                    #In this case there are two omission counters butthis can be edited based on how the person want sto output their data.
+                    #In this case there are two omission counters but this can be edited based on how the person wants to output their data.
                     #Here one of the omissions is used to output "1" every time there is an omission and the other is a counter to measure the omission percentage.  
                     
                 
@@ -510,6 +511,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 
             task_end_time= utime.ticks_ms() 
             task_end = task_end_time - start_timer
+            total_task= task_end_time-total
             print(task_end)
             print('') #linebreak
             
@@ -529,23 +531,21 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             elif omission_counter > 0:
                 omission_percentage= (omission_counter/ (correct_responce+incorrect_responce+omission_counter))*100
            # print(omission_percentage,"omission")
-                
-            
+
            
             #SD will decrease if these conditions are met
             if index_current_SD+1 != len(possible_SDs): #checking that we are not at the end of the list
-                if trial >= 50: #If in x trial
+                if trial > 50: #If in x trial
                     
-                    if accuracy_percentage >= 60 and omission_percentage < 30: #the accuracy is 60 percent or more and omission percentage is less than 30 percent then
+                    if accuracy_percentage >= 60 and omission_percentage <= 30: #the accuracy is 60 percent or more and omission percentage is less than 30 percent then
                         print('second condition met')
                         index_current_SD += 1 #condition is met then the Stimulus duration decreases according to the list from the begining.
-                    elif accuracy_percentage >= 60 and correct_responce >= 5: #has to be bigger than or equal to but not just equal to as when we reach 50 trials if the condition is only equal to 5 then it won't be 5
+                    elif accuracy_percentage >= 60 and correct_responce >= 200:
                         print('third condition met')
-                        index_current_SD += 1
-                        
+                        index_current_SD += 1 
 
        
-            yield([trial+1,ITI, current_SD, choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name, omissions, omission_percentage,accuracy_percentage, task_end])
+            yield([trial+1,ITI, current_SD, choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name, omissions,omission_percentage ,accuracy_percentage, task_end,total_task])
 
 
 
@@ -563,31 +563,30 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         nose_pokes = [NP_1,NP_2, NP_3, NP_4, NP_5]
         np_buttons = [button_1,button_2,button_3,button_4, button_5]
        
-        
-        
-        for trial in range(num_trials):
-               
-            start_time=utime.ticks_ms()
-           
+        total=utime.ticks_ms() # total time of the stage 9 starts counting
+       
+        for trial in range(num_trials): # starts the for loop for 1000 trials
+                          
             omissions = 0  #there's no timer for omission therefore every start of the trial omission needs to be set back to 0 so it doens't add up
             wrong_button_name= None #no wrong NPs pressed
             
             
-            #ITI/SD AND LH:
+            # LH, ITI and SD:
             extra = 4000
-            ITI= 5000
+            ITI = 5000
             SD = 1000
             
                 
-            start_timer = utime.ticks_ms()
+            start_timer = utime.ticks_ms() # start time of the trial
 
-            led.value(1) 
+            #start of the trial
+            led.value(1) #Food magazine yellow LED turns on to start the trial
             
-            while button_food.value() == 1: #this loop waits for the button to be pressed
-                timer_food = utime.ticks_ms()
+            while button_food.value() == 1: #this loop waits for the nosepoke to food magazine
+                timer_food = utime.ticks_ms() # once there is NP, food timer starts counting
                 next
-            #
-            led.value(0)
+            
+            led.value(0) # magazine light turns off
            
            #Variables for the condition to break or continue 
             ITI_break = True
@@ -598,78 +597,73 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             
             # randomly choosing index for nose poke
             choice = random.randint(0,4)
-            
-            
-           # print('NP number chosen',choice)
-            nose_pokes = [NP_1,NP_2, NP_3, NP_4, NP_5]
-            np_buttons = [button_1,button_2,button_3,button_4, button_5]
-            
+                        
             
             #list of wrong buttons that can be pressed during the game
-            np_buttons_wrong = [] 
-            for j in range(len(np_buttons)):
-                if j != choice:
-                    np_buttons_wrong.append(np_buttons[j])
+            np_buttons_wrong = [] # list for wrong np buttons
+            for j in range(len(np_buttons)): # for loop for the range of np buttons length
+                if j != choice: # if choice doesnt equal the np
+                    np_buttons_wrong.append(np_buttons[j]) #then add to wrong np buttons list
             
 
             #ITI
-            timer_premature=utime.ticks_ms()
+            timer_premature=utime.ticks_ms() # premature timer begins counting
             
-            while ITI_break == True: #similar to other phase
-                
-                
+            while ITI_break == True: # when ITI break is happening
 
                 premature_responce_timer = utime.ticks_ms()
                 premature_timer= premature_responce_timer - timer_premature
-               
-                
+                  
+                  
                  #ITI   
-                if premature_timer < ITI: 
-                    
+                if premature_timer < ITI: #while the premature timer is smaller than the ITI:
+                    # If a button is pressed:
                     if np_buttons_wrong[0].value() == 0 or np_buttons_wrong[1].value() == 0 or np_buttons_wrong[2].value() == 0 or np_buttons_wrong[3].value()==0 or np_buttons[choice].value() == 0:
                         
-                        led.value(0)
+                        led.value(0) # the food magazine LED remain off
 
-                        nose_pokes[choice].value(0)
-                        
-
-                        premature_responce +=1
-                        
-                        ITI_break=False
-                        time_out = True
-                        button_pressed = True
+                        nose_pokes[choice].value(0) # the correct NP is turned off
+                         
+                        ITI_break=False #the ITI_break loop ends
+                        time_out = True #The mouse goes trhough a time out
+                        button_pressed = True #A nose poke has been poked
                        
                 
-                elif premature_timer > ITI:
+                elif premature_timer > ITI: # If premature timer is longer than ITI
                    
-       
-                    if np_buttons_wrong[0].value() == 1 or np_buttons_wrong[1].value() == 1 or np_buttons_wrong[2].value() == 1 or np_buttons_wrong[3].value()==0 or np_buttons[choice].value() == 1:
-                        button_pressed = False
+                           # If no button is pressed:
+                    if np_buttons_wrong[0].value() == 1 or np_buttons_wrong[1].value() == 1 or np_buttons_wrong[2].value() == 1 or np_buttons_wrong[3].value()==1 or np_buttons[choice].value() == 1:
+                        button_pressed = False 
                         ITI_break = False
                         
                 
-            timer_duration = utime.ticks_ms()
+            timer_duration = utime.ticks_ms() # timer begins counting
             
             
             #Start of SD
             
-            while button_pressed == False:
-                task_time= utime.ticks_ms()
+            while button_pressed == False: #While no nosepoke has been pressed the task keeps going:
+                task_time= utime.ticks_ms() # task time starts counting
+                incorrect_time = utime.ticks_ms()
                 
-                nose_pokes[choice].value(1)
-                task_duration = task_time-timer_duration
-             
                 
-                if task_duration < SD + extra:   #Within the SD and LH time 
-                   #
+                nose_pokes[choice].value(1) # correct np happens
+                task_duration = task_time-timer_duration # task duration calculates how long it took for mouse to do a NP
+                
+                
+                incorrect_response_time = incorrect_time-timer_duration 
+            
+                if task_duration < SD + extra:   # The buttons are still active for 4 seconds after the led value is turned off 
       
-                    if task_duration > SD:
-                          nose_pokes[choice].value(0)
+                    while task_duration > SD:
+                        nose_pokes[choice].value(0)
+                        if np_buttons[choice].value() == 0:
+                            break
                           
-                          
-
-                    if np_buttons[choice].value() == 0:                       
-                        correct_timer = task_time-timer_duration
+                   
+                        
+                    if np_buttons[choice].value() == 0: #this means the correct button has been pressed                      
+                        correct_time = task_time-timer_duration
                         button_pressed = True
                         
                         #food dispenser is on
@@ -687,17 +681,15 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         button_food.value() == 1 
                   
                      
-                        while button_food.value() == 1:
+                        while button_food.value() == 1: #food sensor turns on and wait for mouse to get pellet
                             utime.sleep(0.1)
                             next 
                     
                         led.value(0) 
                         time_food =utime.ticks_ms()
                         mouse_to_food = time_food - timer_fooder 
-                        print(mouse_to_food)         
+                        #print(mouse_to_food)         
                        
-                        
-                        correct_responses += 1 #since the mouse has succeeded, we add 1 to our counter of correct_responses
                         utime.sleep(20) 
                         
                        
@@ -705,31 +697,37 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         task_duration=0
                         omissions = 0
                         wrong_button_name=0
+                        incorrect_response_time=0
+                        
                     wrong_button_pressed = None
                     
+                    #incorrect_time = utime.ticks_ms() #incorrect np time starts counting
+                    #incorrect_response_time = incorrect_time-timer_duration
                     
                     #Wrong button:
-                    for button in np_buttons_wrong:
-                        if button.value() == 0:
+                    for button in np_buttons_wrong: #Within the NP in the list of wrong NPs
+                        
+                        if button.value() == 0: # If a wrong NP has been pressed
                             
                             wrong_button_pressed = button
                             wrong_button_name = ""
                             
+                            #code to know which wrong NP has been pressed in the case of an incorrect NP has been poked and relate it back to the NP through the button_correspondance
                             for button_variable,np_name in button_correspondance:
                                 if button_variable == wrong_button_pressed:
                                  
-                                    wrong_button_name = np_name
+                                    wrong_button_name = np_name #the wrong NP = to the NP_name (it's associating the sensor to the correct NP)
                                     break
                             
 
                             led.value(0)
                             nose_pokes[choice].value(0)
                             
-                            
+                            incorrect_response_timer
                             mouse_to_food = 0
-                            correct_time= 0
+                            correct_time = 0
                             premature_timer = 0
-                            omissions=0
+                            omissions = 0
                            
                             
                             button_pressed = True
@@ -747,6 +745,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     mouse_to_food = 0
                     correct_time= 0
                     premature_timer = 0
+                    wrong_button_name=0
+                    incorrect_response_time=0
                     
                     omissions += 1
                     
@@ -758,22 +758,30 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 nose_pokes[choice].value(0)
                 mouse_to_food = 0
                 correct_time=0
+                incorrect_response_time=0
+                
                 utime.sleep(5)
-                
-        
-                
-            
-                
                 
             task_end_time= utime.ticks_ms() 
             task_end = task_end_time - start_timer
-          
-            print('') #linebreak
-
-            end_timer=utime.ticks_ms()
-            task_end = end_timer-start_timer
+            total_time = task_end_time - total
             
-            yield([trial, "5", "1", choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end])
+            print('') #linebreak
+                      
+            print(trial)
+            print('5')
+            print('1')
+            print(choice+1)
+            print(premature_timer)
+            print(correct_time)
+            print(mouse_to_food)
+            print(incorrect_response_time)
+            print(wrong_button_name)
+            print(omissions)
+            print(task_end)
+            print(total_time)
+            
+            yield([trial, "5", "1", choice+1, premature_timer, correct_time, mouse_to_food, incorrect_response_time, wrong_button_name, omissions, task_end, total_time])
 
 
 
@@ -789,6 +797,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
        
         nose_pokes = [NP_1,NP_2, NP_3, NP_4, NP_5]
         np_buttons = [button_1,button_2,button_3,button_4,button_5]
+        total=utime.ticks_ms()
 
         #start of trials
         num_trials=500
@@ -828,9 +837,6 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     possible_ITIs.remove(12.5)
 
 
-    
-            
-            
             
             start_timer = utime.ticks_ms()
             
@@ -902,8 +908,10 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 
                 if task_duration < SD + extra:      #within SD and LH time                
                   
-                    if task_duration > SD:
-                          nose_pokes[choice].value(0)
+                    while task_duration > SD:
+                        nose_pokes[choice].value(0)
+                        if np_buttons[choice].value() == 0:
+                         break
                           
                           
 
@@ -1009,8 +1017,9 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 
             end_timer=utime.ticks_ms()
             task_end = end_timer-start_timer
+            total_task= end_timer-total
             
-            yield([trial+1, selected_ITI, "1", choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end])
+            yield([trial+1, selected_ITI, "1", choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end,total_task])
 
                 
 
@@ -1023,7 +1032,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         np_buttons = [button_1,button_2,button_3,button_4, button_5]
        
         
-        
+        total = utime.ticks_ms()
         for trial in range(num_trials):
                
             start_time=utime.ticks_ms()
@@ -1122,13 +1131,15 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 if task_duration < SD + extra:   #Within the SD and LH time 
                    #
       
-                    if task_duration > SD:
-                          nose_pokes[choice].value(0)
+                    while task_duration > SD:
+                        nose_pokes[choice].value(0)
+                        if np_buttons[choice].value() == 0:
+                            break
                           
                           
 
                     if np_buttons[choice].value() == 0:                       
-                        correct_timer = task_time-timer_duration
+                        correct_time = task_time-timer_duration
                         button_pressed = True
                         
                         #food dispenser is on
@@ -1208,9 +1219,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     premature_timer = 0
                     
                     omissions += 1
-                    
-                
-                    
+
+
                #Time out: 
             if time_out == True: 
                 led.value(0)
@@ -1220,25 +1230,22 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 utime.sleep(5)
                 
         
-                
-            
-                
-                
-            task_end_time= utime.ticks_ms() 
-            task_end = task_end_time - start_timer
+
           
             print('') #linebreak
 
             end_timer=utime.ticks_ms()
             task_end = end_timer-start_timer
+            total_time = end_timer - total
             
-            yield([trial, "5", "1", choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end])
+            yield([trial, "5", "1", choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end,total_time])
 
     @Device.task
     def stage12_task():
         """Stage 12"""
-          
+        
         num_trials = 500
+        total = utime.ticks_ms()
         
         for trial in range(num_trials):
             
@@ -1354,8 +1361,10 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 #Task starts
                 if task_duration < selected_SD + extra: #task duration is within the SD and LH
                     
-                    if task_duration > selected_SD:
-                          nose_pokes[choice].value(0)
+                    while task_duration > SD:
+                        nose_pokes[choice].value(0)
+                        if np_buttons[choice].value() == 0:
+                            break
                           
                           
 
@@ -1450,7 +1459,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
              
             end_timer = utime.ticks_ms() 
             task_end = end_timer-start_timer
+            total_time = end_timer-total
                 
-            yield([trial+1, selected_SD, "1", choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end])
+            yield([trial+1, selected_SD, "1", choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end,total_time])
 
 

@@ -17,7 +17,7 @@ bh.setup() # call the set up function
 #In teh case you only want one phase to run you can easily comment out the phases you don't want by selecting the code and pressing ctrl + 3, same thing to uncomment it. 
 
 #Food training
-#num_trial=3
+
 bh.food_training() # call the function food training in bh
 
 data1 = [] #data1 is a list where all the data can be extracted to
@@ -53,13 +53,13 @@ for i in bh.food_training():
 
 
 
-#Phase 1: 
+# #Phase 1: 
 bh.phase1() #this is for the spitting
 # 
 data2 = []
 #                
 animal="mouse1" # name can be changes                    
-phase = "Phase1"
+phase = "Phase2"
 # 
 dt_string = now.strftime("%d_%m_%Y-%H_%M_%S")
 date = dt_string
@@ -84,7 +84,7 @@ for i in bh.phase1():
     except PermissionError:
         next
 # #     
-#     
+# #     
 #     
 #Phase2  
 bh.phase2() #this is for the spitting
@@ -92,7 +92,7 @@ bh.phase2() #this is for the spitting
 data3 = []
                
 animal="mouse1" # name can be changes                    
-phase = "Phase2"
+phase = "Phase3"
 
 dt_string = now.strftime("%d_%m_%Y-%H_%M_%S")
 date = dt_string
@@ -118,10 +118,10 @@ for i in bh.phase2():
     except PermissionError:
         next
     
-    
-    
-
-
+#     
+#     
+# 
+# 
 
 
 bh.stage_5csrtt_task() #this is for the spitting
@@ -182,7 +182,7 @@ for i in bh.stage9_task():
     print(i)
     #data1.append(i)
     
-    for i in range(0,len(data5)11):
+    for i in range(0,len(data5),11):
         clean_data = []
     try:
         with open(fileName,'w+') as csvfile: #fid:
@@ -213,7 +213,7 @@ fileName = animal+"_"+phase+"_"+ date+".csv"
 
 data6=[]
 for i in bh.stage10_task():
-    data5.append(i)
+    data6.append(i)
     print(i)
     #data6.append(i)
     
@@ -248,9 +248,9 @@ fileName = animal+"_"+phase+"_"+ date+".csv"
 
 data7=[]
 for i in bh.food_training():
-    data1.append(i)
+    data7.append(i)
     print(i)
-    #data7.append(i)
+ 
     
     for i in range(0,len(data7),11):
         clean_data = []
@@ -281,7 +281,7 @@ fileName = animal+"_"+phase+"_"+ date+".csv"
 for i in bh.food_training():
     data8.append(i)
     print(i)
-    #data1.append(i)
+    
     
     for i in range(0,len(data8),11):
         clean_data = []
@@ -312,7 +312,7 @@ fileName = animal+"_"+phase+"_"+ date+".csv"
 
 data9=[]
 for i in bh.food_training():
-    data1.append(i)
+    data9.append(i)
     print(i)
     #data7.append(i)
     
