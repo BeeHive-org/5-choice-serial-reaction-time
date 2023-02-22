@@ -93,7 +93,7 @@ incorrect_responce=0
 accuracy_percentage = 0
 omission_percentage=0
 index_current_SD = 0 #the index of which SD is on within the possible SDs
-omission_accuracy =0
+omission_counter =0
 
 
 num_trials = 15 #another way to set up and change the trials
@@ -321,20 +321,13 @@ for trial in range(num_trials):
     print('') #linebreak
     
     accuracy_percentage = 100
-    #if correct_responce >= 1 and incorrect_responce >=1: 
-     #   accuracy_percentage = (correct_responce/(correct_responce+incorrect_responce))*100
+
     if incorrect_responce > 0:
         accuracy_percentage = (correct_responce/(correct_responce+incorrect_responce))*100
     
     print(accuracy_percentage, "within loop")
         
-        
-
-        
-    #can't divide by 0 so need to make an exception
-    #if omission_counter >=1 and correct_responce >=1 and incorrect_responce >=1 :
-    #    omission_percentage= (omission_counter/ (correct_responce+incorrect_responce+omission_counter))*100
-    #    print(omission_percentage,"omission")
+ 
     
     if omission_counter == 0:
         omissing_percentage = 0
