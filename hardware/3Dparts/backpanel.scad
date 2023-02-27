@@ -19,7 +19,7 @@ backpanelx = 52.5*2;
 backpanely = 60;
 backpanelz = 2.8;
 
-supportw=5;
+//supportw=5;
 
 //dimensions for the headport 
 
@@ -31,8 +31,6 @@ headportwall = 2;
 
 screwD = 4;
 
-noseHoleD = 12;
-noseHoleH = 11;
 tolerance = 0.1;
 
 ledDx = 8; // main LED

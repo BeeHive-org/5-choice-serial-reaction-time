@@ -32,8 +32,7 @@ headportwall = 2;
 
 screwD = 4;
 
-noseHoleD = 12;
-noseHoleH = 11;
+
 tolerance = 0.1;
 
 ledDx = 8; // main LED
