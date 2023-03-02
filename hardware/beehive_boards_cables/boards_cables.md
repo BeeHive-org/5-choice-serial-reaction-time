@@ -21,14 +21,14 @@
 
 ### Sensors Board 2 (sensors for 1 NP and Food dispenser)
 
-## 2 Sensors and 2 IR lights
-## 8 cables
+## 3 Sensors and 3 IR lights
+## 12 cables
 
-* Connectors – 2 : 4 
-* XH header – 2 : 4
-* Connectors – 4 : 1
-* XH header – 4 : 1
-* XH cables: 12
+* Connectors – 2 : 6 
+* XH header – 2 : 6
+* Connectors – 4 : 2
+* XH header – 4 : 2
+* XH cables: 20
 
 ### Yellow LEDs board
 
