@@ -10,7 +10,7 @@
 
 //needs the ring.scad file (saved on the same folder)
 use <ring.scad>
-
+use <nose_poke.scad>
 //// variables /////////////
 
 
@@ -71,7 +71,7 @@ backwall_np();
 }//end translate
 
 
-module nosePoke(){
+module nose_poke(){
     $fn=30;
 difference(){
 union(){
@@ -123,6 +123,7 @@ cylinder(d=screwD+2*tolerance,h=10);
 }//end module
 translate([0,0,6]){
 rotate([90,0,0]){
+//nose_poke();
 nosePoke();
 }//end rotate
 }//end translate

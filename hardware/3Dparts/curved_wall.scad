@@ -9,7 +9,7 @@
 
 // for the sides to slide
 
-slideWallx = 2.6;
+slideWallx = 2.8;
 slideWally = 14;
 slideWallz = 60;
 
@@ -50,24 +50,6 @@ module curve(width, height, length, dh) {
     }//end translate
     }// end for loop 
     
-    for ( i = [0:n_Hole-1]){
-    translate([0,l/2-y_offset_Hole-i*((l-2*y_offset_Hole)/(n_Hole-1)),noseHoleZ+10]) {
-    //translate([0,-10,(noseHoleD)/2+screwD]){
-    rotate([0,90,0]) {
-    cylinder(d=screwD+2*tol,h=15);
-    }//end rotate
-    }//end translate
-    }// end for loop
-
-    for ( i = [0:n_Hole-1]){
-    translate([0,l/2-y_offset_Hole-i*((l-2*y_offset_Hole)/(n_Hole-1)),noseHoleZ-10]) {
-    //translate([0,-10,(noseHoleD)/2+screwD]){
-    rotate([0,90,0]) {
-    cylinder(d=screwD+2*tol,h=15);
-    }//end rotate
-    }//end translate
-    }// end for loop
-
 
 }//end difference
 
