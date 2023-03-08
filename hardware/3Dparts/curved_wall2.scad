@@ -68,7 +68,7 @@ module curve(width, height, length, dh) {
 
 
 
-gridOffset = 50;
+gridOffset = 30;
     translate([gridOffset-1,l/2-1,0]) {
         rotate([0,0,90]){
         cube([slideWallx,gridOffset, slideWallz]);
