@@ -46,6 +46,7 @@
 * Randomly chosen 1 stimulus light on the opposite wall turns on
 * mouse nosepokes into one of them (sensor detects it)
 * If nosepoked into a non-illumniated hole, there is no consequence, the trial begins again.
+  * all lights off, no time out, start at the beg. again.
 * If mouse nosepokes into the illuminated light, stimulus light turns off.
 * food is delivered
 * once mouse collects the food, there is 20 sec consumption interval (no light is on)
@@ -58,6 +59,7 @@
 * mouse nosepokes into Trial Start Hole + TSS detects it
 * TSL turns off
 * 5 sec ITI
+* one Nosepoke turns on for SD time and turns off after that duration.
 * If nosepoke into stimulus lights during ITI, record it as premature and Time-Out for 5 sec (no lights).
 * Randomly chosen 1 stimulus light on the opposite wall turns on
 * mouse nosepokes into one of them (sensor detects it)
@@ -65,6 +67,6 @@
 * If mouse nosepokes into the illuminated light, stimulus light turns off.
 * food is delivered
 * once mouse collects the food from magazine, there is 20 sec consumption interval (no light is on)
-* If no nosepokes, record it as an omission and Time-Out for 5 sec (no lights).
+* If no nosepokes (SD+4sec), record it as an omission and Time-Out for 5 sec (no lights).
 * next trial begins
 * This phase is 100 trials.

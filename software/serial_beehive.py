@@ -270,14 +270,17 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         """5 choice serial task"""
         
         #Need to set the counter to 0 for all the variables that are going to be "calculated"
-        correct_responce = 0 #counter for when the mouse has pressed the right button
+        correct_response = 0 #counter for when the mouse has pressed the right button
         omissions = 0 #counter of when no button is pressed
-        premature_responce=0 
-        incorrect_responce=0
+        premature_response=0 
+        incorrect_response=0
         accuracy_percentage = 0 
         omission_percentage=0
         index_current_SD = 0 #the index of which SD is on within the possible SDs
         omission_counter =0
+        winSize = 20 # window size for the moving average
+        winIndex = 0 # index of the moving average window
+        mvgAverage = [0]*winSize # list with number of elements equal to the moving average window size
 
         total=time.ticks_ms()
         #Start of task
@@ -355,7 +358,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         nose_pokes[choice].value(0) #the correct NP is turned off
                         
 
-                        premature_responce +=1 #premature responce is added to criteria calculator
+                        premature_response +=1 #premature response is added to criteria calculator
                         #time.sleep(5)
                         ITI_break=False #the ITI_break loop ends
                         time_out = True #The mouse goes trhough a time out
@@ -398,7 +401,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
 
                     if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
                         
-                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct responce                     
+                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
                         button_pressed = True #A NP has been poked
                         
                         led.value(1) #food agazine LED turns on
@@ -426,7 +429,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         
                         mouse_to_food = time_food - timer_fooder #mouse to food timer
                         
-                        correct_responce += 1 #since the mouse has succeeded, we add 1 to our counter of correct_responce
+                        correct_response += 1 #since the mouse has succeeded, we add 1 to our counter of correct_response
                        
                         time.sleep(20) #eating period
                         
@@ -455,7 +458,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                             led.value(0) #food magazine yellow lED is off
                             nose_pokes[choice].value(0) #Correct NP light turns off
                             
-                            incorrect_responce +=1
+                            incorrect_response +=1
                             
                             
                             mouse_to_food = 0
@@ -491,7 +494,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 led.value(0)
                 nose_pokes[choice].value(0)
                 
-                #for when yielding the data, need to specifiy that mouse_to_food and correct responce are 0
+                #for when yielding the data, need to specifiy that mouse_to_food and correct response are 0
                 mouse_to_food = 0
                 correct_time=0
                 
@@ -508,8 +511,18 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             
             accuracy_percentage = 100 # Here in order to not divide 1 correct response by 0 in case there is no incorrect response we just say that correct response is 100%
 
-            if incorrect_responce > 0: #unless incorrect response is higher than 0, which then the accuracy percentage can be calculated
-                accuracy_percentage = (correct_responce/(correct_responce+incorrect_responce))*100
+            if incorrect_response > 0: #unless incorrect response is higher than 0, which then the accuracy percentage can be calculated
+                accuracy_percentage = (correct_response/(correct_response+incorrect_response))*100
+            mvgAverage[winIndex] = accuracy
+            
+            winIndex = winIndex+1
+            if winIndex == winSize:
+                winIndex = 0
+            
+            if trial>=winSize:
+                average = sum(mvgAverage)/winSize
+            else:
+                average=1
             
            # print(accuracy_percentage, "within loop")
                 
@@ -518,7 +531,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             if omission_counter == 0:
                 omission_percentage = 0
             elif omission_counter > 0:
-                omission_percentage= (omission_counter/ (correct_responce+incorrect_responce+omission_counter))*100
+                omission_percentage= (omission_counter/ (correct_response+incorrect_response+omission_counter))*100
            # print(omission_percentage,"omission")
 
            
@@ -529,7 +542,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     if accuracy_percentage >= 60 and omission_percentage <= 30: #the accuracy is 60 percent or more and omission percentage is less than 30 percent then
                         print('second condition met')
                         index_current_SD += 1 #condition is met then the Stimulus duration decreases according to the list from the begining.
-                    elif accuracy_percentage >= 60 and correct_responce >= 200:
+                    elif accuracy_percentage >= 60 and correct_response >= 200:
                         print('third condition met')
                         index_current_SD += 1 
 
@@ -544,10 +557,10 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
     def stage9_task():
         """stage 9"""
         button_correspondence = [ (button_1, "NP_1"), (button_2, "NP_2"), (button_3, "NP_3"), (button_4, "NP_4"), (button_5,"NP_5")]
-        correct_responce = 0 #counter for when the mouse has pressed the right button
+        correct_response = 0 #counter for when the mouse has pressed the right button
         omissions = 0 #counter of when no button is pressed
-        premature_responce=0 
-        incorrect_responce=0
+        premature_response=0 
+        incorrect_response=0
         total=time.ticks_ms()
         #Start of task
         for trial in range(1000): #providing an unlimitted amount of trials
@@ -615,7 +628,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         nose_pokes[choice].value(0) #the correct NP is turned off
                         
 
-                        premature_responce +=1 #premature responce is added to criteria calculator
+                        premature_response +=1 #premature response is added to criteria calculator
                         #time.sleep(5)
                         ITI_break=False #the ITI_break loop ends
                         time_out = True #The mouse goes trhough a time out
@@ -659,7 +672,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     nose_pokes[choice].value(0)
                     if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
                         
-                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct responce                     
+                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
                         button_pressed = True #A NP has been poked
                         
                         led.value(1) #food agazine LED turns on
@@ -687,7 +700,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         
                         mouse_to_food = time_food - timer_fooder #mouse to food timer
                         
-                        #correct_responce += 1 #since the mouse has succeeded, we add 1 to our counter of correct_responce
+                        #correct_response += 1 #since the mouse has succeeded, we add 1 to our counter of correct_response
                        
                         time.sleep(20) #eating period
                         
@@ -716,7 +729,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                             led.value(0) #food magazine yellow lED is off
                             nose_pokes[choice].value(0) #Correct NP light turns off
                             
-                            #incorrect_responce +=1
+                            #incorrect_response +=1
                             
                             
                             mouse_to_food = 0
@@ -752,7 +765,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 led.value(0)
                 nose_pokes[choice].value(0)
                 
-                #for when yielding the data, need to specifiy that mouse_to_food and correct responce are 0
+                #for when yielding the data, need to specifiy that mouse_to_food and correct response are 0
                 mouse_to_food = 0
                 correct_time = 0
                 
@@ -909,7 +922,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     nose_pokes[choice].value(0)
                     if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
                         
-                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct responce                     
+                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
                         button_pressed = True #A NP has been poked
                         
                         led.value(1) #food agazine LED turns on
@@ -937,7 +950,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         
                         mouse_to_food = time_food - timer_fooder #mouse to food timer
                         
-                        #correct_responce += 1 #since the mouse has succeeded, we add 1 to our counter of correct_responce
+                        #correct_response += 1 #since the mouse has succeeded, we add 1 to our counter of correct_response
                        
                         time.sleep(20) #eating period
                         
@@ -1090,7 +1103,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         nose_pokes[choice].value(0)
                         
 
-                        premature_responce +=1
+                        premature_response +=1
                         
                         ITI_break=False
                         time_out = True
@@ -1128,7 +1141,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     nose_pokes[choice].value(0)
                     if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
                         
-                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct responce                     
+                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
                         button_pressed = True #A NP has been poked
                         
                         led.value(1) #food agazine LED turns on
@@ -1156,7 +1169,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         
                         mouse_to_food = time_food - timer_fooder #mouse to food timer
                         
-                        #correct_responce += 1 #since the mouse has succeeded, we add 1 to our counter of correct_responce
+                        #correct_response += 1 #since the mouse has succeeded, we add 1 to our counter of correct_response
                        
                         time.sleep(20) #eating period
                         
@@ -1320,7 +1333,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 premature_response_timer = time.ticks_ms()
                 premature_timer= premature_response_timer - timer_food
                 
-                if premature_timer < ITI: #PREMATURE responce
+                if premature_timer < ITI: #PREMATURE response
                     
                     if np_buttons_wrong[0].value() == 0 or np_buttons_wrong[1].value() == 0 or np_buttons_wrong[2].value() == 0 or np_buttons_wrong[3].value()==0 or np_buttons[choice].value() == 0:
                         
@@ -1362,7 +1375,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     nose_pokes[choice].value(0)
                     if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
                         
-                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct responce                     
+                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
                         button_pressed = True #A NP has been poked
                         
                         led.value(1) #food agazine LED turns on
@@ -1390,7 +1403,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         
                         mouse_to_food = time_food - timer_fooder #mouse to food timer
                         
-                        #correct_responce += 1 #since the mouse has succeeded, we add 1 to our counter of correct_responce
+                        #correct_response += 1 #since the mouse has succeeded, we add 1 to our counter of correct_response
                        
                         time.sleep(20) #eating period
                         
