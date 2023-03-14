@@ -280,7 +280,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         omission_counter =0
         winSize = 20 # window size for the moving average
         winIndex = 0 # index of the moving average window
-        mvgAverage = [0]*winSize # list with number of elements equal to the moving average window size
+        accMvgAverage = [0]*winSize # list with number of elements equal to the moving average window size
+        omMvgAverage = [0]*winSize # list with number of elements equal to the moving average window size
 
         total=time.ticks_ms()
         #Start of task
@@ -296,11 +297,11 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             extra = 4000
             ITI= 5000
             
-            possible_SDs = [1000]
+            #possible_SDs = [1000]
             #possible_SDs = [2000,1500,1000]
             #possible_SDs = [4000,2000,1500,1000]
             #possible_SDs = [8000,4000,2000,1500,1000]
-            #possible_SDs = [16000,8000,4000,2000,1500,1000]  #all teh SDs as the phase progresses
+            possible_SDs = [16000,8000,4000,2000,1500]#,1000]  #all teh SDs as the phase progresses
             current_SD= possible_SDs[index_current_SD] #The current SD is teh SD that is being executed if teh criteria has been met
             
             if current_SD==1000: #once it reaches sd of 1 second the whole loop stops and it moves on to the next phase
@@ -473,7 +474,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                             break
                         
                     
-                elif task_duration > current_SD + extra:# if the task duration is higher thna the SD and the LH then that means omission
+                elif task_duration > current_SD + extra:# if the task duration is higher than the SD and the LH then that means omission
                   
                     button_pressed=True
                     time_out=True
@@ -513,20 +514,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
 
             if incorrect_response > 0: #unless incorrect response is higher than 0, which then the accuracy percentage can be calculated
                 accuracy_percentage = (correct_response/(correct_response+incorrect_response))*100
-            mvgAverage[winIndex] = accuracy
+            accMvgAverage[winIndex] = accuracy_percentage
             
-            winIndex = winIndex+1
-            if winIndex == winSize:
-                winIndex = 0
-            
-            if trial>=winSize:
-                average = sum(mvgAverage)/winSize
-            else:
-                average=1
-            
-           # print(accuracy_percentage, "within loop")
-                
-         
             #Same logic here. If omission counter is 0 then the the percentage is 0 unless omission counter is bigger than 0.
             if omission_counter == 0:
                 omission_percentage = 0
@@ -534,20 +523,37 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 omission_percentage= (omission_counter/ (correct_response+incorrect_response+omission_counter))*100
            # print(omission_percentage,"omission")
 
+            omMvgAverage[winIndex] = omission_percentage
+
+            winIndex = winIndex+1
+            if winIndex == winSize:
+                winIndex = 0
+            
+            if trial>=winSize:
+                accuracy_average = sum(accMvgAverage)/winSize
+                omission_average = sum(omMvgAverage)/winSize
+            else:
+                accuracy_average = 1
+                omission_average = 1
+            
+           # print(accuracy_percentage, "within loop")
+                
+         
+            
+
            
             #SD will decrease if these conditions are met
-            if index_current_SD+1 != len(possible_SDs): #checking that we are not at the end of the list
-                if trial > 50: #If in x trial
-                    
-                    if accuracy_percentage >= 60 and omission_percentage <= 30: #the accuracy is 60 percent or more and omission percentage is less than 30 percent then
-                        print('second condition met')
-                        index_current_SD += 1 #condition is met then the Stimulus duration decreases according to the list from the begining.
-                    elif accuracy_percentage >= 60 and correct_response >= 200:
-                        print('third condition met')
-                        index_current_SD += 1 
+            if trial > 50 and accuracy_average >= 60:
+                if omission_average <= 30 or correct_response >= 200:  #the accuracy is 60 percent or more and omission percentage is less than 30 percent then        
+                    index_current_SD += 1 #condition is met then the Stimulus duration decreases according to the list from the begining.
 
+      
        
             yield([trial+1,ITI, current_SD, choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name, omissions,omission_percentage ,accuracy_percentage, task_end,total_task])
+            
+            if index_current_SD == len(possible_SDs): #checking that we are not at the end of the list
+                print("animal has reached lowest SD criteria. Exiting phase...")
+                return
 
 
 

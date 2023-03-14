@@ -1,4 +1,6 @@
-// for the sides to slide
+use<nose_poke.scad>
+
+  // for the sides to slide
 
 slideWallx = 2.3;
 slideWally = 9;
@@ -30,9 +32,9 @@ ledD = 5;
 ledH = 6;
 wallT = 2;
 $fn=60;
-use<nose_poke.scad>
 
 
+gridOffset = 10;
 
 module curve(width, height, length, dh) {
 
@@ -68,7 +70,7 @@ module curve(width, height, length, dh) {
 
 
 
-gridOffset = 30;
+
     translate([gridOffset-1,l/2-1,0]) {
         rotate([0,0,90]){
         cube([slideWallx,gridOffset, slideWallz]);

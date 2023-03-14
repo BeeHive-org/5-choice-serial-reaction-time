@@ -18,9 +18,9 @@ bh.setup() # call the set up function
 
 #Food training
 
-bh.food_training() # call the function food training in bh
+#bh.food_training() # call the function food training in bh
 
-data1 = [] #data1 is a list where all the data can be extracted to
+#data1 = [] #data1 is a list where all the data can be extracted to
 
 phase = "Food_magazine_training"  #phase name
 animal="mouse1" # animal name                    
@@ -33,23 +33,15 @@ fileName = animal+"_"+phase+"_"+ date+".csv"  #name of the file
 
 #Go through the trials appending to CSV
 data1=[]
-for i in bh.food_training():
-    data1.append(i)  #append the data that was yielded
-    print(i)
-    
-    for i in range(0,len(data1),4): #arragnes the different variables in order from 0 to 4 
-        clean_data = []
-    try:
-        with open(fileName,'w+') as csvfile: #within a new excel file
-            csvwriter = csv.writer(csvfile) 
-            csvwriter.writerow(["Trial","ITI","Mouse_food_latency","total_trial"]) #writes the headers
-            csvwriter.writerows(data1) #the rows are data1
-            
-           
-    except PermissionError: #this allows for the file to be opened as the taska are still ongoing
-        next 
-    
-#same logic for all the other phases, only data1 is changed to 2,3,4 and so on for it not to clash and the headers change as more variables are measured
+with open(fileName,'w+') as csvfile: #within a new excel file
+    csvwriter = csv.writer(csvfile) 
+    csvwriter.writerow(["Trial","ITI","Mouse_food_latency","total_trial"]) #writes the headers
+
+    for i in bh.food_training():
+        data1.append(i)  #append the data that was yielded
+        print(i)    
+        csvwriter.writerows(i) #the rows are data1
+
 
 
 
@@ -68,24 +60,15 @@ date = dt_string
 fileName = animal+"_"+phase+"_"+ date+".csv"
 # 
 data2=[]
-for i in bh.phase1():
-    data2.append(i)
-    print(i)
-#     
-    for i in range(0,len(data2),4):
-        clean_data = []
-    try:
-        with open(fileName,'w+') as csvfile: #fid:
-            csvwriter = csv.writer(csvfile)
-            csvwriter.writerow(["Trial","ITI","Mouse_food_latency","total"])
-            csvwriter.writerows(data2)
-#             
-#            
-    except PermissionError:
-        next
-# #     
-# #     
-#     
+with open(fileName,'w+') as csvfile: #fid:
+    csvwriter = csv.writer(csvfile)
+    csvwriter.writerow(["Trial","ITI","Mouse_food_latency","total"])
+    for i in bh.phase1():
+        data2.append(i)
+        print(i)
+        csvwriter.writerows(i)
+
+
 #Phase2  
 bh.phase2() #this is for the spitting
 
