@@ -1,8 +1,8 @@
 import csv #CSV imports to excel
-import belay #belay library is used as a library that communicates the data from the ESP32 to excel on teh coomputer
+import belay #belay library is used as a library that communicates the data from the ESP32 to excel on teh computer
 #from belay import Device 
 #import time
-from serial_beehive import SerialBeeHive #import serial_beehive the file and then the class SerialBeeHive where all the funnctions are
+from serial_beehive import SerialBeeHive #import serial_beehive the file and then the class SerialBeeHive where all the functions are
 
 from datetime import datetime #used to implement dates
 now = datetime.now()
