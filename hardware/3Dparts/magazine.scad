@@ -48,16 +48,17 @@ tol = 0.1;
 
 $fn=30;
 
-
+module magazine(panel=1){
 //backpanel
 difference(){
 
 
 
 union(){
-    
+if (panel==1){    
     translate([-(backpanely-headporty)/2,-0.1,(-backpanelx+headportx)/2]){
 cube([backpanely,backpanelz,backpanelx]);
+}
 }
 cube([headportx,headporty,headportz]);
 
@@ -126,3 +127,5 @@ cylinder(d=magledD+2*tol,h=20);
 }//end differnece
 //headentry
 
+}//end module
+//magazine(panel=0);

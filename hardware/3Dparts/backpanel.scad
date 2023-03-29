@@ -8,8 +8,9 @@
 // all dimensions in mm.
 
 //needs the ring.scad file (saved on the same folder)
-use <ring.scad>
+
 use <nose_poke.scad>
+use <magazine.scad>
 //// variables /////////////
 
 
@@ -18,41 +19,18 @@ use <nose_poke.scad>
 backpanelx = 52.5*2;
 backpanely = 60;
 backpanelz = 2.8;
-
-//supportw=5;
+wally=160-17;
 
 //dimensions for the headport 
-
 noseHoleD = 12;
-noseHoleH = 11;
 
-//wall thickness
-headportwall = 2;
-
-screwD = 4;
-
-tolerance = 0.1;
-
-ledDx = 8; // main LED
-ledD = 5;
-ledH = 6;
-wallT = 2;
-
-//magazine LED
-magledD = 8; // magazine LED diameter
 
 //dimensions for the headport 
-
 headportx = 25;
 headporty = 28;
 headportz = 30;
 
-//infrared led dimensions
-irledd = 5;
-irledh = 6;
 
-//pellet dispenser tube
-pelletD = 14;
 /* change this depending on the printer and printer settings
    it is a "tolerance" variable, so holes and fittings can be 
    adjusted.
@@ -61,6 +39,58 @@ tol = 0.1;
 
 $fn=30;
 
+
+module backwall_simple(){
+offsetZ = 10;
+difference(){
+
+
+cube([backpanelx, wally,backpanelz]);
+
+translate([headportx+10,45,-2]){
+rotate([0,0,-90]){
+cube([headportx,headporty+2,backpanelz+5]);
+}//end rotate
+}//end translate
+translate([(backpanelx)/2+3.5,wally/2+noseHoleD-2,-2]){
+cylinder(d=noseHoleD,h=20);
+}//end translate
+}//end difference
+
+translate([backpanelx/2+headportx/2,45,0]){
+rotate([90,0,-90]){
+magazine(panel=0);
+}//end rotate
+}//end translate
+translate([(backpanelx)/2+3.5,wally/2+noseHoleD-2,2.7]){
+nosePoke();
+}//end translate
+
+cube([backpanelx, backpanelz,offsetZ]);
+translate([0,backpanelz,offsetZ]){
+rotate([90,0,0]){
+cube([backpanelx, backpanelz,offsetZ]);
+}
+}//end translate
+translate([backpanelx,wally,0]){
+    rotate([0,0,180]){
+cube([backpanelx, backpanelz,offsetZ]);
+translate([0,backpanelz,offsetZ]){
+rotate([90,0,0]){
+cube([backpanelx, backpanelz,offsetZ]);
+}
+}//end translate
+}
+}//end rotate
+}//end module
+
+//rotate([0,90,-90]){
+//translate([-52,-150,-4]){
+backwall_simple();
+//}
+//}
+
+/*
 module backwall(){
 //backpanel
 
@@ -103,88 +133,11 @@ nosePoke();
 }//end rotate
 }//end translate
 
-module magazine(){
 
-difference(){
-
-
-
-union(){
-    
-    translate([-(backpanely-headporty)/2,-0.1,(-backpanelx+headportx)/2]){
-cube([backpanely,backpanelz,backpanelx]);
-}
-cube([headportx,headporty,headportz]);
-
-
-//well
-translate([headportx/2,headporty/2,-(headporty-10)/2]){
-cylinder(d1=headporty/2,d2=headporty/2+5,h=10);
-}//end translate
-
-//magazine led
-translate([headportx/2,headporty/2,headportz]){
-cylinder(d=magledD+headportwall,h=7);
-}//end translate
-
-
-
-//IR detector holes
-translate([headportx+irledh,8,6]){
-rotate([0,-90,0]){
-cylinder(d=irledd+headportwall,h=headportx+irledh*2);
-}//end rotate
-}//end translate
-
-//pellet shute
-translate([headportx/2,headporty-2.5*headportwall,headportz/4+4]){
-rotate([-45,0,0]){
-cylinder(d=pelletD+headportwall,h=20);
-}//end rotate
-}//end translate
-
-
-}//end union
-
-
-
-//negative
-union(){
-//central hole
-translate([headportwall,headportwall-5,headportwall]){
-cube([headportx-headportwall*2,headporty-headportwall*2+5,headportz-headportwall*2]);
-}//end translate
-//well
-translate([headportx/2,headporty/2,-(headporty-10)/2+1.1]){
-cylinder(d1=headporty/2-1,d2=headporty/2+5-1,h=10);
-}
-//ir led holes
-translate([headportx+irledh+1,8,6]){
-rotate([0,-90,0]){
-cylinder(d=irledd+2*tol,h=headportx+irledh*2+2);
-}//end rotate
-}//end translate
-
-//pellet shute
-translate([headportx/2,headporty-2.5*headportwall-2,headportz/4+2]){
-rotate([-45,0,0]){
-cylinder(d=pelletD,h=30);
-}//end rotate
-}//end translate
-
-
-//magazine led
-translate([headportx/2,headporty/2,headportz-headportwall-2]){
-cylinder(d=magledD+2*tol,h=20);
-}//end translate
-}//end union
-}//end difference
-//headentry
-}//end module
 
 translate([-105,2.6,-12.5]){
 rotate([0,0,180]){
-magazine();
+magazine(panel=1);
 }//end rotate
 }//end translate
-
+*/

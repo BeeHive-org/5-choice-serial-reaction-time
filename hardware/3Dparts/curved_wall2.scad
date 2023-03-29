@@ -13,7 +13,7 @@ dh = 10;      // delta height of the curve
 ledDx = 8; // main LED
 ledD = 5;
 ledH = 6;
-wallT = 2;
+
 
 noseHoleD = 12;
 noseHoleH = 11;
@@ -25,7 +25,7 @@ yOffsetHole = 13;
 
   // for the sides to slide
 
-slideWallx = 2.3;
+slideWallx = 2.5;
 slideWally = 9;
 slideWallz = noseHoleD*2+ledH+2*tol;
 
@@ -110,15 +110,15 @@ for ( i = [0:nHole-1]){
 */
 }// end module
 
-curve(slideWallz, h, l, dh,holes=1);
+//curve(slideWallz, h, l, dh,holes=1);
 
-/*
+
 translate([50,0,0]){
-curve(slideWallz+10, h, l, dh,holes=0);
+curve(90, h, l, dh,holes=0);
 }//end translate
 
 //curve(width, height, length, dh);
-*/
+
 
 
 
