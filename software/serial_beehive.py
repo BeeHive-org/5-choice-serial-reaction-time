@@ -32,9 +32,10 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
 
 
         food_led=machine.Pin(15, machine.Pin.OUT) #LED = the yellow LED for the food magazine
-        button_food=machine.Pin(22,Pin.IN) # Seonsr LED fro teh food magazine
+        button_food=machine.Pin(22,Pin.IN) # Sensor LED for the food magazine
         button_dispenser = machine.Pin(35, machine.Pin.IN) # Sensor LEDs for the food dispenser to detect when food pellets come down
-
+        button_trial = machine.Pin(13, machine.Pin.IN) # Sensor for trial start light
+        
         #All the pins for teh yellow LEDs nose pokes
         NP_1=machine.Pin(17,machine.Pin.OUT) 
         NP_2=machine.Pin(16,machine.Pin.OUT)
@@ -96,40 +97,37 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
     def food_training(): #this is the function for the food training
         """Food magazine training"""
         
+        total=time.ticks_ms()
         
         num_trial = 50
         
         for trial in range (num_trial): #trials meaning trials that can be changed in the brackets
             start_trial_time= time.ticks_ms() #this is a timer of the start of the trial    
-            food_led.value(0) #the food magazine LED value starts at 0
-           
+            food_led.value(1) #the food magazine LED value starts at 0
+            reward()
+            
+            timer_food = time.ticks_ms()# timer starts to know when the mouse went for the food
+            
+            while button_food.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+                utime.sleep(0.1)
+                timer_food2=time.ticks_ms() # as soon as the button_food.value(1), it starts counting          
+            food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
+            
             #ITIs
             times=[4,8,16,32] 
             
             times_num = random.choice(times) #random time out of these is chosen
-            count_time(times_num) # time.sleeps allows for the machine to pause for teh amount of times teh ITI is
-            
-            
-            #here put stepper motor in action
-            reward()
-            #once the food has dropped, turn on the food magazine light
-            food_led.value(1) 
-            timer_food = time.ticks_ms()# timer starts to know when the mouse went for the food
-            
-            while button_food.value() == 1: #while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reahced frot eh food
-                timer_food2=time.ticks_ms()           
-            led.value(0)# once the mouse went for the food, the while loop stops and the food magaine yellow LED turns off
-            
+            count_time(times_num) # time.sleeps allows for the machine to pause for the amount of times the ITI is
             
             mouse_to_food = timer_food2-timer_food #mouse to food is the amount of time the mouse took to get teh food
             end_trial_time = time.ticks_ms()
             
             trial_duration = end_trial_time-start_trial_time #end of the whole task
             
-        
-            yield([trial+1, times_num, mouse_to_food, start_trial_time,trial_duration])  #variables that are going to be yielded into the CSV file
-
-
+            timer_end = utime.ticks_ms()
+            total_time=timer_end-total # end of the whole task
+            
+            yield([trial+1, times_num, start_trial_time, mouse_to_food, trial_duration, total_time])  #variables that are going to be yielded into the CSV file
 
     @Device.task
     def phase1():
@@ -139,20 +137,55 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         
         for trial in range (50):
             
+            start_trial_time= time.ticks_ms() #this is a timer of the start of the trial    
+            food_led.value(1) #the food magazine LED value starts at 0
             
+            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+                utime.sleep(0.1)          
+            food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
+            reward()
             
-            start_trial_time= time.ticks_ms()
-            timer_start=time.ticks_ms()
+            timer_food = time.ticks_ms()# timer starts to know when the mouse went for the food
+            
+            while button_food.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+                utime.sleep(0.1)
+                timer_food2=time.ticks_ms() # as soon as the button_food.value(1), it starts counting
+           food_led.value(1) #the food magazine LED value starts at 0 
+            
+           mouse_to_food = timer_food2-timer_food #mouse to food is the amount of time the mouse took to get teh food
+           end_trial_time = time.ticks_ms()
+            
+           trial_duration = end_trial_time-start_trial_time #end of the whole task
+        
+           timer_end = utime.ticks_ms()
+           total_time=timer_end-total # end of the whole task
+           
+           yield([trial+1, times_num, start_trial_time, mouse_to_food, trial_duration, total_time])  #variables that are going to be yielded into the CSV file
+            
+    @Device.task
+    def phase2():
+        
+        """Phase 2"""
+        total=time.ticks_ms()
+        
+        for trial in range (50):
+            
+            start_trial_time= time.ticks_ms() #this is a timer of the start of the trial    
+            food_led.value(1) #the food magazine LED value starts at 0
+            
+            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+                utime.sleep(0.1)          
+            food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
+            
             button_pressed = False
-            #iti is fixed 5 seconds
-            time.sleep(5)
+            
             while button_pressed== False: #this a while loop that allows for the conditions 
     
                 #if any of the buttons are interrupted the sensor will go from 1 to 0 showing an interruption
                 #Here one of the Nosepokes has been poked
                 if button_1.value() == 0 or button_2.value() == 0  or button_3.value() == 0  or button_4.value() == 0 or button_5.value()==0: #if any of the NPs are poked
                       
-                    #Lights are tunred off
+                    #Lights are turned off
                     NP_1.value(0) 
                     NP_2.value(0)
                     NP_3.value(0)
@@ -162,22 +195,13 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     #Reward is sent
                     reward()
                     
-                    food_led.value(1)
-                    
-                   
                     timer_food = time.ticks_ms()
 
                     while button_food.value() == 1:
                         timer_food2 = time.ticks_ms()
                         
-                        
-                  
-                    
                     mouse_to_food = timer_food2-timer_food
                     
-                    food_led.value(0)
-                
-                
                     button_pressed = True #when the button pressed is true then the while loop can stop and the trial can go again
                     
                     trial_end = time.ticks_ms()
@@ -191,29 +215,28 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         NP_4.value(1)
                         NP_5.value(1)
                         food_led.value(0)
-                    
+                        
+            timer_end = utime.ticks_ms()
+            total_time=timer_end-total # end of the whole task
+            
             #yield([trial+1, mouse_to_food, start_trial_time,trial_duration])   
-            yield([trial+1, "5", mouse_to_food, start_trial_time,trial_duration])
+            yield([trial+1, start_trial_time, mouse_to_food, trial_duration, total_time])
 
 
 
     @Device.task
-    def phase2():
-        """Phase 2"""
+    def phase3():
+        """Phase 3"""
         total=time.ticks_ms()
         for trial in range(100):
                         
-            timer_starts=time.ticks_ms()
+            start_trial_time= time.ticks_ms() #this is a timer of the start of the trial    
+            food_led.value(1) #the food magazine LED value starts at 0
             
-            led.value(1) #food indicator LED is turned on as food is dispenseR   
-
+            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+                utime.sleep(0.1)          
+            food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
             
-            while button_food.value() == 1: #nothing happens untilthe mouse goes to Nospoke the food magazine
-                time.sleep(0.1)
-                next
-            
-            led.value(0)  #Once pressed Food magazine yellow LED turns off 
-           
             time.sleep(5) #ITI of 5 seconds
             
             #matching accumulating all the NP and button into lists
@@ -224,32 +247,23 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             choice = random.randint(0,4)
             
             nose_pokes[choice].value(1) #NP turns on but button hasn't yet been activated
-            np_buttons[choice].value(0) #NP hasn't been poked yet
-            led.value(0) #Food LED is off
             
             while np_buttons[choice].value() == 1: #while the chosen NP hasn't been poked, nothing happens
                 time.sleep(0.1)
                 
                 next
-                
-            #button has been pressed
-        
-            T2_timer= time.ticks_ms() #timer for mouser to food
             
+            #button has been pressed
             nose_pokes[choice].value(0) #chosen NP LED is turned off
-            led.value(1)
+            
+            T2_timer= time.ticks_ms() #timer for mouse to food
+            
             #Food dispenser is on
             reward()
-              
-              
-             #Food LED is turned on
-            
+  
             while button_food.value() == 1: #waits for IR beam to broken which means food is eaten
                 time.sleep(0.1)
                 next
-                
-                
-            led.value(0) #Food LED is turned off as food has been eaten (IR-beam broken)
             
             time_food =time.ticks_ms()
             mouse_to_food = time_food - T2_timer
@@ -260,10 +274,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             total_time=timer_end-total
             
             yield([trial+1, "5", choice, mouse_to_food, task_end,total_time])
-            
-            
-            
-        
+                  
             
     @Device.task
     def stage_5csrtt_task():
@@ -545,7 +556,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             #SD will decrease if these conditions are met
             if trial > 50 and accuracy_average >= 60:
                 if omission_average <= 30 or correct_response >= 200:  #the accuracy is 60 percent or more and omission percentage is less than 30 percent then        
-                    index_current_SD += 1 #condition is met then the Stimulus duration decreases according to the list from the begining.
+                    index_current_SD += 1 #condition is met then the Stimulus duration decreases according to the list from the beginning.
 
       
        
