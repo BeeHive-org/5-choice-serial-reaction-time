@@ -72,5 +72,5 @@ for index,phase in enumerate(phases):
                 tempData.append(i)  #append the data that was yielded
                 print(i)    
                 csvwriter.writerows(i) #the rows are data1
-
+#add phase 3, chnange yielded variables, 
         
