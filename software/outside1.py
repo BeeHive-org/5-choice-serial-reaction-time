@@ -8,7 +8,7 @@ from datetime import datetime #used to implement dates
 now = datetime.now()
 
 print(belay.list_devices()) 
-bh = SerialBeeHive('COM9') #SerialBeeHive is now bh
+bh = SerialBeeHive('COM5') #SerialBeeHive is now bh
 bh.setup() # call the set up function
 
 
@@ -71,6 +71,6 @@ for index,phase in enumerate(phases):
                 datum = i
                 tempData.append(i)  #append the data that was yielded
                 print(i)    
-                csvwriter.writerows(i) #the rows are data1
+                csvwriter.writerows(data1) #the rows are data1
 #add phase 3, chnange yielded variables, 
         

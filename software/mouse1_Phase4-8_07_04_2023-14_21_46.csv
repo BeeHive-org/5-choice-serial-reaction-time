@@ -1,0 +1,3 @@
+trial,ITI,SD,NP,premature_responses (ms),correct_responses(ms),Mouse_food_latency (ms),incorrect responses (ms),wrong NP chosen,omissions,omission percentage,Accuracy,total (ms)
+1,5000,16000,4,0,0,0,0,,0,0,100,10502,10502
+2,5000,16000,3,0,0,0,0,,0,0,100,21504,32044
