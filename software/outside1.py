@@ -13,31 +13,27 @@ bh.setup() # call the set up function
 
 
 
-phases = ["food_training","phase1","phase2","stage_5csrtt_task","phase9","phase10","phase11","phase12","phase13"]
-headers = [ ["Trial","ITI","Mouse_food_latency","total_trial"],
-            ["Trial","ITI","Mouse_food_latency","total_trial"],
-            ["Trial","ITI","Mouse_food_latency","total"],
-            ["trial","ITI","SD", "NP","premature_responses (ms)",  "correct_responses(ms)",
-                                "Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",
-                                "omissions","omission percentage", "Accuracy", "total (ms)"],
-            ["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)",
-                                "Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",
-                                "omissions","total (ms)"],
-            ["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)",
-                                "Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",
-                                "omissions","total (ms)"],
-            ["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)",
-                                "Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",
-                                "omissions","total (ms)"],
-            ["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)",
-                                "Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",
-                                "omissions","total (ms)"],
-        #    ["trial","ITI","SD", "NP","premature_responses (ms)",  "correct_responses(ms)",
-        #                        "Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",
-        #                        "omissions","omission percentage", "Accuracy", "total (ms)"],      
+phases = ["food_training","phase1","phase2", "phase3","stage_5csrtt_task","phase9","phase10","phase11","phase12"]
+headers = [ ["Trial","ITI","Start_time","Mouse_food_latency","Trial_duration","total_trial"],
+            ["Trial","Start_time","Mouse_food_latency","Trial_duration","total_trial"],
+            ["Trial","Start_time","Mouse_food_latency","Trial_duration","total_trial"],
+            ["Trial", "ITI", "NP", "Mouse_food_latency", "premature_timer", "wrong NP chosen", "Trial_duration","total_trial"],
+            ["Trial","ITI","SD", "NP", "premature_timer", "correct_time", "Mouse_food_latency", "task_duration", "wrong NP chosen",
+                                 "omissions","omission_percentage" ,"accuracy_percentage", "windIndex", "accuracy_average",
+                                 "omission_average",  "Trial_duration","total_trial"]
+            ["Trial","ITI","SD", "NP", "premature_timer", "correct_time", "Mouse_food_latency", "task_duration", "wrong NP chosen",
+                                 "omissions", "Trial_duration","total_trial"]
+            ["Trial","ITI","SD", "NP", "premature_timer", "correct_time", "Mouse_food_latency", "task_duration", "wrong NP chosen",
+                                 "omissions", "Trial_duration","total_trial"]
+            ["Trial","ITI","SD", "NP", "premature_timer", "correct_time", "Mouse_food_latency", "task_duration", "wrong NP chosen",
+                                 "omissions", "Trial_duration","total_trial"]
+            ["Trial","ITI","SD", "NP", "premature_timer", "correct_time", "Mouse_food_latency", "task_duration", "wrong NP chosen",
+                                 "omissions", "Trial_duration","total_trial"]                 
 ]
+
 functions = [bh.phase1(), 
              bh.phase2(),
+             bh.phase3(),
              bh.stage_5csrtt_task(),
              bh.stage9_task(),
              bh.stage10_task(),

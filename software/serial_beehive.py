@@ -154,7 +154,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 utime.sleep(0.5)
                
             food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
-            #reward()
+            reward()
             
             timer_food = time.ticks_ms()# timer starts to know when the mouse went for the food
             
@@ -206,7 +206,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     NP_5.value(0)
                     
                     #Reward is sent
-                    #reward()
+                    reward()
                     
                     timer_food = time.ticks_ms()
 
@@ -261,8 +261,6 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             correct_time=0
             task_duration=0
            
-            
-            
             
             ITI= 5000
             
@@ -366,7 +364,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     NP_4.value(0)
                     NP_5.value(0)
                     #food dispenser is on
-                   # reward()
+                    reward()
                         
                     timer_fooder= time.ticks_ms() #timer mouse to food
 
@@ -594,7 +592,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         NP_4.value(0)
                         NP_5.value(0)
                         #food dispenser is on
-                       # reward()
+                        reward()
                             
                         timer_fooder= time.ticks_ms() #timer mouse to food
 
@@ -858,8 +856,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     if task_duration <= SD:
                         
                         
-                    if task_duration > 1000:
-                        nose_pokes[choice].value(0)
+                        if task_duration > 1000:
+                            nose_pokes[choice].value(0)
                             
 
                     nose_pokes[choice].value(0)
@@ -1105,8 +1103,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     if task_duration <= SD:
                         
                         
-                    if task_duration > 1000:
-                        nose_pokes[choice].value(0)
+                        if task_duration > 1000:
+                            nose_pokes[choice].value(0)
                             
 
                     nose_pokes[choice].value(0)
@@ -1322,8 +1320,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     if task_duration < SD:
                        
                         
-                    if task_duration > 1000:
-                        nose_pokes[choice].value(0)
+                        if task_duration > 1000:
+                            nose_pokes[choice].value(0)
                             
 
                     nose_pokes[choice].value(0)
@@ -1552,8 +1550,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     if task_duration < SD:
                         
                         
-                    if task_duration > 1000:
-                        nose_pokes[choice].value(0)
+                        if task_duration > 1000:
+                            nose_pokes[choice].value(0)
                             
 
                     nose_pokes[choice].value(0)
@@ -1569,7 +1567,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         NP_4.value(0)
                         NP_5.value(0)
                         #food dispenser is on
-                       # reward()
+                        reward()
                                     
                         timer_fooder= time.ticks_ms() #timer mouse to food
 
@@ -1651,6 +1649,6 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             task_end = end_timer-start_timer
             total_time = end_timer-total
                 
-            yield([trial+1, selected_SD, "1", choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end,total_time])
+            yield([trial+1,'5', selected_SD, choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end,total_time])
 
 

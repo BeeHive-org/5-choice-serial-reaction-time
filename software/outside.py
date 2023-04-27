@@ -9,7 +9,7 @@ now = datetime.now()
 
 print("mmmdm")
 print(belay.list_devices()) 
-bh = SerialBeeHive('COM5') #SerialBeeHive is now bh
+bh = SerialBeeHive('COM3') #SerialBeeHive is now bh
 bh.setup() # call the set up function
 print("done setup")
 
