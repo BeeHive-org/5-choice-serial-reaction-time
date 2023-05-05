@@ -38,7 +38,7 @@ irledd = 5;
 irledh = 6;
 
 //pellet dispenser tube
-pelletD = 14;
+pelletD = 8;
 
 /* change this depending on the printer and printer settings
    it is a "tolerance" variable, so holes and fittings can be 
@@ -128,4 +128,4 @@ cylinder(d=magledD+2*tol,h=20);
 //headentry
 
 }//end module
-//magazine(panel=0);
+magazine(panel=0);

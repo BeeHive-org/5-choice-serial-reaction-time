@@ -16,7 +16,7 @@ use <magazine.scad>
 
 //back plate dimensions 
 //(the plate that slides on the metal railings)
-backpanelx = 52.5*2;
+backpanelx = 120.2;
 backpanely = 60;
 backpanelz = 2.8;
 wally=160-17;
@@ -52,17 +52,17 @@ rotate([0,0,-90]){
 cube([headportx,headporty+2,backpanelz+5]);
 }//end rotate
 }//end translate
-translate([(backpanelx)/2+3.5,wally/2+noseHoleD-2,-2]){
+translate([headportx+10+noseHoleD,wally/2+noseHoleD-2,-2]){
 cylinder(d=noseHoleD,h=20);
 }//end translate
 }//end difference
 
-translate([backpanelx/2+headportx/2,45,0]){
+translate([headportx*2.6,45,0]){
 rotate([90,0,-90]){
 magazine(panel=0);
 }//end rotate
 }//end translate
-translate([(backpanelx)/2+3.5,wally/2+noseHoleD-2,2.7]){
+translate([headportx+10+noseHoleD,wally/2+noseHoleD-2,2.7]){
 nosePoke();
 }//end translate
 
@@ -84,60 +84,4 @@ cube([backpanelx, backpanelz,offsetZ]);
 }//end rotate
 }//end module
 
-//rotate([0,90,-90]){
-//translate([-52,-150,-4]){
 backwall_simple();
-//}
-//}
-
-/*
-module backwall(){
-//backpanel
-
-translate([-(backpanely)/2,-0.1,(-backpanelx)/2]){
-cube([backpanely-20,backpanelz,backpanelx]);
-}//end translate      
-
-
-//negative
-}//end module
-backwall();
-
-module backwall_np(){
-//backpanel
-difference(){
-    translate([-(backpanely)/2,-0.1,(-backpanelx)/2]){
-        cube([backpanely,backpanelz,backpanelx]);
-}//end translate      
-
-
-//negative
-
-//central hole
-translate([headportwall-3,headportwall+5,headportwall-6]){
-rotate([90,0,0])
-    cylinder(d= 12,h= 11 - headportwall*2+5);
-}//end translate
-}//end difference
-}//end module
-
-translate([-59,0,0]){
-backwall_np();
-}//end translate
-
-
-
-translate([-60,0,2-6]){
-rotate([90,0,0]){
-nosePoke();
-}//end rotate
-}//end translate
-
-
-
-translate([-105,2.6,-12.5]){
-rotate([0,0,180]){
-magazine(panel=1);
-}//end rotate
-}//end translate
-*/

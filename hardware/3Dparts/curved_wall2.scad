@@ -1,8 +1,6 @@
 use<nose_poke.scad>
 
 
-
-
 tol = 0.1;
 
 
