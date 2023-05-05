@@ -16,7 +16,7 @@ use <magazine.scad>
 
 //back plate dimensions 
 //(the plate that slides on the metal railings)
-backpanelx = 120.2;
+backpanelx = 150;
 backpanely = 60;
 backpanelz = 2.8;
 wally=160-17;
