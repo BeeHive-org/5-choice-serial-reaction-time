@@ -467,7 +467,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
 
         total=time.ticks_ms()
         #Start of task
-        for trial in range(100): #providing an unlimitted amount of trials
+        for trial in range(10000): #providing an unlimitted amount of trials
 
         #variables are placed inside the for loop because they're value needs to reset every trial to not add up
              
