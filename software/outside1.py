@@ -31,7 +31,8 @@ headers = [ ["Trial","ITI","Start_time","Mouse_food_latency","Trial_duration","t
                                  "omissions", "Trial_duration","total_trial"]                 
 ]
 
-functions = [bh.phase1(), 
+functions = [bh.food_training(),
+             bh.phase1(), 
              bh.phase2(),
              bh.phase3(),
              bh.stage_5csrtt_task(),
@@ -39,34 +40,18 @@ functions = [bh.phase1(),
              bh.stage10_task(),
              bh.stage11_task(),
              bh.stage12_task()]
+
+
 animal="mouse1" # animal name 
-dt_string = now.strftime("%d_%m_%Y-%H_%M_%S") #date and time
-date = dt_string 
 
-
-#Explanations on food_training are the same with all the other tasks:
-#In teh case you only want one phase to run you can easily comment out the phases you don't want by selecting the code and pressing ctrl + 3, same thing to uncomment it. 
-
-#Food training
-
-#bh.food_training() # call the function food training in bh
-
-#data1 = [] #data1 is a list where all the data can be extracted to
-
-phase = "Food_magazine_training"  #phase name
-                   
 for index,phase in enumerate(phases):
+    date = now.strftime("%d_%m_%Y-%H_%M_%S") #date and time
     fileName = animal+"_"+phase+"_"+ date+".csv"  #name of the file
     tempData = []
     with open(fileName,'w+') as csvfile: #within a new excel file
         csvwriter = csv.writer(csvfile) 
         csvwriter.writerow(headers[index])
-        if phase=="food_training":
-            
-            for i in functions[index]:
-                datum = i
-                tempData.append(i)  #append the data that was yielded
-                print(i)    
-                csvwriter.writerows(data1) #the rows are data1
-#add phase 3, chnange yielded variables, 
-        
+        if phase=="food_training":            
+            for trial in functions[index]:
+                csvwriter.writerow(trial) #the rows are data1
+
