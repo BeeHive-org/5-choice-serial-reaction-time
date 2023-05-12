@@ -44,25 +44,24 @@ module backwall_simple(){
 offsetZ = 10;
 difference(){
 
-
 cube([backpanelx, wally,backpanelz]);
 
-translate([headportx+10,45,-2]){
+translate([backpanelx-headportx-5-42,45,-2]){
 rotate([0,0,-90]){
 cube([headportx,headporty+2,backpanelz+5]);
 }//end rotate
 }//end translate
-translate([headportx+10+noseHoleD,wally/2+noseHoleD-2,-2]){
+translate([headportx+10+noseHoleD+50,wally/2+noseHoleD-2,-2]){
 cylinder(d=noseHoleD,h=20);
 }//end translate
 }//end difference
 
-translate([headportx*2.6,45,0]){
+translate([backpanelx-42,45,0]){
 rotate([90,0,-90]){
 magazine(panel=0);
 }//end rotate
 }//end translate
-translate([headportx+10+noseHoleD,wally/2+noseHoleD-2,2.7]){
+translate([headportx+10+noseHoleD+50,wally/2+noseHoleD-2,2.7]){
 nosePoke();
 }//end translate
 
