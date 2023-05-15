@@ -8,7 +8,7 @@ from datetime import datetime #used to implement dates
 now = datetime.now()
 
 print(belay.list_devices()) 
-bh = SerialBeeHive('COM5') #SerialBeeHive is now bh
+bh = SerialBeeHive('COM4') #SerialBeeHive is now bh
 bh.setup() # call the set up function
 
 
@@ -20,13 +20,13 @@ headers = [ ["Trial","ITI","Start_time","Mouse_food_latency","Trial_duration","t
             ["Trial", "ITI", "NP", "Mouse_food_latency", "premature_timer", "wrong NP chosen", "Trial_duration","total_trial"],
             ["Trial","ITI","SD", "NP", "premature_timer", "correct_time", "Mouse_food_latency", "task_duration", "wrong NP chosen",
                                  "omissions","omission_percentage" ,"accuracy_percentage", "windIndex", "accuracy_average",
-                                 "omission_average",  "Trial_duration","total_trial"]
+                                 "omission_average",  "Trial_duration","total_trial"],
             ["Trial","ITI","SD", "NP", "premature_timer", "correct_time", "Mouse_food_latency", "task_duration", "wrong NP chosen",
-                                 "omissions", "Trial_duration","total_trial"]
+                                 "omissions", "Trial_duration","total_trial"],
             ["Trial","ITI","SD", "NP", "premature_timer", "correct_time", "Mouse_food_latency", "task_duration", "wrong NP chosen",
-                                 "omissions", "Trial_duration","total_trial"]
+                                 "omissions", "Trial_duration","total_trial"],
             ["Trial","ITI","SD", "NP", "premature_timer", "correct_time", "Mouse_food_latency", "task_duration", "wrong NP chosen",
-                                 "omissions", "Trial_duration","total_trial"]
+                                 "omissions", "Trial_duration","total_trial"],
             ["Trial","ITI","SD", "NP", "premature_timer", "correct_time", "Mouse_food_latency", "task_duration", "wrong NP chosen",
                                  "omissions", "Trial_duration","total_trial"]                 
 ]
