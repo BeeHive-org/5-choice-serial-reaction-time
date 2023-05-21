@@ -13,18 +13,22 @@ x_offset_Hole = 10;
 y_offset_Hole = 10;
 
 
-grid = 0;
+grid = 1;
 
 
 module grid(){
 difference(){
-    translate([-x_Hole/2,-y_Hole/2,0])cube([x_Hole,y_Hole,z_Hole]);
+    translate([-x_Hole/2,-y_Hole/2,0]){
+    cube([x_Hole,y_Hole,z_Hole]);
+    }//end translate
     
     for ( i = [0:n_Hole]){
-        translate([x_Hole/2-x_offset_Hole ,-y_Hole/2+y_offset_Hole+i*((y_Hole-2*y_offset_Hole)/n_Hole),-tol])cylinder(r=r_Hole, h=z_Hole+2*tol+50, $fn=Smoothness);
-    }
+        translate([x_Hole/2-x_offset_Hole ,-y_Hole/2+y_offset_Hole+i*((y_Hole-2*y_offset_Hole)/n_Hole),-tol]){
+        cylinder(r=r_Hole, h=z_Hole+2*tol+50, $fn=Smoothness);
+    }//end translate
+    }//end for
 }
 }
 
 
-if (grid == 0){grid();}
+if (grid == 1){grid();}

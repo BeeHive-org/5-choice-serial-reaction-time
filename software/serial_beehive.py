@@ -1,5 +1,5 @@
 # These are imports necessary to use the belay library
-#import belay
+import belay
 from belay import Device
 import time
 import utime
@@ -467,6 +467,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
 
         total=time.ticks_ms()
         #Start of task
+
         for trial in range(100000): #providing an unlimitted amount of trials
 
         #variables are placed inside the for loop because they're value needs to reset every trial to not add up
@@ -562,7 +563,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             
             timer_duration = time.ticks_ms()
 
-            print("stat of SD")
+            print("start of SD")
             #Start of SD
             nose_pokes[choice].value(1)
             while button_pressed == False: #While no nosepoke has been pressed the task keeps going:
@@ -755,7 +756,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         incorrect_response=0
         total=time.ticks_ms()
         #Start of task
-        for trial in range(1000): #providing an unlimitted amount of trials
+        for trial in range(1000): #providing an unlimited amount of trials
 
         #variables are placed inside the for loop because they're value needs to reset every trial to not add up
              
@@ -822,7 +823,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         premature_response +=1 #premature response is added to criteria calculator
                         #time.sleep(5)
                         ITI_break=False #the ITI_break loop ends
-                        time_out = True #The mouse goes trhough a time out
+                        time_out = True #The mouse goes through a time out
                         button_pressed = True #A nose poke has been poked
                        # print("premature")
                         
@@ -832,16 +833,12 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         task_duration=0
                         omissions = 0
                 
-                elif premature_timer > ITI: #If no button has been pressed
-                   
-                
+                elif premature_timer > ITI: #If no button has been pressed              
                     if np_buttons_wrong[0].value() == 1 or np_buttons_wrong[1].value() == 1 or np_buttons_wrong[2].value() == 1 or np_buttons_wrong[3].value()==1 or np_buttons[choice].value() == 1:
                         button_pressed = False #no Nosepoke has been poked 
                         ITI_break = False #the ITI break is over
-                        
-            
-            timer_duration = time.ticks_ms()
 
+            timer_duration = time.ticks_ms()
 
             #Start of SD
             nose_pokes[choice].value(1)
@@ -853,14 +850,14 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 
                 if task_duration < SD + extra:   #this makes it so that the buttons are still active for 4 seconds after the led value is turned off
                   
-                    if task_duration <= SD:
+                    #if task_duration <= SD:
                         
                         
-                        if task_duration > 1000:
-                            nose_pokes[choice].value(0)
+                    if task_duration > SD:
+                        nose_pokes[choice].value(0)
                             
 
-                    nose_pokes[choice].value(0)
+                    #nose_pokes[choice].value(0)
                     if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
                         
                         correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
@@ -877,12 +874,12 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                             
                         timer_fooder= time.ticks_ms() #timer mouse to food
 
-                        button_food.value() == 1 #task stops until the mouse goes towards the food
+                        #button_food.value() == 1 #task stops until the mouse goes towards the food
                         
                         
                         while button_food.value() == 1: #food sensor turns on and wait for mouse to get pellet
                             time.sleep(0.1)
-                            next
+                            #next
                             
                     
                     
@@ -939,7 +936,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     button_pressed=True
                     time_out=True
                     
-                    omissions += 1
+                    omissions = 1
+                    #total_omissions += 1
                     task_duration = 0
                     mouse_to_food = 0
                     correct_time= 0
@@ -999,7 +997,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             premature_timer=0
             
             #Long code to make sure that the varITIs are equally distributed
-            possible_ITIs = [5000,7500,1250] #the possible ITIs
+            possible_ITIs = [5000,7500,12500] #the possible ITIs
             index_current_ITI = 0 #current ITI
 
             num_trials = 10 #number of trials
@@ -1019,12 +1017,12 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     count_trials_twelve +=1
                     
                     #Allows to make sure that it doesn't go over the amount it's supposed to by removing 1
-                if 5 in possible_ITIs and count_trials_five == 167:
-                    possible_ITIs.remove(5)
-                if 7.5 in possible_ITIs and count_trials_seven == 167:
-                    possible_ITIs.remove(7.5)
-                if 12.5 in possible_ITIs and count_trials_twelve == 167:
-                    possible_ITIs.remove(12.5)
+                if 5000 in possible_ITIs and count_trials_five == 167:
+                    possible_ITIs.remove(5000)
+                if 7500 in possible_ITIs and count_trials_seven == 167:
+                    possible_ITIs.remove(7500)
+                if 12500 in possible_ITIs and count_trials_twelve == 167:
+                    possible_ITIs.remove(12500)
 
 
             
@@ -1097,15 +1095,12 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 
                 
                 if task_duration < SD + extra:   #this makes it so that the buttons are still active for 4 seconds after the led value is turned off
-                  
-                    if task_duration <= SD:
                         
-                        
-                        if task_duration > 1000:
-                            nose_pokes[choice].value(0)
+                    if task_duration > SD:
+                        nose_pokes[choice].value(0)
                             
 
-                    nose_pokes[choice].value(0)
+                    #nose_pokes[choice].value(0)
                     if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
                         
                         correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
@@ -1207,7 +1202,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             task_end = end_timer-start_timer
             total_task= end_timer-total
             
-        yield([trial+1, selected_ITI, "1", choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end,total_task])
+            yield([trial+1, selected_ITI, "1", choice+1, premature_timer, correct_time, mouse_to_food, task_duration, wrong_button_name,  omissions, task_end,total_task])
 
                 
 
@@ -1315,18 +1310,18 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 
                 if task_duration < SD + extra:   #this makes it so that the buttons are still active for 4 seconds after the led value is turned off
                   
-                    if task_duration < SD:
+                    #if task_duration < SD:
                        
                         
-                        if task_duration > 1000:
+                        if task_duration > SD:
                             nose_pokes[choice].value(0)
                             
 
-                    nose_pokes[choice].value(0)
-                    if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
+                    #nose_pokes[choice].value(0)
+                        if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
                         
-                        correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
-                        button_pressed = True #A NP has been poked
+                            correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
+                            button_pressed = True #A NP has been poked
                         
                        
                         NP_1.value(0)
@@ -1362,37 +1357,37 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         wrong_button_name = 0
                         
                         
-                    wrong_button_pressed = None
+                wrong_button_pressed = None
                     
                     
                     #Wrong button:
-                    for button in np_buttons_wrong:
-                        if button.value() == 0:
+                for button in np_buttons_wrong:
+                    if button.value() == 0:
                             
-                            wrong_button_pressed = button
-                            wrong_button_name = ""
+                        wrong_button_pressed = button
+                        wrong_button_name = ""
                             
-                            for button_variable,np_name in button_correspondence:
-                                if button_variable == wrong_button_pressed:
+                        for button_variable,np_name in button_correspondence:
+                            if button_variable == wrong_button_pressed:
                                  
-                                    wrong_button_name = np_name
-                                    break
+                                wrong_button_name = np_name
+                                break
                             
 
                            
-                            nose_pokes[choice].value(0)
+                        nose_pokes[choice].value(0)
                             
                             
-                            mouse_to_food = 0
-                            correct_time= 0
-                            premature_timer = 0
-                            omissions=0
+                        mouse_to_food = 0
+                        correct_time= 0
+                        premature_timer = 0
+                        omissions=0
                            
                             
-                            button_pressed = True
-                            time_out = True
+                        button_pressed = True
+                        time_out = True
                           
-                            break
+                        break
                         
                     
                 elif task_duration > SD + extra:
@@ -1455,27 +1450,27 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             #SDs possbility and selectivity
             possible_SDs = [1000,500,200]
             index_current_SD = 0            
+            count_trials_one = 0
             count_trials_five = 0
-            count_trials_seven = 0
-            count_trials_twelve = 0
+            count_trials_two = 0
             
             #Allows for the SDs to be equally selected/ same as ITI
 
             for i in range(num_trials):
                 selected_SD = possible_SDs[random.randint(0,len(possible_SDs)-1)]
-                if selected_SD == 5:
-                    count_trials_five += 1
-                elif selected_SD == 7.5:
-                    count_trials_seven +=1
-                elif selected_SD == 12.5:
-                    count_trials_twelve +=1
+                if selected_SD == 1000:
+                    count_trials_one += 1
+                elif selected_SD == 500:
+                    count_trials_five +=1
+                elif selected_SD == 200:
+                    count_trials_two +=1
                     
-                if 5 in possible_SDs and count_trials_five == 167:
-                    possible_SDs.remove(5)
-                if 7.5 in possible_SDs and count_trials_seven == 167:
-                    possible_SDs.remove(7.5)
-                if 12.5 in possible_SDs and count_trials_twelve == 167:
-                    possible_SDs.remove(12.5)
+                if 1000 in possible_SDs and count_trials_one == 167:
+                    possible_SDs.remove(1000)
+                if 500 in possible_SDs and count_trials_five == 167:
+                    possible_SDs.remove(500)
+                if 200 in possible_SDs and count_trials_two == 167:
+                    possible_SDs.remove(200)
         
         
         
@@ -1543,17 +1538,17 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                 task_duration = task_time-timer_duration
                 
                 
-                if task_duration < SD + extra:   #this makes it so that the buttons are still active for 4 seconds after the led value is turned off
+                if task_duration < selected_SD + extra:   #this makes it so that the buttons are still active for 4 seconds after the led value is turned off
                   
-                    if task_duration < SD:
+                    #if task_duration < SD:
                         
                         
-                        if task_duration > 1000:
+                        if task_duration > selected_SD:
                             nose_pokes[choice].value(0)
                             
 
-                    nose_pokes[choice].value(0)
-                    if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
+                    #nose_pokes[choice].value(0)
+                if np_buttons[choice].value() == 0:   #this means the correct button has been pressed  
                         
                         correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
                         button_pressed = True #A NP has been poked
@@ -1592,34 +1587,34 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         omissions = 0
                         wrong_button_name = 0
                         
-                    wrong_button_pressed = None
+                wrong_button_pressed = None
                     
                     
-                    for button in np_buttons_wrong: #In case of wrong NP poked
-                        if button.value() == 0: 
+                for button in np_buttons_wrong: #In case of wrong NP poked
+                    if button.value() == 0: 
                            
-                            wrong_button_pressed = button
-                            wrong_button_name = ""
+                        wrong_button_pressed = button
+                        wrong_button_name = ""
                             
-                            for button_variable,np_name in button_correspondence:
-                                if button_variable == wrong_button_pressed:
-                                    wrong_button_name = np_name
-                                    break
+                        for button_variable,np_name in button_correspondence:
+                            if button_variable == wrong_button_pressed:
+                                wrong_button_name = np_name
+                                break
                             
                        
                            
-                            nose_pokes[choice].value(0)
+                        nose_pokes[choice].value(0)
                             
                             
-                            mouse_to_food = 0
-                            correct_time= 0
-                            premature_timer = 0
-                            omissions=0
+                        mouse_to_food = 0
+                        correct_time= 0
+                        premature_timer = 0
+                        omissions=0
                            
                             
-                            button_pressed = True
-                            time_out = True
-                            break
+                        button_pressed = True
+                        time_out = True
+                        break
                     
                         
                     
