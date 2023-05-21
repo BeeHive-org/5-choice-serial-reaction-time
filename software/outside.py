@@ -1,7 +1,7 @@
 import csv #CSV imports to excel
 import belay #belay library is used as a library that communicates the data from the ESP32 to excel on teh coomputer
-#from belay import Device 
-#import time
+from belay import Device 
+import time
 from serial_beehive import SerialBeeHive #import serial_beehive the file and then the class SerialBeeHive where all the funnctions are
 
 from datetime import datetime #used to implement dates
@@ -17,7 +17,7 @@ animal="mouse1" # animal name
 
 print("setting up")
 print(belay.list_devices()) 
-bh = SerialBeeHive('COM3') #SerialBeeHive is now bh
+bh = SerialBeeHive('COM4') #SerialBeeHive is now bh
 bh.setup() # call the set up function
 print("done setup")
 
@@ -55,7 +55,7 @@ fileName = animal+"_"+phase+"_"+ date+".csv"
 
 with open(fileName,'w+') as csvfile: #fid:
      csvwriter = csv.writer(csvfile)
-     csvwriter.writerow(["Trial","Start_time","Mouse_food_latency","Trial_duration","total_trial"],)
+     csvwriter.writerow(["Trial","Start_time","Mouse_food_latency","Trial_duration","total_trial"])
      for trial in bh.phase1():
         print(trial)
         csvwriter.writerow(trial)
@@ -87,7 +87,7 @@ phase = "Phase3"
 fileName = animal+"_"+phase+"_"+ date+".csv"
 with open(fileName,'w+') as csvfile: #fid:
     csvwriter = csv.writer(csvfile)
-    csvwriter.writerow(["Trial","ITI","NP chosen", "Mouse_food_latency", "premature responce", "wrong button", "task end","total"])
+    csvwriter.writerow(["Trial","ITI","NP chosen", "Mouse_food_latency", "premature responce", "wrong button", "total_trial (ms)","total_task (ms)"])
 
 
     for trial in bh.phase3():
@@ -106,7 +106,7 @@ fileName = animal+"_"+phase+"_"+ date+".csv"
 
 with open(fileName,'w+') as csvfile: #fid:
     csvwriter = csv.writer(csvfile)
-    csvwriter.writerow(["trial","ITI","SD", "NP","premature_responses (ms)",  "correct_responses(ms)","Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",  "omissions","omission percentage", "Accuracy percentage", "Winindex", "accuracy average", "omission average", "total (ms)", "total_task"])
+    csvwriter.writerow(["trial","ITI","SD", "NP","premature_responses (ms)",  "correct_responses(ms)","Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",  "omissions","omission percentage", "Accuracy percentage", "Winindex", "accuracy average", "omission average", "total_trial (ms)", "total_task (ms)"])
     for trial in bh.stage_5csrtt_task():
         csvwriter.writerow(trial)
     
@@ -120,7 +120,7 @@ fileName = animal+"_"+phase+"_"+ date+".csv"
 
 with open(fileName,'w+') as csvfile: #fid:
     csvwriter = csv.writer(csvfile)
-    csvwriter.writerow(["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)","Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",  "omissions","total (ms)"])
+    csvwriter.writerow(["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)","Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",  "omissions","total_trial (ms)", "total_task (ms)"])
     for trial in bh.stage9_task():
         print(trial)
         csvwriter.writerow(trial)
@@ -136,7 +136,7 @@ fileName = animal+"_"+phase+"_"+ date+".csv"
 
 with open(fileName,'w+') as csvfile: #fid:
     csvwriter = csv.writer(csvfile)
-    csvwriter.writerow(["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)","Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",  "omissions","total (ms)"])
+    csvwriter.writerow(["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)","Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",  "omissions","total_trial (ms)", "total_task (ms)"])
     for trial in bh.stage10_task():
         print(trial)
         csvwriter.writerows(trial)
@@ -151,7 +151,7 @@ fileName = animal+"_"+phase+"_"+ date+".csv"
 
 with open(fileName,'w+') as csvfile: #fid:
     csvwriter = csv.writer(csvfile)
-    csvwriter.writerow(["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)","Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",  "omissions","total (ms)"])
+    csvwriter.writerow(["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)","Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",  "omissions","total_trial (ms)","total_task (ms)"])
     for trial in bh.stage11_task():
         print(trial)
         csvwriter.writerow(trial)
@@ -165,7 +165,7 @@ fileName = animal+"_"+phase+"_"+ date+".csv"
 
 with open(fileName,'w+') as csvfile: #fid:
     csvwriter = csv.writer(csvfile)
-    csvwriter.writerow(["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)","Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",  "omissions","total (ms)"])
+    csvwriter.writerow(["trial","ITI","SD", "Light","premature_responses (ms)",  "correct_responses(ms)","Mouse_food_latency (ms)" , "incorrect responses (ms)", "wrong NP chosen",  "omissions","total_trial (ms)","total_task (ms)"])
 
     for trial in bh.stage12_task():
         print(trial)
