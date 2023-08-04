@@ -3217,7 +3217,7 @@
   (symbol (lib_id "ir_sensor-rescue:+3.3V-power") (at 530.86 7.366 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 060c84fa-07cb-4dfd-ba95-dfc8e64323e3)
-    (property "Reference" "#PWR037" (at 534.67 7.366 0)
+    (property "Reference" "#PWR036" (at 534.67 7.366 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 526.4658 6.985 0)
@@ -3233,7 +3233,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR037") (unit 1)
+          (reference "#PWR036") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -3247,7 +3247,7 @@
   (symbol (lib_id "power:Vdrive") (at 362.966 58.166 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0642b5ad-badf-4deb-a220-78bbc03ef677)
-    (property "Reference" "#PWR016" (at 366.776 63.246 0)
+    (property "Reference" "#PWR022" (at 366.776 63.246 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "Vdrive" (at 358.5718 57.785 0)
@@ -3263,7 +3263,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR016") (unit 1)
+          (reference "#PWR022") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -3298,7 +3298,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR010") (unit 1)
+          (reference "#PWR016") (unit 1)
         )
       )
     )
@@ -3331,7 +3331,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P16") (unit 1)
+          (reference "P20") (unit 1)
         )
       )
     )
@@ -3340,7 +3340,7 @@
   (symbol (lib_id "power:Vdrive") (at 364.236 46.228 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0c28ba83-1dcf-448d-96c7-b3c27f8763c5)
-    (property "Reference" "#PWR029" (at 368.046 51.308 0)
+    (property "Reference" "#PWR024" (at 368.046 51.308 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "Vdrive" (at 359.8418 45.847 0)
@@ -3356,7 +3356,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR029") (unit 1)
+          (reference "#PWR024") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -3391,7 +3391,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR07") (unit 1)
+          (reference "#PWR013") (unit 1)
         )
       )
     )
@@ -3400,7 +3400,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 244.348 133.096 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0da25b6f-cb54-4d0b-a826-225c42867f66)
-    (property "Reference" "P9" (at 245.7196 135.128 0)
+    (property "Reference" "P21" (at 245.7196 135.128 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 246.8626 135.128 0)
@@ -3417,7 +3417,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P9") (unit 1)
+          (reference "P21") (unit 1)
         )
       )
       (project "beehive"
@@ -3462,7 +3462,7 @@
   (symbol (lib_id "Connector:Conn_01x14_Socket") (at 539.75 22.606 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1095290e-e6e6-48fe-934e-72d65beae430)
-    (property "Reference" "J1" (at 540.4612 22.6639 0)
+    (property "Reference" "J2" (at 540.4612 22.6639 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x14_Socket" (at 540.4612 25.0881 0)
@@ -3491,7 +3491,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "J1") (unit 1)
+          (reference "J2") (unit 1)
         )
       )
     )
@@ -3500,7 +3500,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 178.816 93.726 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 17c6ee1a-c93c-4d16-b9f9-872a382e2e7b)
-    (property "Reference" "P18" (at 180.1876 95.758 0)
+    (property "Reference" "P16" (at 180.1876 95.758 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 181.3306 95.758 0)
@@ -3517,7 +3517,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P18") (unit 1)
+          (reference "P16") (unit 1)
         )
       )
       (project "beehive"
@@ -3614,7 +3614,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR05") (unit 1)
+          (reference "#PWR011") (unit 1)
         )
       )
     )
@@ -3644,7 +3644,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR08") (unit 1)
+          (reference "#PWR014") (unit 1)
         )
       )
     )
@@ -3653,7 +3653,7 @@
   (symbol (lib_id "Device:R") (at 106.68 124.46 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 235b25b0-99ad-4e1c-92e6-b96201579d31)
-    (property "Reference" "R8" (at 108.458 123.2916 0)
+    (property "Reference" "R2" (at 108.458 123.2916 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "560" (at 108.458 125.603 0)
@@ -3670,7 +3670,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R8") (unit 1)
+          (reference "R2") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -3684,7 +3684,7 @@
   (symbol (lib_id "power:GND") (at 464.82 59.436 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2630664e-cd7a-4cd5-8692-f87070f613be)
-    (property "Reference" "#PWR038" (at 464.82 65.786 0)
+    (property "Reference" "#PWR030" (at 464.82 65.786 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 464.947 63.8302 0)
@@ -3700,7 +3700,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR038") (unit 1)
+          (reference "#PWR030") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -3714,7 +3714,7 @@
   (symbol (lib_id "power:Vdrive") (at 367.03 84.074 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 288b187c-4b16-4c9f-90cf-b6b42f64f8ab)
-    (property "Reference" "#PWR027" (at 370.84 89.154 0)
+    (property "Reference" "#PWR028" (at 370.84 89.154 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "Vdrive" (at 362.6358 83.693 0)
@@ -3730,7 +3730,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR027") (unit 1)
+          (reference "#PWR028") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -3765,7 +3765,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR013") (unit 1)
+          (reference "#PWR019") (unit 1)
         )
       )
     )
@@ -3774,7 +3774,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 178.816 60.706 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2b0fdfd4-dac7-4692-8044-ee11789bc140)
-    (property "Reference" "P5" (at 180.1876 62.738 0)
+    (property "Reference" "P14" (at 180.1876 62.738 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 181.3306 62.738 0)
@@ -3791,7 +3791,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P5") (unit 1)
+          (reference "P14") (unit 1)
         )
       )
       (project "beehive"
@@ -3805,7 +3805,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 153.924 167.386 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2b346384-ab0c-4e8c-b345-622a348231ef)
-    (property "Reference" "P19" (at 155.2956 169.418 0)
+    (property "Reference" "P8" (at 155.2956 169.418 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 156.4386 169.418 0)
@@ -3822,7 +3822,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P19") (unit 1)
+          (reference "P8") (unit 1)
         )
       )
       (project "beehive"
@@ -3836,7 +3836,7 @@
   (symbol (lib_id "Device:R") (at 464.82 50.546 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2da5b0c3-00e9-40eb-8f45-b695be9937d4)
-    (property "Reference" "R10" (at 466.598 49.3776 0)
+    (property "Reference" "R11" (at 466.598 49.3776 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 466.598 51.689 0)
@@ -3853,7 +3853,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R10") (unit 1)
+          (reference "R11") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -3888,7 +3888,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR03") (unit 1)
+          (reference "#PWR06") (unit 1)
         )
       )
     )
@@ -3897,7 +3897,7 @@
   (symbol (lib_id "power:+5V") (at 106.68 115.57 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 34000eef-7d66-46d9-a356-c81d8466e849)
-    (property "Reference" "#PWR034" (at 106.68 119.38 0)
+    (property "Reference" "#PWR08" (at 106.68 119.38 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 107.061 111.1758 0)
@@ -3913,7 +3913,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR08") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -3992,7 +3992,7 @@
   (symbol (lib_id "power:GND") (at 106.68 144.78 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 39919890-e4f8-497e-a9c5-e522d198a0f1)
-    (property "Reference" "#PWR035" (at 106.68 151.13 0)
+    (property "Reference" "#PWR09" (at 106.68 151.13 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 106.807 149.1742 0)
@@ -4008,7 +4008,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR035") (unit 1)
+          (reference "#PWR09") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4043,7 +4043,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR011") (unit 1)
+          (reference "#PWR017") (unit 1)
         )
       )
     )
@@ -4083,7 +4083,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 153.416 93.726 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 42f434a3-7d29-4bc6-8ca7-84ced939dda1)
-    (property "Reference" "P3" (at 154.7876 95.758 0)
+    (property "Reference" "P6" (at 154.7876 95.758 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 155.9306 95.758 0)
@@ -4100,7 +4100,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P3") (unit 1)
+          (reference "P6") (unit 1)
         )
       )
       (project "beehive"
@@ -4114,7 +4114,7 @@
   (symbol (lib_id "Device:R") (at 373.634 19.812 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 49fcc61e-c448-45a4-9c73-ef18e55585e5)
-    (property "Reference" "R17" (at 372.4656 18.034 0)
+    (property "Reference" "R7" (at 372.4656 18.034 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47" (at 374.777 18.034 0)
@@ -4131,7 +4131,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R17") (unit 1)
+          (reference "R7") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4169,7 +4169,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P10") (unit 1)
+          (reference "P9") (unit 1)
         )
       )
     )
@@ -4199,7 +4199,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR012") (unit 1)
+          (reference "#PWR018") (unit 1)
         )
       )
     )
@@ -4208,7 +4208,7 @@
   (symbol (lib_id "Device:R") (at 494.03 101.346 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4eda0c28-cde5-4317-935e-a5d20386e841)
-    (property "Reference" "R13" (at 495.808 100.1776 0)
+    (property "Reference" "R14" (at 495.808 100.1776 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 495.808 102.489 0)
@@ -4225,7 +4225,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R13") (unit 1)
+          (reference "R14") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4239,7 +4239,7 @@
   (symbol (lib_id "Connector:Conn_01x14_Socket") (at 440.69 53.086 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 503e1403-4811-4ae1-8a1d-aea8a4c8731f)
-    (property "Reference" "J7" (at 441.4012 53.1439 0)
+    (property "Reference" "J1" (at 441.4012 53.1439 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x14_Socket" (at 441.4012 55.5681 0)
@@ -4268,7 +4268,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "J7") (unit 1)
+          (reference "J1") (unit 1)
         )
       )
     )
@@ -4277,7 +4277,7 @@
   (symbol (lib_id "power:GND") (at 464.82 110.236 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 509031ac-e122-4db1-9a47-2905951a577f)
-    (property "Reference" "#PWR040" (at 464.82 116.586 0)
+    (property "Reference" "#PWR031" (at 464.82 116.586 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 464.947 114.6302 0)
@@ -4293,7 +4293,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR040") (unit 1)
+          (reference "#PWR031") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4362,7 +4362,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P8") (unit 1)
+          (reference "P5") (unit 1)
         )
       )
     )
@@ -4392,7 +4392,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR02") (unit 1)
+          (reference "#PWR03") (unit 1)
         )
       )
     )
@@ -4401,7 +4401,7 @@
   (symbol (lib_id "power:Vdrive") (at 72.39 142.24 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 58742f21-2b49-42b9-8524-970c7e9e1b87)
-    (property "Reference" "#PWR031" (at 68.58 137.16 0)
+    (property "Reference" "#PWR05" (at 68.58 137.16 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "Vdrive" (at 75.6412 142.621 90)
@@ -4417,7 +4417,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR031") (unit 1)
+          (reference "#PWR05") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4431,7 +4431,7 @@
   (symbol (lib_id "power:GND") (at 521.462 110.236 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5b6c7771-24d9-4b4e-8b83-847325564c6e)
-    (property "Reference" "#PWR019" (at 521.462 116.586 0)
+    (property "Reference" "#PWR034" (at 521.462 116.586 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 521.589 114.6302 0)
@@ -4447,7 +4447,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR019") (unit 1)
+          (reference "#PWR034") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4492,7 +4492,7 @@
   (symbol (lib_id "power:Vdrive") (at 364.744 19.812 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5d8f4f4e-bcdb-4eac-ad7f-24720b04b530)
-    (property "Reference" "#PWR047" (at 368.554 24.892 0)
+    (property "Reference" "#PWR025" (at 368.554 24.892 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "Vdrive" (at 360.3498 19.431 0)
@@ -4508,7 +4508,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR047") (unit 1)
+          (reference "#PWR025") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4522,7 +4522,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 202.946 133.096 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 67d09ad8-7c33-43a5-9fe9-32665e455512)
-    (property "Reference" "P20" (at 204.3176 135.128 0)
+    (property "Reference" "P18" (at 204.3176 135.128 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 205.4606 135.128 0)
@@ -4539,7 +4539,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P20") (unit 1)
+          (reference "P18") (unit 1)
         )
       )
       (project "beehive"
@@ -4553,7 +4553,7 @@
   (symbol (lib_id "Device:R") (at 372.872 29.972 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 68e461cf-9056-4777-bbe5-ce7809982b95)
-    (property "Reference" "R3" (at 371.7036 28.194 0)
+    (property "Reference" "R5" (at 371.7036 28.194 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47" (at 374.015 28.194 0)
@@ -4570,7 +4570,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R3") (unit 1)
+          (reference "R5") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4584,7 +4584,7 @@
   (symbol (lib_id "Device:R") (at 556.514 102.362 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7448201e-b35b-4bf6-823d-4ddb7c8ee346)
-    (property "Reference" "R16" (at 558.292 101.1936 0)
+    (property "Reference" "R17" (at 558.292 101.1936 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 558.292 103.505 0)
@@ -4601,7 +4601,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R16") (unit 1)
+          (reference "R17") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4646,7 +4646,7 @@
   (symbol (lib_id "power:GND") (at 433.324 35.306 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7f362ffd-3f4a-41f4-9f6f-52df1eaf74a7)
-    (property "Reference" "#PWR017" (at 433.324 28.956 0)
+    (property "Reference" "#PWR029" (at 433.324 28.956 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 433.197 30.9118 0)
@@ -4662,7 +4662,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR017") (unit 1)
+          (reference "#PWR029") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4700,7 +4700,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P14") (unit 1)
+          (reference "P17") (unit 1)
         )
       )
     )
@@ -4730,7 +4730,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR04") (unit 1)
+          (reference "#PWR07") (unit 1)
         )
       )
     )
@@ -4739,7 +4739,7 @@
   (symbol (lib_id "Device:R") (at 464.82 101.346 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 85e1d2ba-8464-4a09-ab1d-4fb9a6b89b59)
-    (property "Reference" "R11" (at 466.598 100.1776 0)
+    (property "Reference" "R12" (at 466.598 100.1776 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 466.598 102.489 0)
@@ -4756,7 +4756,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R11") (unit 1)
+          (reference "R12") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4794,7 +4794,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P12") (unit 1)
+          (reference "P11") (unit 1)
         )
       )
     )
@@ -4834,7 +4834,7 @@
   (symbol (lib_id "Device:R") (at 494.03 50.546 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 99200ef7-9b76-44b7-a7ef-3af2bebb21e0)
-    (property "Reference" "R12" (at 495.808 49.3776 0)
+    (property "Reference" "R13" (at 495.808 49.3776 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 495.808 51.689 0)
@@ -4851,7 +4851,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R12") (unit 1)
+          (reference "R13") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4865,7 +4865,7 @@
   (symbol (lib_id "power:GND") (at 523.24 59.436 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9b3121c3-20a5-4fe9-8f26-3525cab70ddf)
-    (property "Reference" "#PWR046" (at 523.24 65.786 0)
+    (property "Reference" "#PWR035" (at 523.24 65.786 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 523.367 63.8302 0)
@@ -4881,7 +4881,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR046") (unit 1)
+          (reference "#PWR035") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4895,7 +4895,7 @@
   (symbol (lib_id "Device:R") (at 374.396 69.85 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9ca4cd77-6023-48c4-bae1-4f2288a1adf0)
-    (property "Reference" "R2" (at 373.2276 68.072 0)
+    (property "Reference" "R8" (at 373.2276 68.072 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47" (at 375.539 68.072 0)
@@ -4912,7 +4912,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R2") (unit 1)
+          (reference "R8") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -4926,7 +4926,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 153.416 133.096 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9f3fe568-b041-4777-bf31-40fbb98a9257)
-    (property "Reference" "P22" (at 154.7876 135.128 0)
+    (property "Reference" "P7" (at 154.7876 135.128 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 155.9306 135.128 0)
@@ -4943,7 +4943,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P22") (unit 1)
+          (reference "P7") (unit 1)
         )
       )
       (project "beehive"
@@ -4957,7 +4957,7 @@
   (symbol (lib_id "ir_sensor-rescue:+3.3V-power") (at 120.65 130.81 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a03ab812-3c73-464c-a717-a932eb4e6865)
-    (property "Reference" "#PWR036" (at 116.84 130.81 0)
+    (property "Reference" "#PWR010" (at 116.84 130.81 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 123.9012 131.191 90)
@@ -4973,7 +4973,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR036") (unit 1)
+          (reference "#PWR010") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5050,7 +5050,7 @@
   (symbol (lib_id "power:GND") (at 556.514 111.252 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ace29ca6-5fa2-4bea-8858-5afe3e68cf09)
-    (property "Reference" "#PWR021" (at 556.514 117.602 0)
+    (property "Reference" "#PWR037" (at 556.514 117.602 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 556.641 115.6462 0)
@@ -5066,7 +5066,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR021") (unit 1)
+          (reference "#PWR037") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5080,7 +5080,7 @@
   (symbol (lib_id "power:GND") (at 494.03 59.436 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ae1523be-853b-4524-b888-33f5513c9298)
-    (property "Reference" "#PWR042" (at 494.03 65.786 0)
+    (property "Reference" "#PWR032" (at 494.03 65.786 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 494.157 63.8302 0)
@@ -5096,7 +5096,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR042") (unit 1)
+          (reference "#PWR032") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5131,7 +5131,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR015") (unit 1)
+          (reference "#PWR021") (unit 1)
         )
       )
     )
@@ -5164,7 +5164,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P13") (unit 1)
+          (reference "P12") (unit 1)
         )
       )
     )
@@ -5243,7 +5243,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 178.816 77.216 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b75a4852-3712-4f1b-8cec-a1056f20ec79)
-    (property "Reference" "P17" (at 180.1876 79.248 0)
+    (property "Reference" "P15" (at 180.1876 79.248 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 181.3306 79.248 0)
@@ -5260,7 +5260,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P17") (unit 1)
+          (reference "P15") (unit 1)
         )
       )
       (project "beehive"
@@ -5274,7 +5274,7 @@
   (symbol (lib_id "Device:R") (at 106.68 135.89 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b86f35bb-0aac-4c56-85e7-e316cf20fe34)
-    (property "Reference" "R9" (at 108.458 134.7216 0)
+    (property "Reference" "R3" (at 108.458 134.7216 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1k" (at 108.458 137.033 0)
@@ -5291,7 +5291,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R9") (unit 1)
+          (reference "R3") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5305,7 +5305,7 @@
   (symbol (lib_id "power:+12V") (at 39.37 29.718 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid caafcd8c-d507-4f91-a9df-7714cdc765de)
-    (property "Reference" "#PWR018" (at 39.37 33.528 0)
+    (property "Reference" "#PWR01" (at 39.37 33.528 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (at 39.37 25.5849 0)
@@ -5321,7 +5321,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR018") (unit 1)
+          (reference "#PWR01") (unit 1)
         )
       )
     )
@@ -5330,7 +5330,7 @@
   (symbol (lib_id "Device:R") (at 375.412 98.806 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cd96d452-4503-466e-883d-30c12b673a41)
-    (property "Reference" "R7" (at 374.2436 97.028 0)
+    (property "Reference" "R9" (at 374.2436 97.028 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47" (at 376.555 97.028 0)
@@ -5347,7 +5347,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R7") (unit 1)
+          (reference "R9") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5361,7 +5361,7 @@
   (symbol (lib_id "power:Vdrive") (at 363.982 29.972 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d22d9595-cd25-4d7f-965a-4a3970140abd)
-    (property "Reference" "#PWR024" (at 367.792 35.052 0)
+    (property "Reference" "#PWR023" (at 367.792 35.052 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "Vdrive" (at 359.5878 29.591 0)
@@ -5377,7 +5377,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR024") (unit 1)
+          (reference "#PWR023") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5412,7 +5412,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR014") (unit 1)
+          (reference "#PWR020") (unit 1)
         )
       )
     )
@@ -5421,7 +5421,7 @@
   (symbol (lib_id "power:Vdrive") (at 365.506 69.85 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d4bd5e77-e3e9-4acf-87bc-9242a8f1be99)
-    (property "Reference" "#PWR022" (at 369.316 74.93 0)
+    (property "Reference" "#PWR026" (at 369.316 74.93 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "Vdrive" (at 361.1118 69.469 0)
@@ -5437,7 +5437,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR022") (unit 1)
+          (reference "#PWR026") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5475,7 +5475,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P15") (unit 1)
+          (reference "P19") (unit 1)
         )
       )
     )
@@ -5484,7 +5484,7 @@
   (symbol (lib_id "power:+5V") (at 67.31 116.84 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d9dc939f-b509-4fc0-9441-fbaed083d1ad)
-    (property "Reference" "#PWR026" (at 67.31 120.65 0)
+    (property "Reference" "#PWR04" (at 67.31 120.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 67.691 112.4458 0)
@@ -5500,7 +5500,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR026") (unit 1)
+          (reference "#PWR04") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5514,7 +5514,7 @@
   (symbol (lib_id "power:Vdrive") (at 366.522 98.806 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid dc8548e2-c564-42fc-adb3-9ee170f64740)
-    (property "Reference" "#PWR032" (at 370.332 103.886 0)
+    (property "Reference" "#PWR027" (at 370.332 103.886 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "Vdrive" (at 362.1278 98.425 0)
@@ -5530,7 +5530,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR032") (unit 1)
+          (reference "#PWR027") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5544,7 +5544,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 178.308 133.096 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid de5f1676-d724-4677-9251-ed86bb261ab8)
-    (property "Reference" "P21" (at 179.6796 135.128 0)
+    (property "Reference" "P13" (at 179.6796 135.128 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 180.8226 135.128 0)
@@ -5561,7 +5561,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P21") (unit 1)
+          (reference "P13") (unit 1)
         )
       )
       (project "beehive"
@@ -5599,7 +5599,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P7") (unit 1)
+          (reference "P4") (unit 1)
         )
       )
     )
@@ -5608,7 +5608,7 @@
   (symbol (lib_id "Device:R") (at 523.24 50.546 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e017bfea-d9f5-4855-9f59-4249554af85c)
-    (property "Reference" "R14" (at 525.018 49.3776 0)
+    (property "Reference" "R16" (at 525.018 49.3776 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 525.018 51.689 0)
@@ -5625,7 +5625,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R14") (unit 1)
+          (reference "R16") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5660,7 +5660,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR09") (unit 1)
+          (reference "#PWR015") (unit 1)
         )
       )
     )
@@ -5724,7 +5724,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P11") (unit 1)
+          (reference "P10") (unit 1)
         )
       )
     )
@@ -5733,7 +5733,7 @@
   (symbol (lib_id "power:GND") (at 494.03 110.236 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e8396a6d-c486-43a3-850f-862c966f11ec)
-    (property "Reference" "#PWR044" (at 494.03 116.586 0)
+    (property "Reference" "#PWR033" (at 494.03 116.586 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 494.157 114.6302 0)
@@ -5749,7 +5749,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR044") (unit 1)
+          (reference "#PWR033") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5787,7 +5787,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P6") (unit 1)
+          (reference "P3") (unit 1)
         )
       )
     )
@@ -5817,7 +5817,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR01") (unit 1)
+          (reference "#PWR02") (unit 1)
         )
       )
     )
@@ -5826,7 +5826,7 @@
   (symbol (lib_id "Device:R") (at 375.92 84.074 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f44513d4-a8fb-4fd3-97f9-97e745b2500d)
-    (property "Reference" "R5" (at 374.7516 82.296 0)
+    (property "Reference" "R10" (at 374.7516 82.296 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47" (at 377.063 82.296 0)
@@ -5843,7 +5843,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "R5") (unit 1)
+          (reference "R10") (unit 1)
         )
       )
       (project "ir_sensor"
@@ -5878,7 +5878,7 @@
       )
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "#PWR06") (unit 1)
+          (reference "#PWR012") (unit 1)
         )
       )
     )
@@ -5887,7 +5887,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 244.602 116.586 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fd0e41e2-684d-4036-812e-4430935be0f8)
-    (property "Reference" "P4" (at 245.9736 118.618 0)
+    (property "Reference" "P22" (at 245.9736 118.618 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 247.1166 118.618 0)
@@ -5904,7 +5904,7 @@
     (instances
       (project "new_board2"
         (path "/5bd5373d-bd25-4877-850d-beaf1044871d"
-          (reference "P4") (unit 1)
+          (reference "P22") (unit 1)
         )
       )
       (project "beehive"
