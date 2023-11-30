@@ -108,7 +108,7 @@ for ( i = [0:nHole-1]){
 */
 }// end module
 
-//curve(slideWallz, h, l, dh,holes=1);
+curve(slideWallz, h, l, dh,holes=1);
 
 
 translate([50,0,0]){
