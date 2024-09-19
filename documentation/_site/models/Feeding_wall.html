@@ -5,13 +5,14 @@
     <title>Serial reaction chamber</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="./static/Logo/favicon.ico" />
-<link rel="icon" type="image/png" href="./static/Logo/favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="./static/Logo/favicon-16x16.png" sizes="16x16" />
+    <link rel="shortcut icon" href="../static/Logo/favicon.ico" />
+<link rel="icon" type="image/png" href="../static/Logo/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="../static/Logo/favicon-16x16.png" sizes="16x16" />
 
-    <link href="./static/base-style.css" rel="stylesheet">
-    <link href="./static/site-style.css" rel="stylesheet">
-                <style>
+    <link href="../static/base-style.css" rel="stylesheet">
+    <link href="../static/site-style.css" rel="stylesheet">
+                <script type="text/javascript" src="../static/3d-viewer.js"></script>
+        <style>
   :root {
     --primary-color: #f1502f;
   }
@@ -27,7 +28,7 @@
 }
 </style>
     
-        <script type="text/javascript" src="./static/search.js" defer=""></script>
+        <script type="text/javascript" src="../static/search.js" defer=""></script>
     </head>
 <body>
 <header class="site-header">
@@ -53,11 +54,11 @@
                 </a>
                 <ul class="nav-list">
                 <li>
-    <a class="navhome" href="./">
+    <a class="navhome" href="../">
         Serial reaction chamber
     </a>
 </li>
-<li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('./')">
+<li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('../')">
   <input
     type="text"
     placeholder="Search..."
@@ -72,7 +73,7 @@
         <div v-if="searchResults.length === 0">No results.</div>
         <template v-for="(result, index) in searchResults">
             <li>
-                <a class="search-result" :href="`./${result.path}.html`">
+                <a class="search-result" :href="`../${result.path}.html`">
                <span v-for="crumb in result.breadCrumbs.slice(0, -1)">
                 ${crumb + ' > '}
                 </span>
@@ -85,18 +86,18 @@
         </template>
     </div>
 </li>
-<li class="active">
-    <a class="active" href="./index_BOM.html">
+<li class="not-active">
+    <a class="not-active" href="../index_BOM.html">
         Bill of Materials
     </a>
     </li>
 <li class="not-active">
-    <a class="not-active" href="./testpage1.html">
+    <a class="not-active" href="../testpage1.html">
         Food dispencer
     </a>
     </li>
 <li class="not-active">
-    <a class="not-active" href="./testpage2.html">
+    <a class="not-active" href="../testpage2.html">
         Reaction chamber
     </a>
     </li>
@@ -105,50 +106,20 @@
             </nav>
         </div>
         <div class="wrapper">
-    <h1 id="bill-of-materials">Bill of Materials</h1>
-<p>Download this as a <a href="index_BOM.csv">CSV file</a></p>
-<h3 id="parts">Parts</h3>
-<ul>
-<li>1 <a Class="bom" href="Parts/Adhesive.html">Liquid Adhesive</a> </li>
-<li>14 <a Class="bom" href="Parts/M3hexnut.html">M3 hex Nut</a> </li>
-<li>38 <a Class="bom" href="Parts/M3X12mmPozipanscrews.html">M3x8 Pozi pan machine screw</a> </li>
-<li>8 <a Class="bom" href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a> </li>
-<li>1 <a Class="bom" href="Parts/Servomotor.html">Servo motor</a> </li>
-</ul>
-<h3 id="tools">Tools</h3>
-<ul>
-<li>1 <a Class="bom" href="Parts/Hacksaw.html">150mm mini hacksaw</a> </li>
-<li>1 <a Class="bom" href="Parts/2mmHexkey.html">2mm Hex key</a> </li>
-<li>1 <a Class="bom" href="Parts/M3tapset.html">M3 tap set</a> </li>
-<li>1 <a Class="bom" href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a> </li>
-<li>1 <a Class="bom" href="Parts/Tapwrench.html">tap wrench</a> </li>
-</ul>
-<h3 id="machine">Machine</h3>
-<ul>
-<li>2 <a Class="bom" href="Parts/3dprinter.html">3d printer</a> </li>
-<li>2 <a Class="bom" href="Parts/Lasercutter.html">Laser cutter</a> </li>
-</ul>
-<h3 id="material">Material</h3>
-<ul>
-<li>2 <a Class="bom" href="Parts/ClearSheet.html">clear plastic sheet</a> </li>
-<li>1 <a Class="bom" href="Parts/Flexibletube.html">Flexible Tube</a> </li>
-<li>1 <a Class="bom" href="Parts/MakerBeamXL.html">maker beam XL</a> </li>
-<li>500 g of <a Class="bom" href="Parts/PLAfilament.html">PLA filament</a> </li>
-</ul>
-<!-- GitBuilding Nav -->
-<hr />
-<p><a href="index.html">Previous page</a> | <a href="testpage1.html">Next page</a></p>
+    <h1 id="feeding_wall">Feeding_wall</h1>
+<noscript><a href="Feeding_wall.stl">Download</a></noscript>
+<p><gb3d-viewer src="Feeding_wall.stl"></gb3d-viewer></p>
     </div>
 </div>
 <footer class="site-footer">
     <div class="wrapper">
         <a target="_blank" rel="noopener noreferrer" href="https://gitbuilding.io">
-    <img class="icon" src="./static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
+    <img class="icon" src="../static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
     <span class="doc-info">Documentation powered by GitBuilding</span>
 </a>
     <p class="author">©2024 Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="email">Contact: <a href="mailto:s.n.ngotho@sussex.ac.ke">s.n.ngotho@sussex.ac.ke</a></p>
-    <p class="license">Serial reaction chamber is released under <a href="license.html">CC-BY-3.0</a>.</p>
+    <p class="license">Serial reaction chamber is released under <a href="../license.html">CC-BY-3.0</a>.</p>
 
     </div>
 </footer></body>

@@ -1,18 +1,17 @@
-Name in documentation	Category	Qty	Full Name	Notes
-150mm mini hacksaw	tool	1		
-2mm Hex key	tool	1		
-3d printer	machine	2		
-clear plastic sheet	material	2		
-Flexible Tube	material	1		
-Laser cutter	machine	2		
-M2x6 counter sunk screw	part	2		
-M3 tap set	tool	1		
-M3.5 Hex Nut	part	12		
-M3.5x12mm Pozi Pan	part	12		
-M3x8 counter sunk screw	part	4		
-M3x8 socket cap screw	part	2		
-maker beam XL	material	1		
-PLA filament	material	Some		
-Pozidriv PZ1 screw driver	tool	1		
-Servo motor	part	1		
-tap wrench	tool	1		
+Name in documentation	Category	Qty	Full Name	Notes	Supplier 1	Part No	Link
+150mm mini hacksaw	tool	1	150mm mini hacksaw		RS	281-9162	https://uk.rs-online.com/web/p/hand-saws/2819162?gb=a
+2mm Hex key	tool	1	2mm Hex key		RS	707-3282	https://uk.rs-online.com/web/p/hex-keys/7073282?gb=s
+3d printer	machine	2	3d printer		RS	ENDER-3 S1 PRO	https://uk.rs-online.com/web/p/3d-printers/2857472?gb=s
+clear plastic sheet	material	2	clear plastic sheet		RS	334-6472	https://uk.rs-online.com/web/p/plastic-sheets/3346472?gb=s
+Flexible Tube	material	1	Flexible tube		RS	260-4412	https://uk.rs-online.com/web/p/hose-pipe-flexible-tubes/2604412?gb=s
+Laser cutter	machine	2	Laser cutter		RS	ENDER-3 S1 PRO	https://uk.rs-online.com/web/p/3d-printers/2857472?gb=s
+Liquid Adhesive	part	1	Liquid Adhesive		RS	132-605	https://uk.rs-online.com/web/p/adhesives/0132605?gb=a
+M3 hex Nut	part	14	M3 Hex Nut		RS	441-9098	https://uk.rs-online.com/web/p/hex-nuts/4419098?gb=s
+M3 tap set	tool	1	M3 tap set		RS	215-552	https://uk.rs-online.com/web/p/threading-taps/0215552?gb=s
+M3x8 Pozi pan machine screw	part	38	M3X12mm Pozipan screws		RS	560-603	https://uk.rs-online.com/web/p/machine-screws/0560603?gb=s
+M3x8mm hex socket counter sunk screw	part	8	M3x8mm hex socket counter sunk screw		RS	304-4918	https://uk.rs-online.com/web/p/socket-screws/3044918?gb=s
+maker beam XL	material	1	maker beam XL		technobotsonline	4447-087	https://www.technobotsonline.com/makerbeamxl-1000mm-long-black-anodised-beam-threaded.html
+PLA filament	material	500 g	PLA filament		RS	832-0214	https://uk.rs-online.com/web/p/3d-printing-materials/8320214?gb=s
+Pozidriv PZ1 screw driver	tool	1	Pozidriv PZ1 screw driver		RS	544-702	https://uk.rs-online.com/web/p/screwdrivers/0544702?gb=a
+Servo motor	part	1	Servo motor		RS	781-3058	https://uk.rs-online.com/web/p/servo-motors/7813058?gb=a
+tap wrench	tool	1	tap wrench		RS	230-0112	https://uk.rs-online.com/web/p/tap-die-wrenches/2300112?gb=a
