@@ -14,3 +14,5 @@ HoverColor: '#555555'
 License: CC-BY-3.0
 PrimaryColor: '#f1502f'
 SecondaryColor: '#cccccc'
+ExternalDirs:
+  hardware: "../hardware/"

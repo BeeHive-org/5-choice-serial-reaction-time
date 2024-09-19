@@ -77,11 +77,11 @@ The chamber is used to track mice reaction time using light as a training cue. W
 
 ## Adding the enclosure
 
- + Slide the [platform support](models/platform_support.svg) parts on opposite sides of the pillars and on top of them place the [Platform base](models/Platform_base.svg).
+ + Slide the [platform support](models/Platform_support.svg) parts on opposite sides of the pillars and on top of them place the [Platform base](models/Platform_base.svg).
 
 ![](images/Maker_base2.PNG)
 
- + Slide the [feeding wall](models/feeding_wall.stl){previewpage} making sure it goes all the way to the bottom. Then for the [led series wall](models/Led_series_wall.stl){previewpage} will slide up to the platform and on top of it will be the [curved wall](models/Curved_wall.stl){previewpage}.
+ + Slide the [feeding wall](models/Feeding_wall.stl){previewpage} making sure it goes all the way to the bottom. Then for the [led series wall](models/Led_series_wall.stl){previewpage} will slide up to the platform and on top of it will be the [curved wall](models/Curved_wall.stl){previewpage}.
 .
 ![](images/Maker_base3.PNG)
 
