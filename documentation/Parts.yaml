@@ -1,198 +1,268 @@
-
+---
 MakerBeamXL:
-    Name: maker beam XL
-    Description: >
-        A single length of black anodised MakerBeamXL which has a 15mm x 15mm square profile
-    Supplier:
-        technobotsonline:
-            PasrtNo: 4447-087
-            link: https://www.technobotsonline.com/makerbeamxl-1000mm-long-black-anodised-beam-threaded.html
-
-Hacksaw: 
-    Name: 150mm mini hacksaw
-    Description: >
-        The Bahco Junior Hacksaws, featuring a steel frame and a fibreglass handle, 
-        come with a practical and simple blade tensioning device. 
-        The blade tensioning is easily achieved through a simple screw operation.
-    Supplier:
-        RS:
-           PartNo: 281-9162
-           Link: https://uk.rs-online.com/web/p/hand-saws/2819162?gb=a
-
+  Name: maker beam XL
+  Description: >
+    A single length of black anodised MakerBeamXL which has a 15mm x
+    15mm square profile
+  Specs:
+    Strut profile: 15mm x 15mm
+    Length: 1000 mm
+    grove size: 2.8mm
+    Number of grooves: 4
+    Material: Aluminium
+    Colour: black
+  Suppliers:
+    technobotsonline:
+      PartNo: 4447-087
+      Link: https://www.technobotsonline.com/makerbeamxl-1000mm-long-black-anodised-beam-threaded.html
+Hacksaw:
+  Name: 150mm mini hacksaw
+  Description: >
+    The Bahco Junior Hacksaws, featuring a steel frame and a fibreglass
+    handle,  come with a practical and simple blade tensioning device.  The
+    blade tensioning is easily achieved through a simple screw operation.
+  Suppliers:
+    RS:
+      PartNo: 281-9162
+      Link: https://uk.rs-online.com/web/p/hand-saws/2819162?gb=a
 ClearSheet:
-    Name: clear plastic sheet
-    Description: >
-        The polyethylene terephthalate glycol (PETG) sheet is both versatile and durable. 
-        It can withstand high-impact knocks and drops, even at extremely low temperatures.
-        resistant to chemicals and has a UL 94 flammability rating, so it will 
-        self-extinguish in the event of a fire.
-    Supplier:
-        RS:
-            PartNo: 334-6472
-            Link: https://uk.rs-online.com/web/p/plastic-sheets/3346472?gb=s
-
+  Name: clear plastic sheet
+  Description: >
+    The polyethylene terephthalate glycol (PETG) sheet is both
+    versatile and durable.  It can withstand high-impact knocks and drops, even
+    at extremely low temperatures. resistant to chemicals and has a UL 94
+    flammability rating, so it will  self-extinguish in the event of a fire.
+  Specs:
+    colour: clear
+    Length: 1200 mm
+    Width: 620mm
+    Material: PETG
+    Laminted: Not
+  Suppliers:
+    RS:
+      PartNo: 334-6472
+      Link: https://uk.rs-online.com/web/p/plastic-sheets/3346472?gb=s
 M3X8mmSocketcap:
-    Name: M3x8 socket cap screw
-    Description: >
-        Socket screws are a type of threaded bolt which screws into an appropriate socket, 
-        and are used to fasten various materials together. 
-        They are designed to be turned by hex keys or similar tools.
-    Specs:
-        Head: Hex Socket Cap
-        Length: 8 mm
-        Material: Stainless Steel
-        Pitch: 0.5 mm
-    Suppliers:
-        RS: 
-        PartNo: 280-997
-        Link: https://uk.rs-online.com/web/p/socket-screws/0280997?gb=s
-
-M3X8mmCountersunk:
-    Name: M3x8 counter sunk screw
-    Description: >
-        Socket screws are a type of threaded bolt which screws into an appropriate socket, 
-        and are used to fasten various materials together. 
-        They are designed to be turned by hex keys or similar tools.
-    Specs:
-        Head: Hex Socket Countersunk
-        Length: 8 mm
-        Material: Stainless Steel
-        Pitch: 0.5 mm
-    Suppliers:
-        RS: 
-        PartNo: 304-4918
-        Link: https://uk.rs-online.com/web/p/socket-screws/3044918?gb=a
-
-M2X6mmCountersunk:
-    Name: M2x6 counter sunk screw
-    Description: >
-        counter sunk screws are a type of threaded bolt which screws into an appropriate socket, 
-        and are used to fasten various materials together. 
-        They are designed to be turned by pozi drive srew driver or similar tools.
-    Specs:
-        Head: pozi Countersunk
-        Length: 6mm
-        Material: Stainless Steel
-        Pitch: 0.4mm
-    Suppliers:
-        RS: 
-        PartNo: 914-1753
-        Link: https://uk.rs-online.com/web/p/machine-screws/9141753?gb=a
-
+  Name: M3x8 socket cap screw
+  Description: >
+    Socket screws are a type of threaded bolt which screws into an
+    appropriate socket,  and are used to fasten various materials
+    together.  They are designed to be turned by hex keys or similar tools.
+  Specs:
+    Head: Hex Socket Cap
+    Length: 8 mm
+    Material: Stainless Steel
+    Pitch: 0.5 mm
+  Suppliers:
+    RS:
+      PartNo: 280-997
+      Link: https://uk.rs-online.com/web/p/socket-screws/0280997?gb=s
 
 2mmHexkey:
-    Name: 2mm Hex key
-    Description: >
-        T handle tool is designed for very high torque speeds and offers an easy, 
-        fantastic solution for loosening and tightening screws.
-    Specs:
-        Head: Hex key
-        size: 2 mm
-        Material: Chrome Vanadium Steel
-        Arm: long
-    Suppliers:
-        RS:
-            PartNo: 707-3282
-            Link: https://uk.rs-online.com/web/p/hex-keys/7073282?gb=s
-
-PozidrivPZ1:
-    Name: Pozidriv PZ1 screw driver
-    Description: >
-        The Knipex Pozidriv Screwdriver for cross recessed screws.
-        Ergonomically optimised dual component handle for fatigue reduced work and 
-        optimum transmission of force.
-    Specs:
-        Head: Pozidriv
-        size: PZ1
-        Material: Bi-material
-    Suppliers:
-        RS:
-            PartNo: 267-3246
-            Link: https://uk.rs-online.com/web/p/screwdrivers/2673246?gb=a
-
+  Name: 2mm Hex key
+  Description: >
+    T handle tool is designed for very high torque speeds and offers an
+    easy,  fantastic solution for loosening and tightening screws.
+  Specs:
+    Head: Hex key
+    size: 2 mm
+    Material: Chrome Vanadium Steel
+    Arm: long
+  Suppliers:
+    RS:
+      PartNo: 707-3282
+      Link: https://uk.rs-online.com/web/p/hex-keys/7073282?gb=s
 Tapwrench:
-    Name: tap wrench
-    Description: >
-        Tap wrenches are a type of hand tool designed to tap internal thread tools with ease. 
-        They are often equipped with adjustable jaws that secure to the fitting and handles 
-        that allow the user to turn the tool with ease.
-    Specs:
-        Type: T-Handle Tap Wrench
-        Material: Steel
-        Thread size: M1.5 to M4
-    Suppliers:
-        RS:
-            PartNo: 230-0112
-            Link: https://uk.rs-online.com/web/p/tap-die-wrenches/2300112?gb=a
-        
+  Name: tap wrench
+  Description: >
+    Tap wrenches are a type of hand tool designed to tap internal
+    thread tools with ease.  They are often equipped with adjustable jaws that
+    secure to the fitting and handles  that allow the user to turn the tool with
+    ease.
+  Specs:
+    Type: T-Handle Tap Wrench
+    Material: Steel
+    Thread size: M1.5 to M4
+  Suppliers:
+    RS:
+      PartNo: 230-0112
+      Link: https://uk.rs-online.com/web/p/tap-die-wrenches/2300112?gb=a
 M3tapset:
-    Name: M3 tap set
-    Description: >
-        Used for thread cutting in holes into various materials such as steel allowing you to create 
-        a smooth and precise thread for bolts and other materials. 
-    Specs:
-        Type: Threading Tap Set
-        Material: HSS
-        Thread size: M3
-    Supplier:
-        RS:
-            PartNo: 215-552
-            Link: https://uk.rs-online.com/web/p/threading-taps/0215552?gb=s
-
+  Name: M3 tap set
+  Description: >
+    Used for thread cutting in holes into various materials such as
+    steel allowing you to create  a smooth and precise thread for bolts and
+    other materials. 
+  Specs:
+    Type: Threading Tap Set
+    Material: HSS
+    Thread size: M3
+  Suppliers:
+    RS:
+      PartNo: 215-552
+      Link: https://uk.rs-online.com/web/p/threading-taps/0215552?gb=s
 Lasercutter:
-   Name: Laser cutter
-   Description: |
-        Glowforge 
-   Specs:
-        Technology: 45w laser
-        Model: Glowforge PRO
-        Dimensions: 38” (W) x 20 3/4” (D) x 8 1/4” (H)
-   Suppliers:
+  Name: Laser cutter
+  Description: |
+    Glowforge 
+  Specs:
+    Technology: 45w laser
+    Model: Glowforge PRO
+    Dimensions: 38” (W) x 20 3/4” (D) x 8 1/4” (H)
+  Suppliers:
     RS:
       PartNo: ENDER-3 S1 PRO
-      Link: https://uk.rs-online.com/web/p/3d-printers/2857472?gb=s 
+      Link: https://uk.rs-online.com/web/p/3d-printers/2857472?gb=s
 3dprinter:
-   Name: 3d printer
-   Description: >
-        CREALITY ENDER-3 S1 PRO 3D Printer Kit.
-   Specs:
-        Technology: FFF
-        Build volume: 220x220x270
-        Model: ENDER-3 S1 PRO
-        Dimensions: 455 x 490 x 625mm
-   Suppliers:
-        RS:
-            PartNo: ENDER-3 S1 PRO
-            Link: https://uk.rs-online.com/web/p/3d-printers/2857472?gb=s 
+  Name: 3d printer
+  Description: |
+    CREALITY ENDER-3 S1 PRO 3D Printer Kit.
+  Specs:
+    Technology: FFF
+    Build volume: 220x220x270
+    Model: ENDER-3 S1 PRO
+    Dimensions: 455 x 490 x 625mm
+  Suppliers:
+    RS:
+      PartNo: ENDER-3 S1 PRO
+      Link: https://uk.rs-online.com/web/p/3d-printers/2857472?gb=s
 
 PLAfilament:
-    Name: PLA filament
-    Description: >
-        Its polylactic acid (PLA) material gives your printed objects a high-quality surface finish.
-         It's also ideal for beginners as it's easy to use.
-    Specs:
-        Colour: black
-        Diameter: 1.75 mm
-        Material: Polylactic acid (PLA) 
-        Weight: 300g
-    Suppliers:  
-        RS:
-            PartNo: 832-0214
-            Link: https://uk.rs-online.com/web/p/3d-printing-materials/8320214?gb=s
+  Name: PLA filament
+  Description: >
+    Its polylactic acid (PLA) material gives your printed objects a
+    high-quality surface finish.
+     It's also ideal for beginners as it's easy to use.
+  Specs:
+    Colour: black
+    Diameter: 1.75 mm
+    Material: Polylactic acid (PLA)
+    Weight: 300g
+  Suppliers:
+    RS:
+      PartNo: 832-0214
+      Link: https://uk.rs-online.com/web/p/3d-printing-materials/8320214?gb=s
+vice:
+  Name: Multi Angle Vice
+  Description: >
+    The large C-clamp mount allows for installation to a variety of
+    surfaces including workbenches and tables.  This Multi-Angle Vice is an
+    ideal tool for a wide range of trade, DIY, craft & hobby applications.
+  Specs:
+    Type: Multi Angle Vice
+    Openning: 70 mm
+  Suppliers:
+    RS:
+      PartNo: 1-83-069
+      Link: https://uk.rs-online.com/web/p/vices/6677189?gb=s
+Adhesive:
+  Name: Liquid Adhesive
+  Description: >
+    This quick set two-part epoxy adhesive comes in two tubes for an
+    easy and clean application.  This high strength and high performance
+    adhesive can be used with most materials such as;  glass, wood, metals and
+    plastics.
+  Specs:
+    Type: Epoxy Adhesive
+    color: Transparent
+    size: 24ml
+    Setting time: 24h
+  Suppliers:
+    RS:
+      PartNo: 132-605
+      Link: https://uk.rs-online.com/web/p/adhesives/0132605?gb=a
 
+M3x8mmhexsocketcountersunk:
+  Name: M3x8mm hex socket counter sunk screw
+  Description: >
+    Countersunk Socket Screws, ideal for applications that 
+    require a flush finish and a sleek professional appearance.
+  Specs:
+    Thread: M3
+    Length: 8mm
+    Type: Hex socket counter sunk
+    Pitch: 0.5mm
+  Suppliers:
+    RS:
+      PartNo: 304-4918
+      Link: https://uk.rs-online.com/web/p/socket-screws/3044918?gb=s
+
+Servomotor:
+  Name: Servo motor
+  Description: >
+    The Parallax Standard Servomotor is ideal for prototyping robot arm 
+    and animatronic applications
+  Specs:
+    Max torque: 27Ncm
+    Voltage: 4-6v
+    Power rating: 140mA
+    
+  Suppliers:
+    RS:
+      PartNo: 781-3058
+      Link: https://uk.rs-online.com/web/p/servo-motors/7813058?gb=a
+
+PozidrivPZ1:
+  Name: Pozidriv PZ1 screw driver
+  Description: >
+     high-quality, professional screwdriver has been designed with the 
+     best quality in mind for professionals and DIY enthusiasts
+  Specs:
+    Type: pozidriv
+    Blade length: 75mm
+    Overall length: 164mm
+    
+  Suppliers:
+    RS:
+      PartNo: 544-702
+      Link: https://uk.rs-online.com/web/p/screwdrivers/0544702?gb=a
+
+M3hexnut:
+  Name: M3 Hex Nut
+  Description: >
+     General-purpose 1-sided hex nut
+  Specs:
+    Type: Hex
+    Thread size: M3
+    Material: Stainless steel
+    Width: 5.5mm
+    
+  Suppliers:
+    RS:
+      PartNo: 441-9098
+      Link: https://uk.rs-online.com/web/p/hex-nuts/4419098?gb=s
 
 Flexibletube:
-    Name: Flexible Tube
-    Description: >
-        highly flexible fluorine resin tubing that was designed for installation in small spaces. 
-        The denatured PTFE fluorine resin tubing was developed to realize high flexibility, 
-        while maintaining the same heat and chemical resistance
-    Specs:
-        Colour: Clear
-        Inner Diameter:	6mm
-        Outer Diameter:	8mm
-        Material: PTFE
-    Suppliers:  
-        RS:
-            PartNo: 232-8389
-            Link: https://uk.rs-online.com/web/p/hose-pipe-flexible-tubes/2328389?gb=s
+  Name: Flexible tube
+  Description: >
+     high quality industrial silicone used in food industry, 
+     household electrical appliances, electrical industry and in drink dispensers. 
+  Specs:
+    Inner diameter: 5mm
+    Outer diameter: 9mm
+    Material: silicone
+    colour: clear
+    
+  Suppliers:
+    RS:
+      PartNo: 260-4412
+      Link: https://uk.rs-online.com/web/p/hose-pipe-flexible-tubes/2604412?gb=s
+
+M3X12mmPozipanscrews:
+  Name: M3X12mm Pozipan screws
+  Description: >
+      high-quality pan head machine screw with a versatile Pozidriv recess for a 
+      superior grip when tightening 
+  Specs:
+    Head shape: pan
+    Drive type: pozi
+    Material: steel
+    Length: 12mm
+    thread pitch: 0.5mm
+    
+  Suppliers:
+    RS:
+      PartNo: 560-603
+      Link: https://uk.rs-online.com/web/p/machine-screws/0560603?gb=s
+
+  

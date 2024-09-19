@@ -10,9 +10,9 @@
   
 
 
-The chambercan be used to observe mice response to light stimulus. 
+The chamber can be used to observe small rodents response to light stimulus. 
 
-It has holes with a light at the end on one end a feeding slot with a light in the opposite end. Depending on the behavoiur being experimented the animal needs to poke it's nose into the correct hole and feeding occurs in accordance to the experiemntal rules.
+It has holes with a light on one end and a feeding slot with a light in the opposite end. Depending on the behavoiur being experimented the animal needs to poke it's nose into the correct hole and feeding occurs in accordance to the experiemntal rules.
 
  Its an implementation of a complete behavioural box using BeeHive, off the shelf components and 3D printed parts.
   
