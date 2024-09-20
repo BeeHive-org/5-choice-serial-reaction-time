@@ -31,11 +31,9 @@ It has holes with a light on one end and a feeding slot with a light in the oppo
 - micropython on the ESP32
 - python (or Bonsai) running data collection on PC.
 
-Before g
-
-You should link to a couple of pages:
-
++ To make the different part of the tool, look in to the following links:
+* [.](Printing_list.md){step}
 * [.](testpage1.md){step}
 * [.](testpage2.md){step}
 
-Make sure you start by looking at the [bill of materials]{BOM} page.
+Make sure you start by having the parts in the [bill of materials]{BOM} page.

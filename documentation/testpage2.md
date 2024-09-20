@@ -17,11 +17,11 @@
 ![](images/Ass_full.PNG)
 
 The chamber is used to track mice reaction time using light as a training cue. We will cover the step by step process of making the chamber in this section. 
->i [3d printer]{qty: 1, cat:machine} and  [Laser cutter]{qty: 1, cat:machine}  are OPTIONAL. If you dont have them you can out source the services from your local supplier. 
+>i [3d printer]{qty: 1, cat:machine} and  [Laser cutter]{qty: 1, cat:machine}  are OPTIONAL. If you dont have them you can outsource the services from your local supplier. 
 
 {{BOM}}
 
->i If you have out sourced the printed and laser cut parts.  You migth need to inform your supplier to have  [PLA filament]{Qty: 400g, cat: material} for printing and [clear plastic sheet]{Qty: 1, cat: material} for laser cutting.
+>i If you have outsourced the printed and laser cut parts.  You migth need to inform your supplier to have  [PLA filament]{Qty: 400g, cat: material} for printing and [clear plastic sheet]{Qty: 1, cat: material} for laser cutting.
 
 
 ## Electronics box{pagestep}
@@ -75,45 +75,52 @@ The chamber is used to track mice reaction time using light as a training cue. W
 
 ![](images/Maker_base1.PNG)
 
-## Adding the enclosure
+## Adding the enclosure{pagestep}
 
  + Slide the [platform support](models/Platform_support.svg) parts on opposite sides of the pillars and on top of them place the [Platform base](models/Platform_base.svg).
 
 ![](images/Maker_base2.PNG)
 
- + Slide the [feeding wall](models/Feeding_wall.stl){previewpage} making sure it goes all the way to the bottom. Then for the [led series wall](models/Led_series_wall.stl){previewpage} will slide up to the platform and on top of it will be the [curved wall](models/Curved_wall.stl){previewpage}.
+ + Slide the [feeding wall](models/Feeding_wall.stl){previewpage} making sure it goes all the way to the bottom. Then for the [led series wall](models/Led_series_wall.stl){previewpage} will slide up to the platform and on top of it slide the [curved wall](models/Curved_wall.stl){previewpage}.
 .
 ![](images/Maker_base3.PNG)
 
-9. The side enntry wall is  a clear plastic sheet that has been lser cut and has a hole cut into it. On the hole you should be able to press fit the tunnel connector and the tuneel clamp on either side of the plasric sheet.
++ With the [side entry wall](models/Side_entry_wall.svg) press fit the [tunnel connector](models/Tunnel_connector.stl){previewpage} and the [tunnel clamp](models/Tunnel_clamp.stl){previewpage} on either side of the plasric sheet.
 
 ![](images/Side_entry_wall.PNG)
 
-10. Slide the side entry wall that you made in (step 9) and the laser cut side wall through the pillars of the box that you made in (step 10).
++ Slide the [side entry wall](models/Side_entry_wall.svg) and the [side plain wall](models/Side_plain_wall.svg) through the pillars of the box.
 
 ![](images/Maker_base4.PNG)
 
-11. To assmeble the lid take the cut lid pieces, hinge, latch and groove pins. Locate the holes on the lid and allignthe hinge and latch then press fit the groove pins on the holes to fasten the latch and hinge on the clear sheet.
++ With the [lid](models/Lid.svg) pieces, [hinge](models/Hinge.stl){previewpage}, [trap latch](models/Trap_latch.stl){previewpage} and [groove pins](models/Grooved_pin.stl){previewpage}. Locate the holes on the lid and allign the hinge and latch then press fit the groove pins on the holes to fasten the latch and hinge on the clear sheet.
+
 ![](images/Lid_assembly.PNG)
 
-12. Place the assembled lid on the box assembly made in (step 10). Then using [M3x8 Pozi pan machine screw]{Qty:4} fasten the lid tightening the screws using [Pozidriv PZ1 screw driver]{qty:1,cat:tool}.  
++ Place the assembled lid on the box assembly. Then using [M3x8 Pozi pan machine screw]{Qty:4} fasten the lid tightening the screws using [Pozidriv PZ1 screw driver]{qty:1,cat:tool}.  
 
 ![](images/Maker_base5.PNG)
 
-13. On the bottom of the box slide the guide rail and make sure it is at the middle and fits tightly..
++ On the bottom of the box along the makerbeam xl groove slide the [guide rail](models/Guide_rail.svg) and make sure it is at the middle and fits tightly.
 
 ![](images/Maker_base6.PNG)
 
-14. Place the assembly made in (step13) on top of the assembly made in (step 4) and close the lartches to make the assembly stable.
+## Excrete panel{pagestep}
+
++ Using the Excrete box case parts [case back](models/Excrete_panel_RnL.svg), [case base](models/Excrete_panel_base.svg),[case front](models/Excrete_panel_RnL.svg), [case right](models/Excrete_panel_FnB.svg), [case left](models/Excrete_panel_FnB.svg) and [Liquid Adhesive]{Qty: 1 } stick the parts together and waith for them to dry.
+
+![](images/Excrete_panel.PNG)
+
+## Putting things together{pagestep}
+
++ Place the box assembly on top of the electronics case and close the latches to make the assembly stable.
 
 ![](images/Ass1.PNG)
 
 
-15. This step makes the excrete panel. Collect all the cut parts of the excrete panel and using [Liquid Adhesive]{Qty: 1 } stick them together.
 
-![](images/Excrete_panel.PNG)
 
-16. The assembled tray in (step 15) shoul be slid on the assembly in step 14 to make a collector for the animal excretion during experiment.
++ The assembled tray in should slid on the assembly in the assembly to make a collector for the animal excretion during experiment.
 
 ![](images/Ass_full.PNG)
 
