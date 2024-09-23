@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Serial reaction chamber</title>
+    <title>Serial Reaction Chamber</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="./static/Logo/favicon.ico" />
@@ -34,7 +34,7 @@
     <div class="wrapper header-wrapper" >
         <div class=header-text>
    
-    <h1 class="site-title">Serial reaction chamber</h1>
+    <h1 class="site-title">Serial Reaction Chamber</h1>
    
     <p class="author">by Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="affiliation">Sussex university</p>
@@ -54,7 +54,7 @@
                 <ul class="nav-list">
                 <li>
     <a class="navhome" href="./">
-        Serial reaction chamber
+        Serial Reaction Chamber
     </a>
 </li>
 <li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('./')">
@@ -86,23 +86,23 @@
     </div>
 </li>
 <li class="not-active">
-    <a class="not-active" href="./index_BOM.html">
-        Bill of Materials
-    </a>
-    </li>
-<li class="not-active">
-    <a class="not-active" href="./Printing_list.html">
-        Printing list
-    </a>
-    </li>
-<li class="not-active">
-    <a class="not-active" href="./testpage1.html">
+    <a class="not-active" href="./food_dispencer.html">
         Food dispenser
     </a>
     </li>
 <li class="not-active">
-    <a class="not-active" href="./testpage2.html">
+    <a class="not-active" href="./reaction_chamber.html">
         Reaction chamber
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./Electronics.html">
+        Electronics
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./testcode.html">
+        Software
     </a>
     </li>
 
@@ -117,34 +117,25 @@
 <hr />
 <h3 id="hardware">Hardware:</h3>
 <ul>
-<li>Beehive components<ul>
-<li>ESP32 + central hub</li>
+<li>The supporting hardware for the project:<ul>
+<li><a href="food_dispencer.html" title="">Food dispenser</a></li>
+<li><a href="reaction_chamber.html" title="">Reaction chamber</a> </li>
 </ul>
 </li>
-<li>supporting hardware<ul>
-<li>Reaction Chamber</li>
-<li>Home chamber</li>
-<li>feeder</li>
+<li>Running on the Beehive platform under:<ul>
+<li><a href="Electronics.html" title="">Electronics</a>  </li>
 </ul>
 </li>
 </ul>
 <h3 id="software">Software:</h3>
 <ul>
-<li>micropython on the ESP32</li>
-<li>
-<p>python (or Bonsai) running data collection on PC.</p>
-</li>
-<li>
-<p>To make the different part of the tool, look in to the following links:</p>
-</li>
-<li><a href="Printing_list.html" title="">Printing list</a></li>
-<li><a href="testpage1.html" title="">Food dispenser</a></li>
-<li><a href="testpage2.html" title="">Reaction chamber</a></li>
+<li>The beehive platform uses ESP32 which can run either micropython or C++. </li>
+<li><a href="testcode.html" title="">Software</a>  is provided in microPython.</li>
+<li>You can also use Bonsai for data collection on PC however this implimentation is not covered under this documentation.</li>
 </ul>
-<p>Make sure you start by having the parts in the <a href="index_BOM.html">bill of materials</a> (<a href="index_BOM.html"><img alt="HTML" class="smallicon" src="static/Icons/html.png" title="HTML Bill of Materials" /></a>, <a href="index_BOM.csv"><img alt="CSV" class="smallicon" src="static/Icons/csv.png" title="CSV Bill of Materials" /></a>) page.</p>
 <!-- GitBuilding Nav -->
 <hr />
-<p><a href="index_BOM.html">Next page</a></p>
+<p><a href="food_dispencer.html">Next page</a></p>
     </div>
 </div>
 <footer class="site-footer">
@@ -155,7 +146,7 @@
 </a>
     <p class="author">©2024 Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="email">Contact: <a href="mailto:s.n.ngotho@sussex.ac.ke">s.n.ngotho@sussex.ac.ke</a></p>
-    <p class="license">Serial reaction chamber is released under <a href="license.html">CC-BY-3.0</a>.</p>
+    <p class="license">Serial Reaction Chamber is released under <a href="license.html">CC-BY-3.0</a>.</p>
 
     </div>
 </footer></body>

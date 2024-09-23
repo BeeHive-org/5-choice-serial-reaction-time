@@ -2,16 +2,17 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Serial reaction chamber</title>
+    <title>Serial Reaction Chamber</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="./static/Logo/favicon.ico" />
-<link rel="icon" type="image/png" href="./static/Logo/favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="./static/Logo/favicon-16x16.png" sizes="16x16" />
+    <link rel="shortcut icon" href="../static/Logo/favicon.ico" />
+<link rel="icon" type="image/png" href="../static/Logo/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="../static/Logo/favicon-16x16.png" sizes="16x16" />
 
-    <link href="./static/base-style.css" rel="stylesheet">
-    <link href="./static/site-style.css" rel="stylesheet">
-                <style>
+    <link href="../static/base-style.css" rel="stylesheet">
+    <link href="../static/site-style.css" rel="stylesheet">
+                <script type="text/javascript" src="../static/3d-viewer.js"></script>
+        <style>
   :root {
     --primary-color: #f1502f;
   }
@@ -27,14 +28,14 @@
 }
 </style>
     
-        <script type="text/javascript" src="./static/search.js" defer=""></script>
+        <script type="text/javascript" src="../static/search.js" defer=""></script>
     </head>
 <body>
 <header class="site-header">
     <div class="wrapper header-wrapper" >
         <div class=header-text>
    
-    <h1 class="site-title">Serial reaction chamber</h1>
+    <h1 class="site-title">Serial Reaction Chamber</h1>
    
     <p class="author">by Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="affiliation">Sussex university</p>
@@ -53,11 +54,11 @@
                 </a>
                 <ul class="nav-list">
                 <li>
-    <a class="navhome" href="./">
-        Serial reaction chamber
+    <a class="navhome" href="../">
+        Serial Reaction Chamber
     </a>
 </li>
-<li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('./')">
+<li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('../')">
   <input
     type="text"
     placeholder="Search..."
@@ -72,7 +73,7 @@
         <div v-if="searchResults.length === 0">No results.</div>
         <template v-for="(result, index) in searchResults">
             <li>
-                <a class="search-result" :href="`./${result.path}.html`">
+                <a class="search-result" :href="`../${result.path}.html`">
                <span v-for="crumb in result.breadCrumbs.slice(0, -1)">
                 ${crumb + ' > '}
                 </span>
@@ -86,23 +87,23 @@
     </div>
 </li>
 <li class="not-active">
-    <a class="not-active" href="./index_BOM.html">
-        Bill of Materials
-    </a>
-    </li>
-<li class="active">
-    <a class="active" href="./Printing_list.html">
-        Printing list
-    </a>
-    </li>
-<li class="not-active">
-    <a class="not-active" href="./testpage1.html">
+    <a class="not-active" href="../food_dispencer.html">
         Food dispenser
     </a>
     </li>
 <li class="not-active">
-    <a class="not-active" href="./testpage2.html">
+    <a class="not-active" href="../reaction_chamber.html">
         Reaction chamber
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="../Electronics.html">
+        Electronics
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="../testcode.html">
+        Software
     </a>
     </li>
 
@@ -110,22 +111,20 @@
             </nav>
         </div>
         <div class="wrapper">
-    <h1 id="printing-list">Printing list</h1>
-<p>This page will contain instructions of things that need to be printed for this project.</p>
-<!-- GitBuilding Nav -->
-<hr />
-<p><a href="index_BOM.html">Previous page</a> | <a href="testpage1.html">Next page</a></p>
+    <h1 id="chute_with_mount">chute_with_mount</h1>
+<noscript><a href="chute_with_mount.stl">Download</a></noscript>
+<p><gb3d-viewer src="chute_with_mount.stl"></gb3d-viewer></p>
     </div>
 </div>
 <footer class="site-footer">
     <div class="wrapper">
         <a target="_blank" rel="noopener noreferrer" href="https://gitbuilding.io">
-    <img class="icon" src="./static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
+    <img class="icon" src="../static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
     <span class="doc-info">Documentation powered by GitBuilding</span>
 </a>
     <p class="author">©2024 Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="email">Contact: <a href="mailto:s.n.ngotho@sussex.ac.ke">s.n.ngotho@sussex.ac.ke</a></p>
-    <p class="license">Serial reaction chamber is released under <a href="license.html">CC-BY-3.0</a>.</p>
+    <p class="license">Serial Reaction Chamber is released under <a href="../license.html">CC-BY-3.0</a>.</p>
 
     </div>
 </footer></body>

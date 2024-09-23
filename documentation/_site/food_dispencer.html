@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Serial reaction chamber</title>
+    <title>Serial Reaction Chamber</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="./static/Logo/favicon.ico" />
@@ -34,7 +34,7 @@
     <div class="wrapper header-wrapper" >
         <div class=header-text>
    
-    <h1 class="site-title">Serial reaction chamber</h1>
+    <h1 class="site-title">Serial Reaction Chamber</h1>
    
     <p class="author">by Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="affiliation">Sussex university</p>
@@ -54,7 +54,7 @@
                 <ul class="nav-list">
                 <li>
     <a class="navhome" href="./">
-        Serial reaction chamber
+        Serial Reaction Chamber
     </a>
 </li>
 <li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('./')">
@@ -86,23 +86,40 @@
     </div>
 </li>
 <li class="active">
-    <a class="active" href="./index_BOM.html">
-        Bill of Materials
-    </a>
-    </li>
-<li class="not-active">
-    <a class="not-active" href="./Printing_list.html">
-        Printing list
-    </a>
-    </li>
-<li class="not-active">
-    <a class="not-active" href="./testpage1.html">
+    <a class="active" href="./food_dispencer.html">
         Food dispenser
     </a>
+        <ul class="sub-nav-list">
+                <li>
+            <a class="not-active" href="./food_dispencer_BOM.html">
+                Bill of Materials
+            </a>
+        </li>
+                <li>
+            <a class="not-active" href="./machining_dispencer.html">
+                Machining Guide
+            </a>
+        </li>
+                <li>
+            <a class="not-active" href="./make_dispenser.html">
+                Assembly Guide
+            </a>
+        </li>
+            </ul>
     </li>
 <li class="not-active">
-    <a class="not-active" href="./testpage2.html">
+    <a class="not-active" href="./reaction_chamber.html">
         Reaction chamber
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./Electronics.html">
+        Electronics
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./testcode.html">
+        Software
     </a>
     </li>
 
@@ -110,39 +127,18 @@
             </nav>
         </div>
         <div class="wrapper">
-    <h1 id="bill-of-materials">Bill of Materials</h1>
-<p>Download this as a <a href="index_BOM.csv">CSV file</a></p>
-<h3 id="parts">Parts</h3>
+    <h1 id="food-dispenser">Food dispenser</h1>
+<p>An automated feeding and storage tank for small animals during lab test. In this project its being used to reward the animal under test. After testing is done the feeding tank should be filled and programed to auto feed mode to ensure the animal is feed as per the diatery requirements.</p>
+<p><img alt="" src="images/Food_dispencer.PNG" title="" /></p>
+<p>Before you start ensure you have everything by checking the <a href="food_dispencer_BOM.html">bill of materials page</a> (<a href="food_dispencer_BOM.html"><img alt="HTML" class="smallicon" src="static/Icons/html.png" title="HTML Bill of Materials" /></a>, <a href="food_dispencer_BOM.csv"><img alt="CSV" class="smallicon" src="static/Icons/csv.png" title="CSV Bill of Materials" /></a>).</p>
+<p>You can then follow the guides below:</p>
 <ul>
-<li>1 <a Class="bom" href="Parts/Adhesive.html">Liquid Adhesive</a> </li>
-<li>14 <a Class="bom" href="Parts/M3hexnut.html">M3 hex Nut</a> </li>
-<li>38 <a Class="bom" href="Parts/M3X12mmPozipanscrews.html">M3x8 Pozi pan machine screw</a> </li>
-<li>8 <a Class="bom" href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a> </li>
-<li>1 <a Class="bom" href="Parts/Servomotor.html">Servo motor</a> </li>
-</ul>
-<h3 id="tools">Tools</h3>
-<ul>
-<li>1 <a Class="bom" href="Parts/Hacksaw.html">150mm mini hacksaw</a> </li>
-<li>1 <a Class="bom" href="Parts/2mmHexkey.html">2mm Hex key</a> </li>
-<li>1 <a Class="bom" href="Parts/M3tapset.html">M3 tap set</a> </li>
-<li>1 <a Class="bom" href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a> </li>
-<li>1 <a Class="bom" href="Parts/Tapwrench.html">tap wrench</a> </li>
-</ul>
-<h3 id="machine">Machine</h3>
-<ul>
-<li>2 <a Class="bom" href="Parts/3dprinter.html">3d printer</a> </li>
-<li>2 <a Class="bom" href="Parts/Lasercutter.html">Laser cutter</a> </li>
-</ul>
-<h3 id="material">Material</h3>
-<ul>
-<li>2 <a Class="bom" href="Parts/ClearSheet.html">clear plastic sheet</a> </li>
-<li>1 <a Class="bom" href="Parts/Flexibletube.html">Flexible Tube</a> </li>
-<li>1 <a Class="bom" href="Parts/MakerBeamXL.html">maker beam XL</a> </li>
-<li>500 g of <a Class="bom" href="Parts/PLAfilament.html">PLA filament</a> </li>
+<li><a href="machining_dispencer.html" title="">Machining Guide</a></li>
+<li><a href="make_dispenser.html" title="">Assembly Guide</a></li>
 </ul>
 <!-- GitBuilding Nav -->
 <hr />
-<p><a href="index.html">Previous page</a> | <a href="Printing_list.html">Next page</a></p>
+<p><a href="index.html">Previous page</a> | <a href="food_dispencer_BOM.html">Next page</a></p>
     </div>
 </div>
 <footer class="site-footer">
@@ -153,7 +149,7 @@
 </a>
     <p class="author">©2024 Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="email">Contact: <a href="mailto:s.n.ngotho@sussex.ac.ke">s.n.ngotho@sussex.ac.ke</a></p>
-    <p class="license">Serial reaction chamber is released under <a href="license.html">CC-BY-3.0</a>.</p>
+    <p class="license">Serial Reaction Chamber is released under <a href="license.html">CC-BY-3.0</a>.</p>
 
     </div>
 </footer></body>

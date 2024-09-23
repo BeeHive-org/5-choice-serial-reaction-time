@@ -10,9 +10,10 @@ CustomCategories:
     DisplayName: Material
     Reuse: false
 Email: s.n.ngotho@sussex.ac.ke
+ExternalDirs:
+  hardware: ../hardware/
 HoverColor: '#555555'
 License: CC-BY-3.0
+PageBOMTitle: '## For this section you will need:'
 PrimaryColor: '#f1502f'
 SecondaryColor: '#cccccc'
-ExternalDirs:
-  hardware: "../hardware/"

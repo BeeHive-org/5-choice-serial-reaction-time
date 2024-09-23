@@ -1,4 +1,4 @@
-# Serial reaction chamber
+# Serial Reaction Chamber
 
   
 
@@ -17,23 +17,18 @@ It has holes with a light on one end and a feeding slot with a light in the oppo
  Its an implementation of a complete behavioural box using BeeHive, off the shelf components and 3D printed parts.
   
 ---
+
   
 ### Hardware:
-- Beehive components
-    -  ESP32 + central hub
-- supporting hardware
-    - Reaction Chamber
-    - Home chamber
-    -  feeder
-   
-  
+- The supporting hardware for the project:
+     * [.](food_dispencer.md){step}
+    * [.](reaction_chamber.md){step} 
+- Running on the Beehive platform under:
+     + [.](Electronics.md){step}  
+
 ### Software:
-- micropython on the ESP32
-- python (or Bonsai) running data collection on PC.
+-    The beehive platform uses ESP32 which can run either micropython or C++. 
+-     [.](testcode.md){step}  is provided in microPython.
+ -   You can also use Bonsai for data collection on PC however this implimentation is not covered under this documentation.
 
-+ To make the different part of the tool, look in to the following links:
-* [.](Printing_list.md){step}
-* [.](testpage1.md){step}
-* [.](testpage2.md){step}
 
-Make sure you start by having the parts in the [bill of materials]{BOM} page.

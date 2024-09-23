@@ -13,25 +13,13 @@
 [Liquid Adhesive]:Parts.yaml#Adhesive
 
 
-# Reaction chamber
-![](images/Ass_full.PNG)
-
-The chamber is used to track mice reaction time using light as a training cue. We will cover the step by step process of making the chamber in this section. 
->i [3d printer]{qty: 1, cat:machine} and  [Laser cutter]{qty: 1, cat:machine}  are OPTIONAL. If you dont have them you can outsource the services from your local supplier. 
+# Assembly guide
 
 {{BOM}}
 
->i If you have outsourced the printed and laser cut parts.  You migth need to inform your supplier to have  [PLA filament]{Qty: 400g, cat: material} for printing and [clear plastic sheet]{Qty: 1, cat: material} for laser cutting.
-
-
 ## Electronics box{pagestep}
- + Using a laser cutter, cut the following parts:
-     + 1 pc of [Ecase_Back](models/Ecase_Back.svg)
-     + 1 pc of [Ecase_Base](models/Ecase_Base.svg)
-     + 1 pc of [Ecase_Front](models/Ecase_Front.svg)
-     +  2 pcs of [Ecase_R&L](models/Ecase_RnL.svg)
 
-   + Assemble the Electronics box with the laser cut parts to form a box then fasten the box with [M3 hex Nut]{Qty:12} and  [M3x8 Pozi pan machine screw]{Qty:12} using [Pozidriv PZ1 screw driver]{qty:1,cat:tool} to tighten the nuts.
+   + Assemble the Electronics box with the laser cut parts (Ecase_back,Ecase_front,Ecase_base,Ecase_RnL) to form a box then fasten the box with [M3 hex Nut]{Qty:12} and  [M3x8 Pozi pan machine screw]{Qty:12} using [Pozidriv PZ1 screw driver]{qty:1,cat:tool} to tighten the screws.
 
 ![](images/Electronics_base.PNG)
 
@@ -43,14 +31,9 @@ The chamber is used to track mice reaction time using light as a training cue. W
 
 ## Electronics cover{pagestep}
 
-  + Print the two models below
-![](models/Latch_handle.stl) 
+>! Do not print the latch_assembly as one part 
 
-![](models/Latch_base.stl)
-
->! Do not print the latch_assembly.stl as one part 
-
-   + Snap fit the latch_handle.svg on to the latch_base.svg part to from the [Latch_assembly](models/Latch_assembly.stl){previewpage}.
+   + Snap fit the [latch handle](models/Latch_handle.stl){previewpage} on to the [latch base](models/Latch_base.stl){previewpage}  part to from the [Latch_assembly](models/Latch_assembly.stl){previewpage}.
 
 
  + Locate the holes on the side of the box and using [M3 hex Nut]{Qty:2} and [M3x8 Pozi pan machine screw]{Qty:2} fasten the assembled latch to the box uisng [Pozidriv PZ1 screw driver]{qty:1,cat:tool}.   
@@ -63,9 +46,7 @@ The chamber is used to track mice reaction time using light as a training cue. W
 
 ## Maker beam frame{pagestep}
 
- + Using [150mm mini hacksaw]{Qty:1,cat: Tool} cut 2 pcs 200mm long and 6 pcs 150mm long from the [maker beam XL]{Qty:1,cat: material}
- 
-  + From the [M3 tap set]{Qty:1,cat: Tool} place the taping screw on the [tap wrench]{Qty:1,cat: Tool} then make threads on the holes at the end of the maker beam xl pieces that you had cut ealier. 
+
 
   + Place 2 makerbeam xl 200mm and 150 mm end to end at their meeting point joing them together using [corner](models/corner.stl){previewpage}. to make a square frame. Using [M3x8 Pozi pan machine screw]{Qty:12} fasten the corners to the maker beam xl uisng [Pozidriv PZ1 screw driver]{qty:1,cat:tool}. Repeat the process for all the corners to make a rectangle.
 
@@ -123,7 +104,4 @@ The chamber is used to track mice reaction time using light as a training cue. W
 + The assembled tray in should slid on the assembly in the assembly to make a collector for the animal excretion during experiment.
 
 ![](images/Ass_full.PNG)
-
-
-
 

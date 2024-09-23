@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Serial reaction chamber</title>
+    <title>Serial Reaction Chamber</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="./static/Logo/favicon.ico" />
@@ -11,8 +11,7 @@
 
     <link href="./static/base-style.css" rel="stylesheet">
     <link href="./static/site-style.css" rel="stylesheet">
-                <script type="text/javascript" src="./static/3d-viewer.js"></script>
-        <style>
+                <style>
   :root {
     --primary-color: #f1502f;
   }
@@ -35,7 +34,7 @@
     <div class="wrapper header-wrapper" >
         <div class=header-text>
    
-    <h1 class="site-title">Serial reaction chamber</h1>
+    <h1 class="site-title">Serial Reaction Chamber</h1>
    
     <p class="author">by Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="affiliation">Sussex university</p>
@@ -55,7 +54,7 @@
                 <ul class="nav-list">
                 <li>
     <a class="navhome" href="./">
-        Serial reaction chamber
+        Serial Reaction Chamber
     </a>
 </li>
 <li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('./')">
@@ -87,23 +86,40 @@
     </div>
 </li>
 <li class="not-active">
-    <a class="not-active" href="./index_BOM.html">
-        Bill of Materials
-    </a>
-    </li>
-<li class="not-active">
-    <a class="not-active" href="./Printing_list.html">
-        Printing list
-    </a>
-    </li>
-<li class="not-active">
-    <a class="not-active" href="./testpage1.html">
+    <a class="not-active" href="./food_dispencer.html">
         Food dispenser
     </a>
     </li>
 <li class="active">
-    <a class="active" href="./testpage2.html">
+    <a class="active" href="./reaction_chamber.html">
         Reaction chamber
+    </a>
+        <ul class="sub-nav-list">
+                <li>
+            <a class="not-active" href="./reaction_chamber_BOM.html">
+                Bill of Materials
+            </a>
+        </li>
+                <li>
+            <a class="not-active" href="./machining_chamber.html">
+                Machining Guide
+            </a>
+        </li>
+                <li>
+            <a class="active" href="./make_chamber.html">
+                Assembly guide
+            </a>
+        </li>
+            </ul>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./Electronics.html">
+        Electronics
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./testcode.html">
+        Software
     </a>
     </li>
 
@@ -111,13 +127,9 @@
             </nav>
         </div>
         <div class="wrapper">
-    <h1 id="reaction-chamber">Reaction chamber</h1>
-<p><img alt="" src="images/Ass_full.PNG" title="" /></p>
-<p>The chamber is used to track mice reaction time using light as a training cue. We will cover the step by step process of making the chamber in this section. </p>
-<div class="info-block">
-<p><a href="Parts/3dprinter.html">3d printer</a> and  <a href="Parts/Lasercutter.html">Laser cutter</a>  are OPTIONAL. If you dont have them you can outsource the services from your local supplier. </p>
-</div>
+    <h1 id="assembly-guide">Assembly guide</h1>
 <div class="pagebom">
+<h2 id="for-this-section-you-will-need">For this section you will need:</h2>
 <h3 id="parts">Parts</h3>
 <ul>
 <li>1 <a Class="bom" href="Parts/Adhesive.html">Liquid Adhesive</a> </li>
@@ -126,40 +138,12 @@
 </ul>
 <h3 id="tools">Tools</h3>
 <ul>
-<li>1 <a Class="bom" href="Parts/Hacksaw.html">150mm mini hacksaw</a> </li>
-<li>1 <a Class="bom" href="Parts/M3tapset.html">M3 tap set</a> </li>
 <li>1 <a Class="bom" href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a> </li>
-<li>1 <a Class="bom" href="Parts/Tapwrench.html">tap wrench</a> </li>
 </ul>
-<h3 id="machine">Machine</h3>
-<ul>
-<li>1 <a Class="bom" href="Parts/3dprinter.html">3d printer</a> </li>
-<li>1 <a Class="bom" href="Parts/Lasercutter.html">Laser cutter</a> </li>
-</ul>
-<h3 id="material">Material</h3>
-<ul>
-<li>1 <a Class="bom" href="Parts/ClearSheet.html">clear plastic sheet</a> </li>
-<li>1 <a Class="bom" href="Parts/MakerBeamXL.html">maker beam XL</a> </li>
-<li>400 g of <a Class="bom" href="Parts/PLAfilament.html">PLA filament</a> </li>
-</ul>
-</div>
-<div class="info-block">
-<p>If you have outsourced the printed and laser cut parts.  You migth need to inform your supplier to have  <a href="Parts/PLAfilament.html">PLA filament</a> for printing and <a href="Parts/ClearSheet.html">clear plastic sheet</a> for laser cutting.</p>
 </div>
 <h2 class="page-step" id="electronics-box">Step 1: Electronics box</h2>
 <ul>
-<li>
-<p>Using a laser cutter, cut the following parts:</p>
-<ul>
-<li>1 pc of <a href="models/Ecase_Back.svg" title="">Ecase_Back</a></li>
-<li>1 pc of <a href="models/Ecase_Base.svg" title="">Ecase_Base</a></li>
-<li>1 pc of <a href="models/Ecase_Front.svg" title="">Ecase_Front</a></li>
-<li>2 pcs of <a href="models/Ecase_RnL.svg" title="">Ecase_R&amp;L</a></li>
-</ul>
-</li>
-<li>
-<p>Assemble the Electronics box with the laser cut parts to form a box then fasten the box with <a href="Parts/M3hexnut.html">M3 hex Nut</a> and  <a href="Parts/M3X12mmPozipanscrews.html">M3x8 Pozi pan machine screw</a> using <a href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a> to tighten the nuts.</p>
-</li>
+<li>Assemble the Electronics box with the laser cut parts (Ecase_back,Ecase_front,Ecase_base,Ecase_RnL) to form a box then fasten the box with <a href="Parts/M3hexnut.html">M3 hex Nut</a> and  <a href="Parts/M3X12mmPozipanscrews.html">M3x8 Pozi pan machine screw</a> using <a href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a> to tighten the screws.</li>
 </ul>
 <p><img alt="" src="images/Electronics_base.PNG" title="" /></p>
 <h2 class="page-step" id="electronics-board">Step 2: Electronics board</h2>
@@ -168,19 +152,12 @@
 </ul>
 <p><img alt="" src="images/Electronics_base1.PNG" title="" /></p>
 <h2 class="page-step" id="electronics-cover">Step 3: Electronics cover</h2>
-<ul>
-<li>Print the two models below</li>
-</ul>
-<noscript><a href="models/Latch_handle.stl"></a></noscript>
-<p><gb3d-viewer src="models/Latch_handle.stl"></gb3d-viewer> </p>
-<noscript><a href="models/Latch_base.stl"></a></noscript>
-<p><gb3d-viewer src="models/Latch_base.stl"></gb3d-viewer></p>
 <div class="caution-block">
-<p>Do not print the latch_assembly.stl as one part </p>
+<p>Do not print the latch_assembly as one part </p>
 </div>
 <ul>
 <li>
-<p>Snap fit the latch_handle.svg on to the latch_base.svg part to from the <a href="models/Latch_assembly.html" title="">Latch_assembly</a>.</p>
+<p>Snap fit the <a href="models/Latch_handle.html" title="">latch handle</a> on to the <a href="models/Latch_base.html" title="">latch base</a>  part to from the <a href="models/Latch_assembly.html" title="">Latch_assembly</a>.</p>
 </li>
 <li>
 <p>Locate the holes on the side of the box and using <a href="Parts/M3hexnut.html">M3 hex Nut</a> and <a href="Parts/M3X12mmPozipanscrews.html">M3x8 Pozi pan machine screw</a> fasten the assembled latch to the box uisng <a href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a>.   </p>
@@ -193,15 +170,7 @@
 <p><img alt="" src="images/Electronics_base3.PNG" title="" /></p>
 <h2 class="page-step" id="maker-beam-frame">Step 4: Maker beam frame</h2>
 <ul>
-<li>
-<p>Using <a href="Parts/Hacksaw.html">150mm mini hacksaw</a> cut 2 pcs 200mm long and 6 pcs 150mm long from the <a href="Parts/MakerBeamXL.html">maker beam XL</a></p>
-</li>
-<li>
-<p>From the <a href="Parts/M3tapset.html">M3 tap set</a> place the taping screw on the <a href="Parts/Tapwrench.html">tap wrench</a> then make threads on the holes at the end of the maker beam xl pieces that you had cut ealier. </p>
-</li>
-<li>
-<p>Place 2 makerbeam xl 200mm and 150 mm end to end at their meeting point joing them together using <a href="models/corner.html" title="">corner</a>. to make a square frame. Using <a href="Parts/M3X12mmPozipanscrews.html">M3x8 Pozi pan machine screw</a> fasten the corners to the maker beam xl uisng <a href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a>. Repeat the process for all the corners to make a rectangle.</p>
-</li>
+<li>Place 2 makerbeam xl 200mm and 150 mm end to end at their meeting point joing them together using <a href="models/corner.html" title="">corner</a>. to make a square frame. Using <a href="Parts/M3X12mmPozipanscrews.html">M3x8 Pozi pan machine screw</a> fasten the corners to the maker beam xl uisng <a href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a>. Repeat the process for all the corners to make a rectangle.</li>
 </ul>
 <p><img alt="" src="images/Maker_base.PNG" title="" /></p>
 <ul>
@@ -256,7 +225,7 @@
 <p><img alt="" src="images/Ass_full.PNG" title="" /></p>
 <!-- GitBuilding Nav -->
 <hr />
-<p><a href="testpage1.html">Previous page</a></p>
+<p><a href="machining_chamber.html">Previous page</a> | <a href="Electronics.html">Next page</a></p>
     </div>
 </div>
 <footer class="site-footer">
@@ -267,7 +236,7 @@
 </a>
     <p class="author">©2024 Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="email">Contact: <a href="mailto:s.n.ngotho@sussex.ac.ke">s.n.ngotho@sussex.ac.ke</a></p>
-    <p class="license">Serial reaction chamber is released under <a href="license.html">CC-BY-3.0</a>.</p>
+    <p class="license">Serial Reaction Chamber is released under <a href="license.html">CC-BY-3.0</a>.</p>
 
     </div>
 </footer></body>

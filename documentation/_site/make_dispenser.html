@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Serial reaction chamber</title>
+    <title>Serial Reaction Chamber</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="./static/Logo/favicon.ico" />
@@ -11,8 +11,7 @@
 
     <link href="./static/base-style.css" rel="stylesheet">
     <link href="./static/site-style.css" rel="stylesheet">
-                <script type="text/javascript" src="./static/3d-viewer.js"></script>
-        <style>
+                <style>
   :root {
     --primary-color: #f1502f;
   }
@@ -35,7 +34,7 @@
     <div class="wrapper header-wrapper" >
         <div class=header-text>
    
-    <h1 class="site-title">Serial reaction chamber</h1>
+    <h1 class="site-title">Serial Reaction Chamber</h1>
    
     <p class="author">by Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="affiliation">Sussex university</p>
@@ -55,7 +54,7 @@
                 <ul class="nav-list">
                 <li>
     <a class="navhome" href="./">
-        Serial reaction chamber
+        Serial Reaction Chamber
     </a>
 </li>
 <li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('./')">
@@ -86,24 +85,41 @@
         </template>
     </div>
 </li>
-<li class="not-active">
-    <a class="not-active" href="./index_BOM.html">
-        Bill of Materials
-    </a>
-    </li>
-<li class="not-active">
-    <a class="not-active" href="./Printing_list.html">
-        Printing list
-    </a>
-    </li>
 <li class="active">
-    <a class="active" href="./testpage1.html">
+    <a class="active" href="./food_dispencer.html">
         Food dispenser
     </a>
+        <ul class="sub-nav-list">
+                <li>
+            <a class="not-active" href="./food_dispencer_BOM.html">
+                Bill of Materials
+            </a>
+        </li>
+                <li>
+            <a class="not-active" href="./machining_dispencer.html">
+                Machining Guide
+            </a>
+        </li>
+                <li>
+            <a class="active" href="./make_dispenser.html">
+                Assembly Guide
+            </a>
+        </li>
+            </ul>
     </li>
 <li class="not-active">
-    <a class="not-active" href="./testpage2.html">
+    <a class="not-active" href="./reaction_chamber.html">
         Reaction chamber
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./Electronics.html">
+        Electronics
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./testcode.html">
+        Software
     </a>
     </li>
 
@@ -111,10 +127,9 @@
             </nav>
         </div>
         <div class="wrapper">
-    <h1 id="food-dispenser">Food dispenser</h1>
-<p>An automated feeding and storage tank for small animals during lab test. In this project its being used to reward the animal under test. After testing is done the feeding tank should be filled and programed to auto feed mode to ensure the animal is feed as per the diatery requirements.</p>
-<p><img alt="" src="images/Food_dispencer.PNG" title="" /></p>
+    <h1 id="assembly-guide">Assembly Guide</h1>
 <div class="pagebom">
+<h2 id="for-this-section-you-will-need">For this section you will need:</h2>
 <h3 id="parts">Parts</h3>
 <ul>
 <li>8 <a Class="bom" href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a> </li>
@@ -125,71 +140,47 @@
 <li>1 <a Class="bom" href="Parts/2mmHexkey.html">2mm Hex key</a> </li>
 <li>1 <a Class="bom" href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a> </li>
 </ul>
-<h3 id="machine">Machine</h3>
-<ul>
-<li>1 <a Class="bom" href="Parts/3dprinter.html">3d printer</a> </li>
-<li>1 <a Class="bom" href="Parts/Lasercutter.html">Laser cutter</a> </li>
-</ul>
 <h3 id="material">Material</h3>
 <ul>
-<li>1 <a Class="bom" href="Parts/ClearSheet.html">clear plastic sheet</a> </li>
 <li>1 <a Class="bom" href="Parts/Flexibletube.html">Flexible Tube</a> </li>
-<li>100 g of <a Class="bom" href="Parts/PLAfilament.html">PLA filament</a> </li>
 </ul>
 </div>
-<div class="info-block">
-<p>You can skip step 1 and 2, if you have purchased the parts.</p>
-</div>
-<h2 class="page-step" id="printing-parts">Step 1: Printing parts</h2>
-<div class="help-block">
-<p>Please follow the information on your slicing software and remember to add a brim where necessary. </p>
-</div>
+<h2 class="page-step" id="motor-holder">Step 1: Motor holder</h2>
 <ul>
-<li>To accomplish this section you will need a <a href="Parts/3dprinter.html">3d printer</a> and <a href="Parts/PLAfilament.html">PLA filament</a> to print the following parts:</li>
+<li>Push the <a href="Parts/Servomotor.html">Servo motor</a> on the 3d printed <a href="models/Motor_holder.html" title="">motor holder</a>.</li>
 </ul>
-<noscript><a href="models/Allparts.stl"></a></noscript>
-<p><gb3d-viewer src="models/Allparts.stl"></gb3d-viewer></p>
-<h2 class="page-step" id="laser-cut-parts">Step 2: Laser cut parts</h2>
-<ul>
-<li>To accomplish this section you will need a <a href="Parts/Lasercutter.html">Laser cutter</a> and <a href="Parts/ClearSheet.html">clear plastic sheet</a> to cut the following:<ul>
-<li><a href="models/Outer_cover.svg" title="">Outer cover</a></li>
-<li><a href="models/Inner_cover.svg" title="">Inner cover</a></li>
-</ul>
-</li>
-</ul>
-<h2 class="page-step" id="assemble-the-parts">Step 3: Assemble the parts</h2>
-<ol>
-<li>Push the <a href="Parts/Servomotor.html">Servo motor</a> on the 3d printed motor holder.</li>
-</ol>
 <p><img alt="" src="images/base_motor.PNG" title="" /></p>
-<ol start="2">
-<li>Align the motor holder pillars with the tank base holes and fasten the assembly using<a href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a> and use <a href="Parts/2mmHexkey.html">2mm Hex key</a> to tighten the screws. Make sure the through hole is at the oppsite side of the motor support hook.</li>
-</ol>
+<ul>
+<li>Align the motor holder pillars with the <a href="models/base.html" title="">tank base</a> holes and fasten the assembly using <a href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a> and use <a href="Parts/2mmHexkey.html">2mm Hex key</a> to tighten the screws. Make sure the smaller hole on the edge is in line with the servo motor wires</li>
+</ul>
 <p><img alt="" src="images/base1.PNG" title="" /></p>
-<ol start="3">
-<li>Align the feed throat with the two holes and the feed throat hole on the base. Then fasten the feed throat with <a href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a> and tighten uisng <a href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a>.</li>
-</ol>
+<h2 class="page-step" id="feed-throat">Step 2: Feed throat</h2>
+<ul>
+<li>Align the <a href="models/chute_with_mount.html" title="">Chute</a> with the two holes and the smaller hole on the tank base. Then fasten the feed throat with <a href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a> and tighten uisng <a href="Parts/PozidrivPZ1.html">Pozidriv PZ1 screw driver</a>.</li>
+</ul>
 <p><img alt="" src="images/base2.PNG" title="" /></p>
-<ol start="4">
-<li>fit the rotor on the servo motor shaft and fasten it using the <a href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a>.</li>
-</ol>
+<h2 class="page-step" id="tank">Step 3: Tank</h2>
+<ul>
+<li>Fit the <a href="models/Rotor.html" title="">rotor</a> on the servo motor shaft and fasten it using the <a href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a>.</li>
+</ul>
 <p><img alt="" src="images/base3.PNG" title="" /></p>
-<ol start="5">
-<li>screw the tank on to the tank base. MAke sure the tabs fit in the slots.</li>
-</ol>
+<ul>
+<li>screw the <a href="models/Feed_tank.html" title="">feed tank</a> on to the tank base. Make sure the tabs fit in the slots.</li>
+</ul>
 <p><img alt="" src="images/base4.PNG" title="" /></p>
-<ol start="6">
-<li>place the outer cover and inner cover ontop of each other and align the holes with the cover handle. Then fasten them using the <a href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a> on the cover handle hole.</li>
-</ol>
+<h2 class="page-step" id="cover">Step 4: Cover</h2>
+<ul>
+<li>Place the <a href="models/Outer_cover.svg" title="">outer cover</a> and <a href="models/Inner_cover.svg" title="">inner cover</a> on top of each other and align the holes with the <a href="models/Handle.html" title="">cover handle</a>. Then fasten them using the <a href="Parts/M3x8mmhexsocketcountersunk.html">M3x8mm hex socket counter sunk screw</a> on the cover handle hole.</li>
+</ul>
 <p><img alt="" src="images/lid.PNG" title="" /></p>
-<ol start="7">
+<ul>
 <li>The lid can be placed ontop of the tank to cover the food. The <a href="Parts/Flexibletube.html">Flexible Tube</a> is then press fit on the fed throat.</li>
-</ol>
+</ul>
 <p><img alt="" src="images/base5.PNG" title="" /></p>
 <p>You made it!</p>
 <!-- GitBuilding Nav -->
 <hr />
-<p><a href="Printing_list.html">Previous page</a> | <a href="testpage2.html">Next page</a></p>
+<p><a href="machining_dispencer.html">Previous page</a> | <a href="reaction_chamber.html">Next page</a></p>
     </div>
 </div>
 <footer class="site-footer">
@@ -200,7 +191,7 @@
 </a>
     <p class="author">©2024 Andre Maia Chagas and Solomon Gitau Ngotho</p>
     <p class="email">Contact: <a href="mailto:s.n.ngotho@sussex.ac.ke">s.n.ngotho@sussex.ac.ke</a></p>
-    <p class="license">Serial reaction chamber is released under <a href="license.html">CC-BY-3.0</a>.</p>
+    <p class="license">Serial Reaction Chamber is released under <a href="license.html">CC-BY-3.0</a>.</p>
 
     </div>
 </footer></body>
