@@ -1,32 +1,28 @@
-# 5-choice-serial-reaction-time
+# Serial Reaction Chamber
 
-## Open source implementation of a behavioural system for freely moving rodents.
+ 
+![](images/box_sketch.png)
 
-  
-![](media/box_sketch.png)
-  
 
-It has holes with a light on one end and a feeding slot with a light in the opposite end. Depending on the behavoiur being experimented the animal needs to poke it's nose 
-into the correct hole and feeding occurs in accordance to the experiemntal rules.
+The chamber can be used to observe small rodents response to light stimulus. 
 
-This system is the first implementation of a complete behavioural box using BeeHive, off the shelf components and 3D printed parts.
+It has holes with a light on one end and a feeding slot with a light in the opposite end. Depending on the behavoiur being experimented the animal needs to poke it's nose into the correct hole and feeding occurs in accordance to the experiemntal rules.
+
+ Its an implementation of a complete behavioural box using BeeHive, off the shelf components and 3D printed parts.
   
 ---
+
   
 ### Hardware:
-- Beehive components:
-- - central hub + ESP32
-- - h-bridge
-- - IR- emitter and detector
-  
-- other components:
-- - Makerbeams for the box frame
-- - perspex sheets for box wall
-- - food pellet dispenser based on this [model](https://open-ephys.atlassian.net/wiki/spaces/OEW/pages/79069188/Food+Pellet+Dispenser)
-- - 3D printed parts for the different parts
-  
-### Software:
-- micropython on the ESP32
-- python (or Bonsai) running data collection on PC.
+- The supporting hardware for the project:
+     * [.](food_dispencer.md){step}
+    * [.](reaction_chamber.md){step} 
+- Running on the Beehive platform under:
+     + [.](Electronics.md){step}  
 
---- 
+### Software:
+-    The beehive platform uses ESP32 which can run either micropython or C++. 
+-     [.](testcode.md){step}  is provided in microPython.
+ -   You can also use Bonsai for data collection on PC however this implimentation is not covered under this documentation.
+
+If you wish to build the complete box please look at the [Overal BOM]{BOM} otherwise you can find indvidual sectional Bill of materials under each tab.
