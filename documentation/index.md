@@ -31,4 +31,4 @@ It has holes with a light on one end and a feeding slot with a light in the oppo
 -     [.](testcode.md){step}  is provided in microPython.
  -   You can also use Bonsai for data collection on PC however this implimentation is not covered under this documentation.
 
-
+If you wish to build the complete box please look at the [Overal BOM]{BOM} otherwise you can find indvidual sectional Bill of materials under each tab.
