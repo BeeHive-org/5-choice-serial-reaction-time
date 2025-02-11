@@ -1,0 +1,3 @@
+[submodule "hardware/3Dparts/pellet_dispenser"]
+	path = hardware/3Dparts/pellet_dispenser
+	url = https://github.com/open-neuroscience/pellet_dispenser.git
