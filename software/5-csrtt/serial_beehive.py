@@ -2,7 +2,7 @@
 import belay
 from belay import Device
 import time
-import utime
+#import utime
 
 
 
@@ -1382,9 +1382,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                                 break
                             
 
-                           
                         nose_pokes[choice].value(0)
-                            
                             
                         mouse_to_food = 0
                         correct_time= 0
@@ -1398,17 +1396,17 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         break
                         
                     
-                elif task_duration > SD + extra:
+                    if task_duration > SD + extra:
                     
-                    button_pressed=True
-                    time_out=True
+                        button_pressed=True
+                        time_out=True
                     
-                    task_duration = 0
-                    mouse_to_food = 0
-                    correct_time= 0
-                    premature_timer = 0
+                        task_duration = 0
+                        mouse_to_food = 0
+                        correct_time= 0
+                        premature_timer = 0
                     
-                    omissions += 1
+                        omissions += 1
 
 
                #Time out: 
@@ -1626,17 +1624,17 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     
                         
                     
-                elif task_duration > selected_SD + extra: #Omission
+                    elif task_duration > selected_SD + extra: #Omission
 
-                    button_pressed=True
-                    time_out=True
-                     
-                    task_duration = 0
-                    mouse_to_food = 0
-                    correct_time= 0
-                    premature_timer = 0
-                    omissions += 1
-                    
+                        button_pressed=True
+                        time_out=True
+                         
+                        task_duration = 0
+                        mouse_to_food = 0
+                        correct_time= 0
+                        premature_timer = 0
+                        omissions += 1
+                        
                       
                 
             if time_out == True: #Time out

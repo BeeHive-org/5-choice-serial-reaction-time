@@ -8,7 +8,19 @@ from datetime import datetime #used to implement dates
 now = datetime.now()
 
 print("setting up...")
-print(belay.list_devices()) 
+print(belay.list_devices())
+"""
+COM3 in the line below refers to which COM port Windows is using to comunicate with the ESP32.
+this can change depending on the machine, so if a error similar to this appears:
+`  File "/home/andre/repositories/5-choice-serial-reaction-time/software/5-csrtt/outside2.py", line 12, in <module>
+    bh = SerialBeeHive('COM3') #SerialBeeHive is now bh`
+
+Users will need to find which COM port their device is connected to.
+Here is how to find it on Windows machines:
+https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-windows
+
+
+"""
 bh = SerialBeeHive('COM3') #SerialBeeHive is now bh
 bh.setup() # call the set up function
 print("done setup")
