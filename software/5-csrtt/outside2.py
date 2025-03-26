@@ -21,7 +21,7 @@ https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establis
 
 
 """
-bh = SerialBeeHive('COM3') #SerialBeeHive is now bh
+bh = SerialBeeHive("COM3")#('/dev/ttyUSB0') #SerialBeeHive is now bh
 bh.setup() # call the set up function
 print("done setup")
 

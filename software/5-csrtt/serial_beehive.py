@@ -120,6 +120,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
 
             
             timer_food = time.ticks_ms()# timer starts to know when the mouse went for the food
+            timer_food2 = time.ticks_ms()
             
             while magazine_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
                 utime.sleep(0.1)
