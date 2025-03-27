@@ -21,7 +21,7 @@ It has holes with a light on one end and a feeding slot with a light in the oppo
   
 ### Hardware:
 - The supporting hardware for the project:
-     * [.](food_dispencer.md){step}
+     * [.](food_dispenser.md){step}
     * [.](reaction_chamber.md){step} 
 - Running on the Beehive platform under:
      + [.](Electronics.md){step}  

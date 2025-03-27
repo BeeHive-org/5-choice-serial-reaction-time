@@ -12,7 +12,7 @@
 
 ##Printing parts{pagestep}
 
->? Support from bed plate is required. It sunnecesary to add support everywhere. Add a brim to ensure the small parts are anchored appropriately. 
+>? Support from bed plate is required. It is unnecesary to add support everywhere. Add a brim to ensure the small parts are anchored appropriately. 
 
 *  Use a [3d printer]{qty: 1, cat:machine} and [PLA filament]{ qty:100g, cat:material} to print the following parts:
        +  [Motor holder](models/Motor_holder.stl)
