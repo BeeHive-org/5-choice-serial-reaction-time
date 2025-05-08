@@ -19,7 +19,10 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         import utime
 
         #This is for the stepper motor that turns the food dispenser allowing
-        from machine import Pin  
+        #from machine import Pin
+        #from machine import PWM
+        from machine import ADC
+        
 
 
         
@@ -30,27 +33,37 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         #IN3 = machine.Pin(25,machine.Pin.OUT)
         #IN4 = machine.Pin(26,machine.Pin.OUT)
 
-        #pins = [IN1, IN2, IN3, IN4] 
-
+        #pins = [IN1, IN2, IN3, IN4]
+        magazine_sensor_pin = 2
+        dispenser_sensor_pin = 12
+        button_trial_pin = 15
+        
+        sensors_analogRead_flag = True
+        
+        if sensors_analogRead_flag:
+            magazine_sensor = ADC(magazine_sensor_pin) # Sensor LED for the food magazine
+            dispenser_sensor = ADC(dispenser_sensor_pin) # Sensor LEDs for the food dispenser to detect when food pellets come down
+            button_trial = ADC(button_trial_pin) # Sensor for trial start light
+        else:
+            magazine_sensor = machine.Pin(magazine_sensor_pin,machine.Pin.IN) # Sensor LED for the food magazine
+            dispenser_sensor = machine.Pin(dispenser_sensor_pin, machine.Pin.IN) # Sensor LEDs for the food dispenser to detect when food pellets come down
+            button_trial = machine.Pin(button_trial_pin, machine.Pin.IN) # Sensor for trial start light
+        
         
         food_led = machine.Pin(15, machine.Pin.OUT) #LED = the yellow LED for the food magazine
-        magazine_sensor = machine.Pin(36,machine.Pin.IN) # Sensor LED for the food magazine
-        dispenser_sensor = machine.Pin(33, machine.Pin.IN) # Sensor LEDs for the food dispenser to detect when food pellets come down
-        button_trial = machine.Pin(22, machine.Pin.IN) # Sensor for trial start light
-        
         #All the pins for teh yellow LEDs nose pokes
-        NP_1 = machine.Pin(17,machine.Pin.OUT) 
-        NP_2 = machine.Pin(16,machine.Pin.OUT)
-        NP_3 = machine.Pin(19,machine.Pin.OUT)
-        NP_4 = machine.Pin(21, machine.Pin.OUT)
-        NP_5 = machine.Pin(2,machine.Pin.OUT)
+        NP_1 = machine.Pin(14,machine.Pin.OUT) 
+        NP_2 = machine.Pin(27,machine.Pin.OUT)
+        NP_3 = machine.Pin(26,machine.Pin.OUT)
+        NP_4 = machine.Pin(25, machine.Pin.OUT)
+        NP_5 = machine.Pin(32,machine.Pin.OUT)
 
         #All the IR. sensors for the different Nose pokes
-        button_1 = machine.Pin(23,Pin.IN)
-        button_2 = machine.Pin(5,Pin.IN) 
-        button_3 = machine.Pin(18,Pin.IN)
-        button_4 = machine.Pin(4,Pin.IN)
-        button_5 = machine.Pin(39,machine.Pin.IN)
+        button_1 = machine.Pin(16,Pin.IN)
+        button_2 = machine.Pin(17,Pin.IN) 
+        button_3 = machine.Pin(19,Pin.IN)
+        button_4 = machine.Pin(21,Pin.IN)
+        button_5 = machine.Pin(22,machine.Pin.IN)
         
 
         
@@ -116,12 +129,12 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             food_led.value(1) #the food magazine LED value starts at 0
             reward()
                
-            food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
+            #food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
 
             
             timer_food = time.ticks_ms()# timer starts to know when the mouse went for the food
             timer_food2 = time.ticks_ms()
-            
+            print(magazine_sensor.value())
             while magazine_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
                 utime.sleep(0.1)
                 timer_food2=time.ticks_ms() # as soon as the magazine_sensor.value(1), it starts counting          
