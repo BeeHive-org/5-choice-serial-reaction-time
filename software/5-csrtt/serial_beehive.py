@@ -28,34 +28,27 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         
         #The pins for the servo motor on the pellet dispenser
         dispenser_motor = machine.PWM(Pin(18),freq =50)
-        #IN1 = machine.Pin(27,machine.Pin.OUT)
-        #IN2 = machine.Pin(14,machine.Pin.OUT)
-        #IN3 = machine.Pin(25,machine.Pin.OUT)
-        #IN4 = machine.Pin(26,machine.Pin.OUT)
+
 
         #pins = [IN1, IN2, IN3, IN4]
-        magazine_sensor_pin = 2
+        magazine_sensor_pin = 15
         dispenser_sensor_pin = 12
-        button_trial_pin = 15
-        
-        sensors_analogRead_flag = True
-        
-        if sensors_analogRead_flag:
-            magazine_sensor = ADC(magazine_sensor_pin) # Sensor LED for the food magazine
-            dispenser_sensor = ADC(dispenser_sensor_pin) # Sensor LEDs for the food dispenser to detect when food pellets come down
-            button_trial = ADC(button_trial_pin) # Sensor for trial start light
-        else:
-            magazine_sensor = machine.Pin(magazine_sensor_pin,machine.Pin.IN) # Sensor LED for the food magazine
-            dispenser_sensor = machine.Pin(dispenser_sensor_pin, machine.Pin.IN) # Sensor LEDs for the food dispenser to detect when food pellets come down
-            button_trial = machine.Pin(button_trial_pin, machine.Pin.IN) # Sensor for trial start light
+        button_trial_pin = 2
         
         
-        food_led = machine.Pin(15, machine.Pin.OUT) #LED = the yellow LED for the food magazine
+
+        magazine_sensor = machine.Pin(magazine_sensor_pin,machine.Pin.IN) # Sensor LED for the food magazine
+        dispenser_sensor = machine.Pin(dispenser_sensor_pin, machine.Pin.IN) # Sensor LEDs for the food dispenser to detect when food pellets come down
+        button_trial = machine.Pin(button_trial_pin, machine.Pin.IN) # Sensor for trial start light
+        
+        
+        food_led = machine.Pin(33, machine.Pin.OUT) #LED = the yellow LED for the food magazine
+        
         #All the pins for teh yellow LEDs nose pokes
         NP_1 = machine.Pin(14,machine.Pin.OUT) 
         NP_2 = machine.Pin(27,machine.Pin.OUT)
-        NP_3 = machine.Pin(26,machine.Pin.OUT)
-        NP_4 = machine.Pin(25, machine.Pin.OUT)
+        NP_3 = machine.Pin(25,machine.Pin.OUT)
+        NP_4 = machine.Pin(26, machine.Pin.OUT)
         NP_5 = machine.Pin(32,machine.Pin.OUT)
 
         #All the IR. sensors for the different Nose pokes
@@ -90,51 +83,53 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         
         def reward():
             pellet_dropped = 0 #Pellet is one which allows for the food dispensing to start through the while loop underneath
-            reward_servo_mov_time = 400;
+            reward_servo_mov_time = 800;
             
-            timer1 = time.ticks_ms()
-            timer2 = time.ticks_ms()
-            #sequence= [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
+
             while pellet_dropped==0:
-                dispenser_motor.duty(900)
-                
+                dispenser_motor.duty(50)
+                timer1 = time.ticks_ms()
+                timer2 = time.ticks_ms()
                 while(timer2-timer1<reward_servo_mov_time):
-                    pellet = dispenser_sensor.value()     
+                    pellet = dispenser_sensor.value()
+                    #print(pellet)
                     timer2 = time.ticks_ms()
                     if pellet == 0:
                         pellet_dropped = 1
                         break
                 
                 if pellet_dropped == 0:
-                    dispenser_motor.duty(300)
+                    dispenser_motor.duty(23)
                     timer1 = time.ticks_ms()
                     timer2 = time.ticks_ms()
                     while(timer2-timer1<reward_servo_mov_time):
+                        timer2 = time.ticks_ms()
                         pellet = dispenser_sensor.value()     
                         if pellet == 0:
                             pellet_dropped = 1
                             break
         
     @Device.task 
-    def food_training(): #this is the function for the food training
+    def food_training(num_trial=50): #this is the function for the food training
         """Food magazine training"""
         
         total=time.ticks_ms()
        
-        num_trial = 50
+
 
         for trial in range (num_trial): #trials meaning trials that can be changed in the brackets
-            
+          
             start_trial_time= time.ticks_ms() #this is a timer of the start of the trial -> gives number in miliseconds not actual time   
+
+
             food_led.value(1) #the food magazine LED value starts at 0
-            reward()
-               
+            reward() 
             #food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
 
             
             timer_food = time.ticks_ms()# timer starts to know when the mouse went for the food
             timer_food2 = time.ticks_ms()
-            print(magazine_sensor.value())
+            #print(magazine_sensor.value())
             while magazine_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
                 utime.sleep(0.1)
                 timer_food2=time.ticks_ms() # as soon as the magazine_sensor.value(1), it starts counting          
@@ -143,11 +138,12 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             #ITIs
             times=[4,8,16,32] 
             
-            times_num = random.choice(times) #random time out of these is chosen
+            times_num = random.choice(times) #one random time out of these is chosen
+            #times_num = times_num*1000 #convert seconds to milliseconds
             count_time(times_num) # time.sleeps allows for the machine to pause for the amount of times the ITI is
             
             
-            mouse_to_food = timer_food2-timer_food #mouse to food is the amount of time the mouse took to get teh food
+            mouse_to_food = timer_food2-timer_food #mouse to food is the amount of time the mouse took to get the food
             end_trial_time = time.ticks_ms()
             
             trial_duration = end_trial_time-start_trial_time #end of the whole task

@@ -21,7 +21,7 @@ https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establis
 
 
 """
-bh = SerialBeeHive("COM3")#('/dev/ttyUSB0') #SerialBeeHive is now bh
+bh = SerialBeeHive('/dev/ttyUSB0') #SerialBeeHive is now bh
 bh.setup() # call the set up function
 print("done setup")
 
@@ -33,23 +33,46 @@ print("done setup")
 #bh.food_training() # call the function food training in bh
 #data1 = [] #data1 is a list where all the data can be extracted to
 
-phase = "Food_magazine_training"  #phase name
+
 animal="mouse1" # animal name                    
-# 
-# 
+
 date = now.strftime("%d_%m_%Y-%H_%M_%S") #date and time
 
-# 
-fileName = animal+"_"+phase+"_"+ date+".csv"  #name of the file
+
+phase = "food_magazine_training"  #phase name
+file_name = animal+"_"+phase+"_"+ date+".csv"  #name of the file
 
 #Go through the trials appending to CSV
 
-with open(fileName,'w+') as csvfile: #within a new excel file
+print("start magazine training")
+session = []
+fields = ["Trial","ITI","start_trial_time",
+          "Mouse_food_latency","trial_duration","total_duration"]
+
+#thonny's backend termination leads to all data from session being lost if each new
+#dataline is not saved on the file right away, so the code below does that.
+
+#write the header.
+with open(file_name, 'w', newline='') as csvfile: #within a new excel file
     csvwriter = csv.writer(csvfile) 
-    csvwriter.writerow(["Trial","ITI","Mouse_food_latency","total_trial"]) #writes the headers
-    for trial in bh.food_training():        
-        print(trial)    
-        csvwriter.writerow(trial) #the rows are data1
+    csvwriter.writerow(fields) #writes the headers
+
+#the next line opens the file, writes to it and closes it every trial,
+#which is a bit wasteful, but avoids loosing data in case something hapens.
+index = 1
+for trial in bh.food_training(num_trial=50):
+    print("trial: ",index)
+    index = index+1z
+    #transform all elements in list to strings
+    trial_s = [str(r) for r in trial]
+    with open(file_name, 'a', newline='') as csvfile: #within a new excel file
+        
+        csvwriter = csv.writer(csvfile)
+        
+        csvwriter.writerows([trial_s]) #the rows are data1
+        
+        
+        
 
 
 
@@ -58,12 +81,12 @@ with open(fileName,'w+') as csvfile: #within a new excel file
 
 
 # #                
-# animal="mouse1" # name can be changes                    
+# animal="mouse1" # name can be changed                    
 # phase = "Phase1"
 # # 
 # date = now.strftime("%d_%m_%Y-%H_%M_%S")
 
-# fileName = animal+"_"+phase+"_"+ date+".csv"
+# file_name = animal+"_"+phase+"_"+ date+".csv"
 
 
 # with open(fileName,'w+') as csvfile: #fid:
