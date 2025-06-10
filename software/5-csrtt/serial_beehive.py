@@ -33,43 +33,43 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         #pins = [IN1, IN2, IN3, IN4]
         magazine_sensor_pin = 15
         dispenser_sensor_pin = 39
-        button_trial_pin = 2
+        trial_start_sensor_pin = 2
         
         
 
         magazine_sensor = machine.Pin(magazine_sensor_pin,machine.Pin.IN) # Sensor LED for the food magazine
         dispenser_sensor = machine.Pin(dispenser_sensor_pin, machine.Pin.IN) # Sensor LEDs for the food dispenser to detect when food pellets come down
-        button_trial = machine.Pin(button_trial_pin, machine.Pin.IN) # Sensor for trial start light
+        trial_start_sensor = machine.Pin(trial_start_sensor_pin, machine.Pin.IN) # Sensor for trial start light
         
         
         food_led = machine.Pin(33, machine.Pin.OUT) #LED = the yellow LED for the food magazine
         
         #All the pins for teh yellow LEDs nose pokes
-        NP_1 = machine.Pin(14,machine.Pin.OUT) 
-        NP_2 = machine.Pin(27,machine.Pin.OUT)
-        NP_3 = machine.Pin(25,machine.Pin.OUT)
-        NP_4 = machine.Pin(26, machine.Pin.OUT)
-        NP_5 = machine.Pin(32,machine.Pin.OUT)
+        nose_poke_led_1 = machine.Pin(14,machine.Pin.OUT) 
+        nose_poke_led_2 = machine.Pin(27,machine.Pin.OUT)
+        nose_poke_led_3 = machine.Pin(25,machine.Pin.OUT)
+        nose_poke_led_4 = machine.Pin(26, machine.Pin.OUT)
+        nose_poke_led_5 = machine.Pin(32,machine.Pin.OUT)
 
         #All the IR. sensors for the different Nose pokes
-        button_1 = machine.Pin(16,Pin.IN)
-        button_2 = machine.Pin(17,Pin.IN) 
-        button_3 = machine.Pin(19,Pin.IN)
-        button_4 = machine.Pin(21,Pin.IN)
-        button_5 = machine.Pin(22,machine.Pin.IN)
+        nose_poke_sensor_1 = machine.Pin(16,Pin.IN)
+        nose_poke_sensor2 = machine.Pin(17,Pin.IN) 
+        nose_poke_sensor3 = machine.Pin(19,Pin.IN)
+        nose_poke_sensor4 = machine.Pin(21,Pin.IN)
+        nose_poke_sensor5 = machine.Pin(22,machine.Pin.IN)
         
 
         
         #This is to associate each button with the Nose poke for the data output on the excel sheet
-        button_correspondence = [ (button_1, "NP_1"), (button_2, "NP_2"), (button_3, "NP_3"), (button_4, "NP_4"), (button_5,"NP_5")]
+        np_sensor_correspondence = [ (nose_poke_sensor1, "nose_poke_led_1"), (nose_poke_sensor2, "nose_poke_led_2"), (nose_poke_sensor3, "nose_poke_led_3"), (nose_poke_sensor4, "nose_poke_led_4"), (nose_poke_sensor5,"nose_poke_led_5")]
 
 
         #This sets all the Nosepoked yellow LED values at 0 before the trial starts
-        NP_1.value(0)
-        NP_2.value(0)
-        NP_3.value(0)
-        NP_4.value(0)
-        NP_5.value(0)
+        nose_poke_led_1.value(0)
+        nose_poke_led_2.value(0)
+        nose_poke_led_3.value(0)
+        nose_poke_led_4.value(0)
+        nose_poke_led_5.value(0)
         
         def count_time(interval):
             timer1 = time.ticks_ms()
@@ -167,8 +167,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             start_trial_time= time.ticks_ms() #this is a timer of the start of the trial -> gives number in miliseconds not actual time   
             food_led.value(1) #the food magazine LED value starts at 0
             
-            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
-                print(button_trial.value())
+            while trial_start_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+                print(trial_start_sensor.value())
                 utime.sleep(0.5)
                
             food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
@@ -203,8 +203,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             start_trial_time= time.ticks_ms() #this is a timer of the start of the trial    
             food_led.value(1) #the food magazine LED value starts at 0
             
-            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
-                print(button_trial.value())
+            while trial_start_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+                print(trial_start_sensor.value())
                 utime.sleep(0.5)          
             food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
             
@@ -214,14 +214,14 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
     
                 #if any of the buttons are interrupted the sensor will go from 1 to 0 showing an interruption
                 #Here one of the Nosepokes has been poked
-                if button_1.value() == 0 or button_2.value() == 0  or button_3.value() == 0  or button_4.value() == 0 or button_5.value()==0: #if any of the NPs are poked
+                if nose_poke_sensor1.value() == 0 or nose_poke_sensor2.value() == 0  or nose_poke_sensor3.value() == 0  or nose_poke_sensor4.value() == 0 or nose_poke_sensor5.value()==0: #if any of the NPs are poked
                       
                     #Lights are turned off
-                    NP_1.value(0) 
-                    NP_2.value(0)
-                    NP_3.value(0)
-                    NP_4.value(0)
-                    NP_5.value(0)
+                    nose_poke_led_1.value(0) 
+                    nose_poke_led_2.value(0)
+                    nose_poke_led_3.value(0)
+                    nose_poke_led_4.value(0)
+                    nose_poke_led_5.value(0)
                     
                     #Reward is sent
                     reward()
@@ -239,12 +239,12 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     trial_duration = trial_end-start_trial_time
                            
                 #If no NPs are pressed then nothing happens
-                elif button_1.value() == 1 or button_2.value() == 1 or button_3.value() == 1 or button_4.value() == 1 or button_5.value() == 1:#0 meaning the NPs haven't been touched     
-                        NP_1.value(1) #THE Lights remain on
-                        NP_2.value(1)
-                        NP_3.value(1)
-                        NP_4.value(1)
-                        NP_5.value(1)
+                elif nose_poke_sensor1.value() == 1 or nose_poke_sensor2.value() == 1 or nose_poke_sensor3.value() == 1 or nose_poke_sensor4.value() == 1 or nose_poke_sensor5.value() == 1:#0 meaning the NPs haven't been touched     
+                        nose_poke_led_1.value(1) #THE Lights remain on
+                        nose_poke_led_2.value(1)
+                        nose_poke_led_3.value(1)
+                        nose_poke_led_4.value(1)
+                        nose_poke_led_5.value(1)
                         food_led.value(0)
                         
             timer_end = utime.ticks_ms()
@@ -286,14 +286,14 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             start_trial_time= time.ticks_ms() #this is a timer of the start of the trial    
             food_led.value(1) #the food magazine LED value starts at 0
             
-            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
-                print(button_trial.value())
+            while trial_start_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+                print(trial_start_sensor.value())
                 utime.sleep(0.5)          
             food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
     
             #matching accumulating all the NP and button into lists
-            nose_pokes = [NP_1,NP_2,NP_3,NP_4, NP_5]
-            np_buttons = [button_1,button_2,button_3,button_4, button_5]
+            nose_pokes = [nose_poke_led_1,nose_poke_led_2,nose_poke_led_3,nose_poke_led_4, nose_poke_led_5]
+            np_buttons = [nose_poke_sensor1,nose_poke_sensor2,nose_poke_sensor3,nose_poke_sensor4, nose_poke_sensor5]
             
             #random choice between NP1 to NP5 (0 to 4)
             choice = random.randint(0,4)
@@ -376,11 +376,11 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                     correct_time = task_time-timer_duration  #timer for when the mouse got the correct response                     
                     button_pressed = True #A NP has been poked
                     
-                    NP_1.value(0)
-                    NP_2.value(0)
-                    NP_3.value(0)
-                    NP_4.value(0)
-                    NP_5.value(0)
+                    nose_poke_led_1.value(0)
+                    nose_poke_led_2.value(0)
+                    nose_poke_led_3.value(0)
+                    nose_poke_led_4.value(0)
+                    nose_poke_led_5.value(0)
                     #food dispenser is on
                     reward()
                         
@@ -415,8 +415,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         wrong_button_pressed = button
                         wrong_button_name = ""
                         
-                        #code to know which wrong NP has been pressed in the case of an incorrect NP has been poked and relate it back to the NP through the button_correspondence
-                        for button_variable,np_name in button_correspondence:
+                        #code to know which wrong NP has been pressed in the case of an incorrect NP has been poked and relate it back to the NP through the np_sensor_correspondence
+                        for button_variable,np_name in np_sensor_correspondence:
                             if button_variable == wrong_button_pressed:
                                 wrong_button_name = np_name #teh wrong NP = to the NP_name (it's associating the sensor to the correct NP)
                                 break
@@ -505,8 +505,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             if current_SD==1000: #once it reaches sd of 1 second the whole loop stops and it moves on to the next phase
                 break
             
-            nose_pokes = [NP_1,NP_2, NP_3, NP_4, NP_5]
-            np_buttons = [button_1,button_2,button_3,button_4, button_5,button_trial]
+            nose_pokes = [nose_poke_led_1,nose_poke_led_2, nose_poke_led_3, nose_poke_led_4, nose_poke_led_5]
+            np_buttons = [nose_poke_sensor1,nose_poke_sensor2,nose_poke_sensor3,nose_poke_sensor4, nose_poke_sensor5,nose_poke_sensortrial]
                     
             start_timer = time.ticks_ms()
             
@@ -514,8 +514,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                
             food_led.value(1) #the food magazine LED value starts at 0
             
-            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
-               print(button_trial.value())
+            while trial_start_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+               print(trial_start_sensor.value())
                utime.sleep(0.5)          
             food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
             
@@ -605,11 +605,11 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         button_pressed = True #A NP has been poked
                         
                         
-                        NP_1.value(0)
-                        NP_2.value(0)
-                        NP_3.value(0)
-                        NP_4.value(0)
-                        NP_5.value(0)
+                        nose_poke_led_1.value(0)
+                        nose_poke_led_2.value(0)
+                        nose_poke_led_3.value(0)
+                        nose_poke_led_4.value(0)
+                        nose_poke_led_5.value(0)
                         #food dispenser is on
                         reward()
                             
@@ -650,8 +650,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                             wrong_button_pressed = button
                             wrong_button_name = ""
                             
-                            #code to know which wrong NP has been pressed in the case of an incorrect NP has been poked and relate it back to the NP through the button_correspondence
-                            for button_variable,np_name in button_correspondence:
+                            #code to know which wrong NP has been pressed in the case of an incorrect NP has been poked and relate it back to the NP through the np_sensor_correspondence
+                            for button_variable,np_name in np_sensor_correspondence:
                                 if button_variable == wrong_button_pressed:
                                     wrong_button_name = np_name #teh wrong NP = to the NP_name (it's associating the sensor to the correct NP)
                                     break
@@ -767,7 +767,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
     @Device.task
     def stage9_task():
         """stage 9"""
-        button_correspondence = [ (button_1, "NP_1"), (button_2, "NP_2"), (button_3, "NP_3"), (button_4, "NP_4"), (button_5,"NP_5")]
+        np_sensor_correspondence = [ (nose_poke_sensor1, "nose_poke_led_1"), (nose_poke_sensor2, "nose_poke_led_2"), (nose_poke_sensor3, "nose_poke_led_3"), (nose_poke_sensor4, "nose_poke_led_4"), (nose_poke_sensor5,"nose_poke_led_5")]
         correct_response = 0 #counter for when the mouse has pressed the right button
         omissions = 0 #counter of when no button is pressed
         premature_response=0 
@@ -787,15 +787,15 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             ITI= 5000
             SD = 1000
             
-            nose_pokes = [NP_1,NP_2, NP_3, NP_4, NP_5]
-            np_buttons = [button_1,button_2,button_3,button_4, button_5]
+            nose_pokes = [nose_poke_led_1,nose_poke_led_2, nose_poke_led_3, nose_poke_led_4, nose_poke_led_5]
+            np_buttons = [nose_poke_sensor1,nose_poke_sensor2,nose_poke_sensor3,nose_poke_sensor4, nose_poke_sensor5]
                     
             start_timer = time.ticks_ms()
             
             #start of the trial
             food_led.value(1) #Food magazine yellow LED turns on to start the trial
             
-            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+            while trial_start_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
                 utime.sleep(0.1)          
             food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
             
@@ -882,11 +882,11 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         button_pressed = True #A NP has been poked
                         
                         
-                        NP_1.value(0)
-                        NP_2.value(0)
-                        NP_3.value(0)
-                        NP_4.value(0)
-                        NP_5.value(0)
+                        nose_poke_led_1.value(0)
+                        nose_poke_led_2.value(0)
+                        nose_poke_led_3.value(0)
+                        nose_poke_led_4.value(0)
+                        nose_poke_led_5.value(0)
                         #food dispenser is on
                         reward()
                             
@@ -925,8 +925,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                             wrong_button_pressed = button
                             wrong_button_name = ""
                             
-                            #code to know which wrong NP has been pressed in the case of an incorrect NP has been poked and relate it back to the NP through the button_correspondence
-                            for button_variable,np_name in button_correspondence:
+                            #code to know which wrong NP has been pressed in the case of an incorrect NP has been poked and relate it back to the NP through the np_sensor_correspondence
+                            for button_variable,np_name in np_sensor_correspondence:
                                 if button_variable == wrong_button_pressed:
                                     wrong_button_name = np_name #teh wrong NP = to the NP_name (it's associating the sensor to the correct NP)
                                     break
@@ -1001,8 +1001,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         SD=1000
         extra = 4000
        
-        nose_pokes = [NP_1,NP_2, NP_3, NP_4, NP_5]
-        np_buttons = [button_1,button_2,button_3,button_4,button_5]
+        nose_pokes = [nose_poke_led_1,nose_poke_led_2, nose_poke_led_3, nose_poke_led_4, nose_poke_led_5]
+        np_buttons = [nose_poke_sensor1,nose_poke_sensor2,nose_poke_sensor3,nose_poke_sensor4,nose_poke_sensor5]
         total=time.ticks_ms()
 
         #start of trials
@@ -1050,7 +1050,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             #Task starts
             food_led.value(1) #Food magazine yellow LED turns on to start the trial
             
-            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+            while trial_start_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
                 utime.sleep(0.1)          
             food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
             
@@ -1125,11 +1125,11 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         button_pressed = True #A NP has been poked
                         
                         
-                        NP_1.value(0)
-                        NP_2.value(0)
-                        NP_3.value(0)
-                        NP_4.value(0)
-                        NP_5.value(0)
+                        nose_poke_led_1.value(0)
+                        nose_poke_led_2.value(0)
+                        nose_poke_led_3.value(0)
+                        nose_poke_led_4.value(0)
+                        nose_poke_led_5.value(0)
                         #food dispenser is on
                         reward()
                         
@@ -1169,7 +1169,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                             wrong_button_pressed = button
                             wrong_button_name = ""
                             
-                            for button_variable,np_name in button_correspondence:
+                            for button_variable,np_name in np_sensor_correspondence:
                                 if button_variable == wrong_button_pressed:
                                   
                                     wrong_button_name = np_name
@@ -1229,8 +1229,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         """stage 11"""
     
         num_trials = 500 #another way to place number of trials
-        nose_pokes = [NP_1,NP_2, NP_3, NP_4, NP_5]
-        np_buttons = [button_1,button_2,button_3,button_4, button_5]
+        nose_pokes = [nose_poke_led_1,nose_poke_led_2, nose_poke_led_3, nose_poke_led_4, nose_poke_led_5]
+        np_buttons = [nose_poke_sensor1,nose_poke_sensor2,nose_poke_sensor3,nose_poke_sensor4, nose_poke_sensor5]
        
         
         total = time.ticks_ms()
@@ -1252,7 +1252,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
 
             food_led.value(1) #Food magazine yellow LED turns on to start the trial
             
-            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+            while trial_start_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
                 utime.sleep(0.1)          
             food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
            
@@ -1268,8 +1268,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             
             
            # print('NP number chosen',choice)
-            nose_pokes = [NP_1,NP_2, NP_3, NP_4, NP_5]
-            np_buttons = [button_1,button_2,button_3,button_4, button_5]
+            nose_pokes = [nose_poke_led_1,nose_poke_led_2, nose_poke_led_3, nose_poke_led_4, nose_poke_led_5]
+            np_buttons = [nose_poke_sensor1,nose_poke_sensor2,nose_poke_sensor3,nose_poke_sensor4, nose_poke_sensor5]
             
             
             #list of wrong buttons that can be pressed during the game
@@ -1342,11 +1342,11 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                             button_pressed = True #A NP has been poked
                         
                        
-                        NP_1.value(0)
-                        NP_2.value(0)
-                        NP_3.value(0)
-                        NP_4.value(0)
-                        NP_5.value(0)
+                        nose_poke_led_1.value(0)
+                        nose_poke_led_2.value(0)
+                        nose_poke_led_3.value(0)
+                        nose_poke_led_4.value(0)
+                        nose_poke_led_5.value(0)
                         #food dispenser is on
                         reward()
                         
@@ -1385,7 +1385,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         wrong_button_pressed = button
                         wrong_button_name = ""
                             
-                        for button_variable,np_name in button_correspondence:
+                        for button_variable,np_name in np_sensor_correspondence:
                             if button_variable == wrong_button_pressed:
                                  
                                 wrong_button_name = np_name
@@ -1452,8 +1452,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             extra = 4000
             ITI = 5000
            
-            nose_pokes = [NP_1,NP_2, NP_3, NP_4, NP_5]
-            np_buttons = [button_1,button_2,button_3,button_4, button_5]
+            nose_pokes = [nose_poke_led_1,nose_poke_led_2, nose_poke_led_3, nose_poke_led_4, nose_poke_led_5]
+            np_buttons = [nose_poke_sensor1,nose_poke_sensor2,nose_poke_sensor3,nose_poke_sensor4, nose_poke_sensor5]
             
             #variables
             omissions = 0 
@@ -1496,7 +1496,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
 
             food_led.value(1) #Food magazine yellow LED turns on to start the trial
             
-            while button_trial.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
+            while trial_start_sensor.value() == 1:#while the food magazine sensor LEDs are 1 that means there has been no interruption. This means the mouse hasn't reached for the food
                 utime.sleep(0.1)          
             food_led.value(0)# once the mouse went for the food, the while loop stops and the food magazine yellow LED turns off
             #conditions for the conditions 
@@ -1570,11 +1570,11 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         button_pressed = True #A NP has been poked
                         
                       
-                        NP_1.value(0)
-                        NP_2.value(0)
-                        NP_3.value(0)
-                        NP_4.value(0)
-                        NP_5.value(0)
+                        nose_poke_led_1.value(0)
+                        nose_poke_led_2.value(0)
+                        nose_poke_led_3.value(0)
+                        nose_poke_led_4.value(0)
+                        nose_poke_led_5.value(0)
                         #food dispenser is on
                         reward()
                                     
@@ -1612,7 +1612,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
                         wrong_button_pressed = button
                         wrong_button_name = ""
                             
-                        for button_variable,np_name in button_correspondence:
+                        for button_variable,np_name in np_sensor_correspondence:
                             if button_variable == wrong_button_pressed:
                                 wrong_button_name = np_name
                                 break
