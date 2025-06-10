@@ -52,10 +52,10 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         nose_poke_led_5 = machine.Pin(32,machine.Pin.OUT)
 
         #All the IR. sensors for the different Nose pokes
-        nose_poke_sensor_1 = machine.Pin(16,Pin.IN)
-        nose_poke_sensor2 = machine.Pin(17,Pin.IN) 
-        nose_poke_sensor3 = machine.Pin(19,Pin.IN)
-        nose_poke_sensor4 = machine.Pin(21,Pin.IN)
+        nose_poke_sensor_1 = machine.Pin(16,machine.Pin.IN)
+        nose_poke_sensor2 = machine.Pin(17,machine.Pin.IN) 
+        nose_poke_sensor3 = machine.Pin(19,machine.Pin.IN)
+        nose_poke_sensor4 = machine.Pin(21,machine.Pin.IN)
         nose_poke_sensor5 = machine.Pin(22,machine.Pin.IN)
         
 
