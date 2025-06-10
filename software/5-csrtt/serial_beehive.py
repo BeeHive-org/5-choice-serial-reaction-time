@@ -32,7 +32,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
 
         #pins = [IN1, IN2, IN3, IN4]
         magazine_sensor_pin = 15
-        dispenser_sensor_pin = 12
+        dispenser_sensor_pin = 39
         button_trial_pin = 2
         
         
