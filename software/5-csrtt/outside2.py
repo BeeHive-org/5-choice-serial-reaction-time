@@ -33,14 +33,11 @@ print("done setup")
 #bh.food_training() # call the function food training in bh
 #data1 = [] #data1 is a list where all the data can be extracted to
 
-
 animal="mouse1" # animal name                    
-
 date = now.strftime("%d_%m_%Y-%H_%M_%S") #date and time
 
-
 phase = "food_magazine_training"  #phase name
-file_name = animal+"_"+phase+"_"+ date+".csv"  #name of the file
+file_name_training = animal+"_"+phase+"_"+ date+".csv"  #name of the file
 
 #Go through the trials appending to CSV
 
@@ -53,7 +50,7 @@ fields = ["Trial","ITI","start_trial_time",
 #dataline is not saved on the file right away, so the code below does that.
 
 #write the header.
-with open(file_name, 'w', newline='') as csvfile: #within a new excel file
+with open(file_name_training, 'w', newline='') as csvfile: #within a new excel file
     csvwriter = csv.writer(csvfile) 
     csvwriter.writerow(fields) #writes the headers
 
@@ -62,38 +59,32 @@ with open(file_name, 'w', newline='') as csvfile: #within a new excel file
 index = 1
 for trial in bh.food_training(num_trial=50):
     print("trial: ",index)
-    index = index+1z
+    index = index+1
     #transform all elements in list to strings
     trial_s = [str(r) for r in trial]
-    with open(file_name, 'a', newline='') as csvfile: #within a new excel file
-        
+    with open(file_name_training, 'a', newline='') as csvfile: #within a new excel file
+        #open the file in append mode
         csvwriter = csv.writer(csvfile)
-        
+        #write the trial data
         csvwriter.writerows([trial_s]) #the rows are data1
-        
-        
-        
 
+#Phase 1: 
 
-
-
-# #Phase 1: 
-
-
-# #                
-# animal="mouse1" # name can be changed                    
-# phase = "Phase1"
+phase = "phase1"  #phase name
+file_name_p1 = animal+"_"+phase+"_"+ date+".csv"  #name of the file
+#animal="mouse1" # name can be changed                    
+#phase = "Phase1"
 # # 
-# date = now.strftime("%d_%m_%Y-%H_%M_%S")
+#date = now.strftime("%d_%m_%Y-%H_%M_%S")
 
-# file_name = animal+"_"+phase+"_"+ date+".csv"
+file_name_p1 = animal+"_"+phase+"_"+ date+".csv"
 
 
-# with open(fileName,'w+') as csvfile: #fid:
-#     csvwriter = csv.writer(csvfile)
-#     csvwriter.writerow(["Trial","ITI","Mouse_food_latency","total"])
-#     for trial in bh.phase1():
-#         csvwriter.writerow(trial)
+with open(fileName_p1,'w+') as csvfile: #fid:
+    csvwriter = csv.writer(csvfile)
+    csvwriter.writerow(["Trial","ITI","Mouse_food_latency","total"])
+    for trial in bh.phase1():
+         csvwriter.writerow(trial)
 
 
 #Phase2  

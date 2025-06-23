@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Untitled project</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../../static/Logo/favicon.ico" />
+<link rel="icon" type="image/png" href="../../static/Logo/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="../../static/Logo/favicon-16x16.png" sizes="16x16" />
+
+    <link href="../../static/base-style.css" rel="stylesheet">
+    <link href="../../static/site-style.css" rel="stylesheet">
+                    
+        <script type="text/javascript" src="../../static/search.js" defer=""></script>
+    </head>
+<body>
+<header class="site-header">
+    <div class="wrapper header-wrapper" >
+        <div class=header-text>
+   
+    <h1 class="site-title">Untitled project</h1>
+</div>
+            </div>
+</header>
+<div class="page-content">
+            <div>
+            <nav class="sidebar">
+                <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+                </a>
+                <ul class="nav-list">
+                <li>
+    <a class="navhome" href="../../">
+        Untitled project
+    </a>
+</li>
+<li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('../../')">
+  <input
+    type="text"
+    placeholder="Search..."
+    v-on:input="search($event.target.value)"
+    v-on:keypress="handleKeyPress"
+    v-on:keyup.esc="$event.target.blur()"
+    v-on:focus="handleFocus"
+    v-on:blur="handleBlur"
+    :value="searchTerm" />
+    <div class="search-results" v-if="focused && searchTerm.length > 0">
+        <div v-if="searchResults.length > 0">Results:</div>
+        <div v-if="searchResults.length === 0">No results.</div>
+        <template v-for="(result, index) in searchResults">
+            <li>
+                <a class="search-result" :href="`../../${result.path}.html`">
+               <span v-for="crumb in result.breadCrumbs.slice(0, -1)">
+                ${crumb + ' > '}
+                </span>
+               ${result.title || result.breadCrumbs[result.breadCrumbs.length - 1]}
+                <p>
+                    <span v-for="node in result.highlightChars" :class="node.mark ? 'highlight' : ''" >${node.chars}</span>
+                </p>
+                </a>
+            </li>
+        </template>
+    </div>
+</li>
+<li class="not-active">
+    <a class="not-active" href="../../documentation/index.html">
+        Serial reaction chamber
+    </a>
+    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="wrapper">
+    <h5 id="updated-5-choice-training-program">Updated 5-Choice Training Program</h5>
+<h2 id="new-nosepoke-light-to-trigger-trial-start-at-the-back-panel-in-the-middle">New nosepoke light to trigger trial start at the back panel in the middle</h2>
+<h2 id="magazine-will-be-moved-to-right-hand-side">Magazine will be moved to right hand side</h2>
+<ul>
+<li>TSL = Trial Start Light</li>
+<li>TSS = Trial Start Sensor</li>
+<li>MS = Magazine Sensor</li>
+<li>FD = food delivery</li>
+</ul>
+<h2 id="magazine-training">Magazine Training:</h2>
+<ul>
+<li>TSL turns on + food is delivered</li>
+<li>mouse nosepokes into the magazine to get the food</li>
+<li>this triggers TSL to turn off + variable ITI begins (4,8,16,or 32 sec)</li>
+<li>next trial begins</li>
+<li>This phase is 50 trials.</li>
+</ul>
+<h2 id="training-1-phase-1">Training 1 (Phase 1):</h2>
+<ul>
+<li>TSL turns on </li>
+<li>mouse nosepokes into Trial Start Hole + TSS detects it</li>
+<li>TSL turns off + food is delivered</li>
+<li>mouse nosepokes into the magazine to get the food</li>
+<li>next trial begins</li>
+<li>This phase is 50 trials.</li>
+</ul>
+<h2 id="training-2-phase-2">Training 2 (Phase 2):</h2>
+<ul>
+<li>TSL turns on </li>
+<li>mouse nosepokes into Trial Start Hole + TSS detects it</li>
+<li>TSL turns off</li>
+<li>5 stimulus lights on the opposite wall turns on</li>
+<li>mouse nosepokes into one of them (sensor detects it)</li>
+<li>5 stimulus lights turn off</li>
+<li>food is delivered</li>
+<li>next trial begins</li>
+<li>This phase is 50 trials.</li>
+</ul>
+<h2 id="training-3-phase-3">Training 3 (Phase 3):</h2>
+<ul>
+<li>TSL turns on </li>
+<li>mouse nosepokes into Trial Start Hole + TSS detects it</li>
+<li>TSL turns off</li>
+<li>5 sec ITI</li>
+<li>Randomly chosen 1 stimulus light on the opposite wall turns on</li>
+<li>mouse nosepokes into one of them (sensor detects it)</li>
+<li>If nosepoked into a non-illumniated hole, there is no consequence, the trial begins again.</li>
+<li>all lights off, no time out, start at the beg. again.</li>
+<li>If mouse nosepokes into the illuminated light, stimulus light turns off.</li>
+<li>food is delivered</li>
+<li>once mouse collects the food, there is 20 sec consumption interval (no light is on)</li>
+<li>next trial begins</li>
+<li>This phase is 100 trials.</li>
+</ul>
+<h2 id="5-choice-training-phase-4-8">5-Choice Training (Phase 4-8):</h2>
+<ul>
+<li>TSL turns on </li>
+<li>mouse nosepokes into Trial Start Hole + TSS detects it</li>
+<li>TSL turns off</li>
+<li>5 sec ITI</li>
+<li>one Nosepoke turns on for SD time and turns off after that duration.</li>
+<li>If nosepoke into stimulus lights during ITI, record it as premature and Time-Out for 5 sec (no lights).</li>
+<li>Randomly chosen 1 stimulus light on the opposite wall turns on</li>
+<li>mouse nosepokes into one of them (sensor detects it)</li>
+<li>If nosepoked into a non-illumniated hole, record it as incorrect and Time-Out for 5 sec (no lights).</li>
+<li>If mouse nosepokes into the illuminated light, stimulus light turns off.</li>
+<li>food is delivered</li>
+<li>once mouse collects the food from magazine, there is 20 sec consumption interval (no light is on)</li>
+<li>If no nosepokes (SD+4sec), record it as an omission and Time-Out for 5 sec (no lights).</li>
+<li>next trial begins</li>
+<li>This phase is 100 trials.</li>
+</ul>
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="wrapper">
+        <a target="_blank" rel="noopener noreferrer" href="https://gitbuilding.io">
+    <img class="icon" src="../../static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
+    <span class="doc-info">Documentation powered by GitBuilding</span>
+</a>
+
+    </div>
+</footer></body>
+</html>
