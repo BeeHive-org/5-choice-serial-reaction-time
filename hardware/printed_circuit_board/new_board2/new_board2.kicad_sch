@@ -13423,7 +13423,7 @@
 			)
 		)
 		(property "Footprint" "esp32:MODULE_ESP32-DEVKITC-32D"
-			(at 236.474 50.546 0)
+			(at 253.746 18.542 0)
 			(effects
 				(font
 					(size 1.27 1.27)

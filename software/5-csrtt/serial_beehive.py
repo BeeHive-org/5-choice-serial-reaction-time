@@ -2,7 +2,7 @@
 import belay
 from belay import Device
 import time
-#import utime
+import utime
 
 
 
@@ -37,9 +37,9 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         
         
 
-        magazine_sensor = machine.Pin(magazine_sensor_pin,machine.Pin.IN) # Sensor LED for the food magazine
-        dispenser_sensor = machine.Pin(dispenser_sensor_pin, machine.Pin.IN) # Sensor LEDs for the food dispenser to detect when food pellets come down
-        trial_start_sensor = machine.Pin(trial_start_sensor_pin, machine.Pin.IN) # Sensor for trial start light
+        magazine_sensor = machine.Pin(magazine_sensor_pin,machine.Pin.IN) # IR Sensor for the food magazine
+        dispenser_sensor = machine.Pin(dispenser_sensor_pin, machine.Pin.IN) # IR Sensor for the food dispenser to detect when food pellets come down
+        trial_start_sensor = machine.Pin(trial_start_sensor_pin, machine.Pin.IN) # IR Sensor for trial start light
         
         
         food_led = machine.Pin(33, machine.Pin.OUT) #LED = the yellow LED for the food magazine
@@ -52,7 +52,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
         nose_poke_led_5 = machine.Pin(32,machine.Pin.OUT)
 
         #All the IR. sensors for the different Nose pokes
-        nose_poke_sensor_1 = machine.Pin(16,machine.Pin.IN)
+        nose_poke_sensor1 = machine.Pin(16,machine.Pin.IN)
         nose_poke_sensor2 = machine.Pin(17,machine.Pin.IN) 
         nose_poke_sensor3 = machine.Pin(19,machine.Pin.IN)
         nose_poke_sensor4 = machine.Pin(21,machine.Pin.IN)
@@ -144,7 +144,7 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             
             times_num = random.choice(times) #one random time out of these is chosen
             times_num = times_num*1000 #convert seconds to milliseconds
-            count_time(times_num) # time.sleeps allows for the machine to pause for the amount of times the ITI is
+            count_time(times_num) # this function counts time in milliseconds, here counting the ITI time
             
             
             mouse_to_food = timer_food2-timer_food #mouse to food is the amount of time the mouse took to get the food
@@ -171,8 +171,8 @@ class SerialBeeHive(Device): #This is the class that contains all the phases
             start_trial_time= time.ticks_ms() #this is a timer of the start of the trial -> gives number in miliseconds not actual time   
             food_led.value(1) #the food magazine LED value starts at 0
             #while the trial start LED is 1 that means there has been no interruption. 
-            #This means the mouse hasn't reached for the food
-            while trial_start_sensor.value() == 1:
+            #This means the mouse hasn't poked the trial start sensor yet
+            while trial_start_sensor.value() == 1: 
                 #print(trial_start_sensor.value())
                 utime.sleep(0.5)
                
